@@ -1,10 +1,10 @@
 export default function Home() {
   return (
     <main className="bg-orange-800">
-    <h1 className="p-4">Home</h1>
-      
+      <h1 className="p-4 text-2xl">Home</h1>
+
       {/* it doesn't autoplay on refresh? */}
-      {/* <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+      <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
         <iframe
           src="https://player.vimeo.com/video/368412716?h=9e28e76ddd&autoplay=1&loop=1"
           style={{
@@ -18,7 +18,10 @@ export default function Home() {
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
         ></iframe>
-      </div> */}
+      </div>
+
+      {/* it doesn't autoplay on refresh? */}
+
       <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
         <video
           autoPlay
@@ -35,6 +38,7 @@ export default function Home() {
         </video>
       </div>
       <script src="https://player.vimeo.com/api/player.js"></script>
+    
     </main>
   );
 }
