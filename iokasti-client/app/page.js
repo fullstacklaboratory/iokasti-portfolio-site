@@ -30,6 +30,7 @@ export default function Home() {
 
       {/* it doesn't autoplay on refresh? */}
 
+      {/* TODO: Upload video to strapi and fetch from there? Then delete file from here */}
       <video
         autoPlay
         loop
