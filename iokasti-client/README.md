@@ -13,6 +13,8 @@ npm run dev
 
 - npm install react-icons --save
 - npm install qs (for writhing api queries)
+- marked for the markdown document
+
 
 
 

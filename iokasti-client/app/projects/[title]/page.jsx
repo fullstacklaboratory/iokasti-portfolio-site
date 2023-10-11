@@ -1,8 +1,14 @@
-import { getProject } from "@/lib/projects";
+import { getProject, getSlugs } from "@/lib/projects";
 import Image from "next/image";
 import React from "react";
 
 const CMS_URL = "http://localhost:1337";
+
+export async function generateStaticParams() {
+  // this will generate all the reviews paths on build. That means we don't have to rerender dynamic path component again
+  const slugs = await getSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
 export default async function ProjectPage({ params }) {
   const project = await getProject(params.title);

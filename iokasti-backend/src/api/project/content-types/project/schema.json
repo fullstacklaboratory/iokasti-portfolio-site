@@ -52,6 +52,10 @@
         "collab"
       ],
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }

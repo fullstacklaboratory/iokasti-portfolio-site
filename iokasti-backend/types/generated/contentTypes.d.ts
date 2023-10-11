@@ -380,6 +380,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     Title: Attribute.String & Attribute.Required;
     body: Attribute.RichText & Attribute.Required;
     category: Attribute.Enumeration<['project', 'collab']> & Attribute.Required;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

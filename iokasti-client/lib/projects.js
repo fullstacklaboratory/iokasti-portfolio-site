@@ -3,12 +3,12 @@ import { marked } from "marked";
 
 const CMS_URL = "http://localhost:1337";
 
-export async function getProject(title) {
+export async function getProject(slug) {
   const url =
     `${CMS_URL}/api/projects?` +
     qs.stringify(
       {
-        filters: { Title: { $eq: title } },
+        filters: { slug: { $eq: slug } },
         fields: ["title", "body", "category", "date"],
         populate: {
           images: { fields: ["url"] },
@@ -41,7 +41,7 @@ export async function getProjects() {
     `${CMS_URL}/api/projects?` +
     qs.stringify(
       {
-        fields: ["title", "description", "category", "date"],
+        fields: ["title", "slug", "description", "category", "date"],
         populate: {
           banner_Image: { fields: ["url"] },
         },
@@ -57,6 +57,29 @@ export async function getProjects() {
     title: attributes.Title,
     description: attributes.description,
     date: attributes.date,
+    slug : attributes.slug,
+    category: attributes.category,
     image: CMS_URL + attributes.banner_Image.data.attributes.url,
   }));
+}
+
+export async function getSlugs() {
+  const url =
+    `${CMS_URL}/api/projects?` +
+    qs.stringify(
+      {
+        fields: ["slug"],
+        sort: ["date:desc"],
+        pagination: { pageSize: 100 },
+      },
+      { encodeValuesOnly: true }
+    );
+
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`CMS returned ${res.status} for ${url}`);
+  }
+  const { data } = await res.json();
+
+  return data.map((item) => item.attributes.slug);
 }
