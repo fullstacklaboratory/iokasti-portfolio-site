@@ -17,7 +17,8 @@ const About = async () => {
     <>
     <header className="flex justify-between p-3 items-center">
     <h1 className="text-4xl">About {content.title}</h1>
-    <Link href={`/about/cv`} className="text-3xl">
+    {/* <Link href={`/about/cv`} className="text-3xl"> */}
+    <Link href={`http://localhost:1337/uploads/CV_Vassilis_Skrimpas_2023_b288fae117.pdf`} target="_blank" className="text-3xl">
       <span>CV</span>
     <BsPersonVcardFill/>
     </Link>
