@@ -14,6 +14,7 @@ const vimeo = "#"; //has to be fetched from strapi
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
+  
   return (
     <nav>
       <div className="flex justify-between bg-gray-700 text-white py-4 ">

@@ -14,6 +14,7 @@ export const metadata = {
   ],
   // https://developers.google.com/search/docs/crawling-indexing/special-tags
   // openGraph : { // Important when you want to display on chat's or facebook etc... (check it out)
+  
   //   url :  "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields"
   // }
 };

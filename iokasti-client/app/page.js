@@ -4,6 +4,7 @@ export default function Home() {
       <h1 className="p-4 text-2xl">Who's Iokasti?</h1>
 
       {/* it doesn't autoplay on refresh? */}
+      
       {/* <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
         <iframe
           src="https://player.vimeo.com/video/368412716?h=9e28e76ddd&autoplay=1&loop=1&autopause=0&muted=1&background=1"
