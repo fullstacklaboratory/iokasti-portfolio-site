@@ -25,6 +25,8 @@ npm run dev
  - Metadata : https://nextjs.org/docs/app/api-reference/file-conventions/metadata
 
 
+- https://www.w3schools.in/html/marquee-tag/
+
 ## Notes
 
  - if you wan't to add a font-family let me know, there is a special way 
