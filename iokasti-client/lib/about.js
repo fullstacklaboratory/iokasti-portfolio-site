@@ -1,6 +1,7 @@
 import qs from "qs";
 import { marked } from "marked";
 
+const CMS_URL = process.env.NEXT_PUBLIC_ENV_WPS_SERVER
 
 export const getAbout = async () => {
   const url =
