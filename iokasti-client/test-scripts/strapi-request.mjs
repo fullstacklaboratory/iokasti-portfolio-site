@@ -44,11 +44,28 @@ const CMS_URL = "http://localhost:1337";
 // writeFileSync(file, formatted, "utf8");
 
 
-const url =
-`${CMS_URL}/api/land-page?` +
+// const url =
+// `${CMS_URL}/api/land-page?` +
+// qs.stringify({
+//   populate: {
+//     Video: { fields: ["url"] },
+//   },
+// });
+// const response = await fetch(url);
+// const body = await response.json();
+
+
+// const formatted = JSON.stringify(body, null, 2);
+//  const file = "test-scripts/strapi-response.json";
+//  writeFileSync(file, formatted, "utf8");
+
+
+ const url =
+`${CMS_URL}/api/teachings?` +
 qs.stringify({
   populate: {
-    Video: { fields: ["url"] },
+    upcoming_dates : {fields : ["*"]},
+    image: { fields: ["url"] },
   },
 });
 const response = await fetch(url);
