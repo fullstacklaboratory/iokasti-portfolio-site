@@ -7,7 +7,7 @@ export const metadata = {
   title: "About",
 };
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_WPS_SERVER
+const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER
 
 const About = async () => {
   const content = await getAbout();

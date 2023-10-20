@@ -8,6 +8,12 @@ const nextConfig = {
         port: "1337",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "api.fullstacklaboratory.dev",
+        // port: "1337",
+        pathname: "/uploads/**",
+      },
     ],
   }
 };
