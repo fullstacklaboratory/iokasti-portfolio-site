@@ -1,29 +1,33 @@
 module.exports = [
-  'strapi::errors',
+  "strapi::errors",
   {
-    name: 'strapi::security',
+    name: "strapi::security",
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
-        frameguard : false 
-        },
+        frameguard: false,
+      },
+    },
   },
-},
   {
-    name: 'strapi::cors',
+    name: "strapi::cors",
     config: {
-      origin: ["http://localhost:3000", "http://localhost:1337"],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      origin: [
+        "http://localhost:3000",
+        "http://localhost:1337",
+        "http://api.fullstacklaboratory.dev",
+        "https://api.fullstacklaboratory.dev",
+      ],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
       keepHeaderOnError: true,
     },
   },
-  'strapi::poweredBy',
-  'strapi::logger',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  'strapi::favicon',
-  'strapi::public',
-
+  "strapi::poweredBy",
+  "strapi::logger",
+  "strapi::query",
+  "strapi::body",
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
 ];
