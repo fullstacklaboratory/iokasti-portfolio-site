@@ -11,17 +11,12 @@ const CMS_URL = "http://localhost:1337";
 
 const About = async () => {
   const content = await getAbout();
-  console.log(content);
   return (
     <>
       <header className="flex justify-between p-3 items-center text-white">
         <h1 className="text-4xl">About {content.title}</h1>
-        <Link
-          href={`http://localhost:1337/uploads/CV_Vassilis_Skrimpas_2023_b288fae117.pdf`}
-          target="_blank"
-          className="text-3xl flex"
-        >
-          <span>CV</span>
+        <Link href={content.cv} target="_blank" className="text-3xl flex">
+          {/* <span>CV</span> */}
           <BsPersonVcardFill />
         </Link>
       </header>
@@ -41,12 +36,6 @@ const About = async () => {
           />
         </div>
       </div>
-
-      {/* <iframe
-        className="w-screen h-screen"
-        src="/2023.pdf"
-        frameborder="0"
-      ></iframe> */}
     </>
   );
 };

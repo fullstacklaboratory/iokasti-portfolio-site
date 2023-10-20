@@ -15,7 +15,7 @@ const NavBar = ({ navData }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <nav className="flex flex-col h-screen">
+    <nav className="flex flex-col h-1">
       <div className="flex justify-between h-20 bg-gray-700 text-white py-4 ">
         <p
           className="text-xl p-2 basis-1/3 cursor-pointer"
@@ -38,7 +38,7 @@ const NavBar = ({ navData }) => {
       </div>
 
       {showMenu && (
-        <ul className="w-1/4 text-3xl grow bg-gray-700 text-white flex flex-col p-5 justify-around slide-in-box">
+        <ul className="w-1/4 text-3xl grow bg-gray-700 text-white flex flex-col p-5 justify-around slide-in-box h-screen">
           <li onClick={() => setShowMenu(!showMenu)}>
             <Link href="/">Home</Link>
           </li>

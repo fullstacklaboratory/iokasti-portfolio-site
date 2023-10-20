@@ -46,8 +46,8 @@ export default async function Home() {
           right: "0",
           width: "100%",
           height: "100%",
-          "object-fit": "cover",
-          "z-index": "-1",
+          "objectFit": "cover",
+          "zIndex": "-1",
         }}
       >
         <source src={data.video} type="video/webm" />
