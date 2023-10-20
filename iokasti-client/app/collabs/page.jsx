@@ -1,10 +1,10 @@
-import { getProjects } from "@/lib/projects";
+import { getCollabs, getProjects } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Projects = async () => {
-  const projects = await getProjects();
+const Collabs = async () => {
+  const projects = await getCollabs();
 
   const displayProjects = (cat) => {
     return projects.map((item, index) => {
@@ -21,7 +21,7 @@ const Projects = async () => {
                 alt="image"
               />
             </Link>
-            <div className="w-1/2 flex justify-evenly">
+            <div className="w-1/2 flex flex-col justify-evenly">
               <h1 className="text-center text-white text-4xl">{item.title}</h1>
               <p className="text-center text-white text-2xl">
                 {item.description}
@@ -44,24 +44,22 @@ const Projects = async () => {
               <li
                 key={item.slug}
                 className={
-                  index % 2 === 0
-                    ? `flex-col flex  sm:flex-row sm:w-5/6`
-                    : `flex-col sm:flex sm:flex-row-reverse sm:w-5/6 `
+                  index % 2 === 0 ? `flex w-5/6` : `flex flex-row-reverse w-5/6`
                 }
               >
-                <div className="w-full sm:w-5/6 ">
-                  <h1 className="text-center text-white text-4xl mb-4">
+                <div className="w-1/2">
+                  <h1 className="text-center text-white text-4xl">
                     {item.title}
                   </h1>
                   <Link href={`/projects/${item.slug}`} className="self-center">
+                    {" "}
                     <Image
                       src={item.image}
-                      width="640"
+                      width="480"
                       height="280"
                       priority={index === 0}
                       alt="image"
                     />
-                  
                   </Link>
                 </div>
                 <div className="w-full flex flex-col justify-evenly">
@@ -78,4 +76,4 @@ const Projects = async () => {
   );
 };
 
-export default Projects;
+export default Collabs;

@@ -41,6 +41,7 @@ export async function getProjects() {
     `${CMS_URL}/api/projects?` +
     qs.stringify(
       {
+        filters: { category: { $eq: "project" } },
         fields: ["title", "slug", "description", "category", "date"],
         populate: {
           banner_Image: { fields: ["url"] },
@@ -63,6 +64,9 @@ export async function getProjects() {
   }));
 }
 
+
+
+
 export async function getSlugs() {
   const url =
     `${CMS_URL}/api/projects?` +
@@ -82,4 +86,34 @@ export async function getSlugs() {
   const { data } = await res.json();
 
   return data.map((item) => item.attributes.slug);
+}
+
+
+
+export async function getCollabs() {
+  const url =
+    `${CMS_URL}/api/projects?` +
+    qs.stringify(
+      {
+        filters: { category: { $eq: "collab" } },
+        fields: ["title", "slug", "description", "category", "date"],
+        populate: {
+          banner_Image: { fields: ["url"] },
+        },
+        pagination: { pageSize: 10 },
+        sort: ["date:desc"],
+      },
+      { encodeValuesOnly: true }
+    );
+
+  const response = await fetch(url);
+  const { data } = await response.json();
+  return data.map(({ attributes }) => ({
+    title: attributes.Title,
+    description: attributes.description,
+    date: attributes.date,
+    slug : attributes.slug,
+    category: attributes.category,
+    image: CMS_URL + attributes.banner_Image.data.attributes.url,
+  }));
 }

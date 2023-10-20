@@ -1,10 +1,13 @@
-export default function Home() {
+import { getLandPage } from "@/lib/landpage";
+
+export default async function Home() {
+  const data = await getLandPage();
   return (
     <>
-      <h1 className="p-4 text-2xl">Who's Iokasti?</h1>
+      <h1 className="p-4 text-2xl text-white">Who's Iokasti?</h1>
 
       {/* it doesn't autoplay on refresh? */}
-      
+
       {/* <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
         <iframe
           src="https://player.vimeo.com/video/368412716?h=9e28e76ddd&autoplay=1&loop=1&autopause=0&muted=1&background=1"
@@ -43,14 +46,21 @@ export default function Home() {
           right: "0",
           width: "100%",
           height: "100%",
-          "object-fit": "cover",
-          "z-index": "-1",
+          "objectFit": "cover",
+          "zIndex": "-1",
         }}
       >
-        <source src="/iokasti-home.webm" type="video/webm" />
+        <source src={data.video} type="video/webm" />
         Your browser does not support the video tag. Please use a modern
         browser.
       </video>
+
+      <marquee
+        direction="left"
+        className="text-white absolute bottom-0 bg-blue-400 p-2"
+      >
+        //some text to move
+      </marquee>
 
       {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
     </>
