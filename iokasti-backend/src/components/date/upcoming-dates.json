@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_date_upcoming_dates",
+  "info": {
+    "displayName": "upcoming_dates",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "upcoming_date": {
+      "type": "date"
+    },
+    "from": {
+      "type": "time"
+    },
+    "to": {
+      "type": "time"
+    }
+  }
+}

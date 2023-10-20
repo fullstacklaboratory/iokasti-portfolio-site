@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teachings",
+  "info": {
+    "singularName": "teaching",
+    "pluralName": "teachings",
+    "displayName": "Teaching",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "external_url": {
+      "type": "string"
+    },
+    "place_name": {
+      "type": "string"
+    },
+    "map_url": {
+      "type": "string"
+    },
+    "upcoming_dates": {
+      "type": "component",
+      "repeatable": true,
+      "component": "date.upcoming-dates"
+    },
+    "regular_schedule": {
+      "type": "boolean"
+    },
+    "weekday": {
+      "type": "string"
+    },
+    "from": {
+      "type": "time"
+    },
+    "to": {
+      "type": "time"
+    }
+  }
+}

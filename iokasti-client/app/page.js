@@ -2,6 +2,8 @@ import { getLandPage } from "@/lib/landpage";
 
 export default async function Home() {
   const data = await getLandPage();
+  console.log(process.env.NEXT_CMS_URL);
+
   return (
     <>
       <h1 className="p-4 text-2xl text-white">Who's Iokasti?</h1>
@@ -22,19 +24,7 @@ export default async function Home() {
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
         ></iframe> */}
-      {/* <iframe title="vimeo-player" src="https://player.vimeo.com/video/872349418?h=8220cf9817&autoplay=1&loop=1&autopause=0&muted=1&background=1&quality=1080p"      
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    width: "100%",
-                    height: "100%",
-                  }} frameborder="0"    allowfullscreen></iframe>
-      </div> */}
 
-      {/* it doesn't autoplay on refresh? */}
-
-      {/* TODO: Upload video to strapi and fetch from there? Then delete file from here */}
       <video
         autoPlay
         loop
@@ -46,8 +36,8 @@ export default async function Home() {
           right: "0",
           width: "100%",
           height: "100%",
-          "objectFit": "cover",
-          "zIndex": "-1",
+          objectFit: "cover",
+          zIndex: "-1",
         }}
       >
         <source src={data.video} type="video/webm" />
@@ -61,8 +51,6 @@ export default async function Home() {
       >
         //some text to move
       </marquee>
-
-      {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
     </>
   );
 }

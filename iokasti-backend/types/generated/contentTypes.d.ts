@@ -781,6 +781,88 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiTeachingTeaching extends Schema.CollectionType {
+  collectionName: 'teachings';
+  info: {
+    singularName: 'teaching';
+    pluralName: 'teachings';
+    displayName: 'Teaching';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.RichText & Attribute.Required;
+    image: Attribute.Media;
+    external_url: Attribute.String;
+    place_name: Attribute.String;
+    map_url: Attribute.String;
+    upcoming_dates: Attribute.Component<'date.upcoming-dates', true>;
+    regular_schedule: Attribute.Boolean;
+    weekday: Attribute.String;
+    from: Attribute.Time;
+    to: Attribute.Time;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::teaching.teaching',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::teaching.teaching',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTeachingScheduleTeachingSchedule
+  extends Schema.CollectionType {
+  collectionName: 'teaching_schedules';
+  info: {
+    singularName: 'teaching-schedule';
+    pluralName: 'teaching-schedules';
+    displayName: 'teaching_schedule';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    regular_schedule: Attribute.Boolean;
+    weekDay: Attribute.String;
+    from: Attribute.Time;
+    to: Attribute.Time;
+    upcoming_dates: Attribute.RichText;
+    teaching: Attribute.Relation<
+      'api::teaching-schedule.teaching-schedule',
+      'oneToOne',
+      'api::teaching.teaching'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::teaching-schedule.teaching-schedule',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::teaching-schedule.teaching-schedule',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Shared {
     export interface ContentTypes {
@@ -800,6 +882,8 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::land-page.land-page': ApiLandPageLandPage;
       'api::project.project': ApiProjectProject;
+      'api::teaching.teaching': ApiTeachingTeaching;
+      'api::teaching-schedule.teaching-schedule': ApiTeachingScheduleTeachingSchedule;
     }
   }
 }

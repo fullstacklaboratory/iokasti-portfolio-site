@@ -1,25 +1,57 @@
 {
-  "data": {
-    "id": 1,
-    "attributes": {
-      "vimeo_link": "https://vimeo.com/user85906676",
-      "Instagram_Link": "https://www.instagram.com/iokasti_disgusty/?hl=en",
-      "Email": "iokastimantzog@gmail.com",
-      "Name": "Iokasti Disgusti",
-      "createdAt": "2023-10-18T09:10:45.125Z",
-      "updatedAt": "2023-10-18T09:10:48.127Z",
-      "publishedAt": "2023-10-18T09:10:48.124Z",
-      "Video": {
-        "data": [
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "title": "Fluid Dynamics Moveable Cinema Dance & Movement Lab",
+        "description": "A laboratory for dance and movement exploration led by a collective of embodied practitioners and artists; Philipp Hege, Iokasti Kyriaki Zografou Mantzakidou, Tarli Lumby and Claudia Tomasi. Their common ground is the practice of Shannon Cooney’s Moveable Cinema and Dynamic Expansion, mixed with their own in-depth experience in dance performance, dance movement and pedagogy. Exercises are led with scored proposals, and through experimentation one can find their own dance and movement pathways and expression. Focus is on autonomous movement research as well as through pairing and group dances. Space is given for feedback which supports the Laboratory and experimental nature.",
+        "external_url": "https://www.tanzfabrik-berlin.de/en/kursplan#events/1570",
+        "place_name": "Tanzfabrik",
+        "createdAt": "2023-10-20T15:28:49.668Z",
+        "updatedAt": "2023-10-20T16:03:33.087Z",
+        "publishedAt": "2023-10-20T15:31:38.865Z",
+        "map_url": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.3562118580944!2d13.375185876679362!3d52.49079127205352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a850256ea2735f%3A0x954727a03f22b979!2sTanzfabrik%20Berlin%20Schule!5e0!3m2!1sen!2sde!4v1697816959128!5m2!1sen!2sde\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "regular_schedule": true,
+        "weekday": null,
+        "from": null,
+        "to": null,
+        "upcoming_dates": [
           {
-            "id": 7,
+            "id": 1,
+            "upcoming_date": "2023-10-25",
+            "from": "18:15:00.000",
+            "to": "02:15:00.000"
+          },
+          {
+            "id": 2,
+            "upcoming_date": "2023-11-08",
+            "from": "18:15:00.000",
+            "to": "20:15:00.000"
+          },
+          {
+            "id": 3,
+            "upcoming_date": "2023-11-22",
+            "from": "18:15:00.000",
+            "to": "20:15:00.000"
+          }
+        ],
+        "image": {
+          "data": {
+            "id": 8,
             "attributes": {
-              "url": "/uploads/iokasti_home_9f118a82e6.webm"
+              "url": "/uploads/DALL_E_2023_10_20_17_31_02_Fluid_Dynamics_Moveable_Cinema_Dance_and_Movement_Lab_f967eaa33b.png"
             }
           }
-        ]
+        }
       }
     }
-  },
-  "meta": {}
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 1
+    }
+  }
 }

@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "land_pages",
+  "info": {
+    "singularName": "land-page",
+    "pluralName": "land-pages",
+    "displayName": "landPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vimeo_link": {
+      "type": "string"
+    },
+    "Instagram_Link": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "Name": {
+      "type": "string"
+    }
+  }
+}
