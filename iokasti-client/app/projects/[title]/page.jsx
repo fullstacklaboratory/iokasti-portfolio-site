@@ -2,7 +2,8 @@ import { getProject, getSlugs } from "@/lib/projects";
 import Image from "next/image";
 import React from "react";
 
-const CMS_URL = "http://localhost:1337";
+const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+
 
 export async function generateStaticParams() {
   // this will generate all the reviews paths on build. That means we don't have to rerender dynamic path component again
