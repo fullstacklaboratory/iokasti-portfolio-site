@@ -1,7 +1,6 @@
 import qs from "qs";
 import { marked } from "marked";
 
-const CMS_URL = "http://localhost:1337";
 
 export const getAbout = async () => {
   const url =

@@ -2,7 +2,9 @@ import qs from "qs";
 import { marked } from "marked";
 import { AiTwotoneAccountBook } from "react-icons/ai";
 
-const CMS_URL = "http://localhost:1337";
+const CMS_URL = process.env.NEXT_PUBLIC_ENV_WPS_SERVER
+
+console.log(process.env.NEXT_PUBLIC_ENV_WPS_SERVER);
 
 export const getLandPage = async () => {
   const url =
