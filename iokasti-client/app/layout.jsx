@@ -24,7 +24,7 @@ export default async function RootLayout({ children }) {
   const navData = await getNavData();
 
   return (
-    <html lang="en">
+    <html lang="en" className="snap-y snap-mandatory">
       <body>
         <header className="fixed top-0 left-0 right-0 z-10">
           <NavBar navData={navData} />

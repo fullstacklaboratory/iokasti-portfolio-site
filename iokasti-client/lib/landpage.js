@@ -3,23 +3,43 @@ import { marked } from "marked";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
-export const getLandPage = async () => {
-  const url =
-    `${CMS_URL}/api/land-page?` +
-    qs.stringify({
-      populate: {
-        Video: { fields: ["url"] },
-      },
-    });
+export const getLandingPage = async () => {
+  const url = `${CMS_URL}/api/land-page?populate=video&populate=section.home_section_image`;
+    const res = await fetch(url)
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+   
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error('Failed to fetch data')
+    }
+    // console.log(res)
+    return res.json()
+  }
 
-  const response = await fetch(url);
-  const { data } = await response.json();
-  const { attributes } = data;
+// export const getLandPage = async () => {
+//   const url =
+//     `${CMS_URL}/api/land-page?populate=?populate=*` +
+//     qs.stringify({
+//       populate: {
+//         video: { fields: ["url"] },
+//         section: {fields: ["title", "subtitle", "home_section_image", "home_section_description", "home_section_url", "align_content"]},
+//       },
+//     });
 
-  return {
-    video: CMS_URL + attributes.Video.data[0].attributes.url,
-  };
-};
+//   const response = await fetch(url);
+  
+//   const { data } = await response.json();
+//   console.log(data.attributes)
+//   const { attributes } = data;
+//   // console.log(data.attributes.section[0])
+
+//   return {
+//     // video: CMS_URL + attributes.video.data[0].attributes.url,
+//     video: "" ,
+//     sections: attributes.section
+//   };
+// };
 
 export const getNavData = async () => {
   const url = `${CMS_URL}/api/land-page?`;
@@ -27,11 +47,12 @@ export const getNavData = async () => {
   const response = await fetch(url);
   const { data } = await response.json();
 
+
   const { attributes } = data;
   return {
-    name: attributes.Name || "",
-    instagramLink: attributes.Instagram_Link || "",
-    vimeoLink: attributes.vimeo_link || "",
-    email: attributes.Email || "",
+    siteTitle: attributes.site_name || "",
+    instagram: attributes.instagram_link || "",
+    vimeo: attributes.vimeo_link || "",
+    email: attributes.email || "",
   };
 };

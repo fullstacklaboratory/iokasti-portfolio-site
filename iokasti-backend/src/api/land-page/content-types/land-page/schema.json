@@ -4,7 +4,8 @@
   "info": {
     "singularName": "land-page",
     "pluralName": "land-pages",
-    "displayName": "landPage"
+    "displayName": "landPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,22 +15,28 @@
     "vimeo_link": {
       "type": "string"
     },
-    "Instagram_Link": {
+    "instagram_link": {
       "type": "string"
     },
-    "Email": {
+    "email": {
       "type": "email"
     },
-    "Video": {
-      "allowedTypes": [
-        "videos"
-      ],
+    "video": {
       "type": "media",
       "multiple": true,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "videos"
+      ]
     },
-    "Name": {
+    "site_name": {
       "type": "string"
+    },
+    "section": {
+      "type": "dynamiczone",
+      "components": [
+        "home-section.home-sections"
+      ]
     }
   }
 }

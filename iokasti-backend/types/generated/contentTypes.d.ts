@@ -715,16 +715,18 @@ export interface ApiLandPageLandPage extends Schema.SingleType {
     singularName: 'land-page';
     pluralName: 'land-pages';
     displayName: 'landPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     vimeo_link: Attribute.String;
-    Instagram_Link: Attribute.String;
-    Email: Attribute.Email;
-    Video: Attribute.Media & Attribute.Required;
-    Name: Attribute.String;
+    instagram_link: Attribute.String;
+    email: Attribute.Email;
+    video: Attribute.Media & Attribute.Required;
+    site_name: Attribute.String;
+    section: Attribute.DynamicZone<['home-section.home-sections']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

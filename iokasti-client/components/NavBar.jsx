@@ -16,19 +16,21 @@ const NavBar = ({ navData }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <nav className="flex flex-row justify-between items-center text-white w-full p-4 border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-150 ease-in-out">
-      <p className="basis-1/3 cursor " onClick={() => setShowMenu(!showMenu)}>
-        Menu
-      </p>
-      <h1
-        className={`text-center uppercase text-xl sm:text-m`}
+    <nav className="flex flex-row justify-between items-center text-white w-full p-4 border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-300 ease-in-out">
+      <div
+        className={`${textHoverColor} basis-1/3 cursor-pointer`}
+        onClick={() => setShowMenu(!showMenu)}
+        aria-label="Main menu"
       >
+        Menu
+      </div>
+      <h1 className={`text-center uppercase text-xl sm:text-m`}>
         <Link
           aria-label="Navigate to Home"
           href="/"
           className={`${textHoverColor} `}
         >
-          {navData.name}
+          {navData.siteTitle}
         </Link>
       </h1>
 
@@ -40,7 +42,7 @@ const NavBar = ({ navData }) => {
           className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
         >
           <Link
-            aria-label={`Send an email to ${navData.name}`}
+            aria-label={`Send an email to ${navData.siteTitle}`}
             href={`mailto: ${navData.email}`}
             target="_blank"
           >
@@ -51,7 +53,7 @@ const NavBar = ({ navData }) => {
           className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
         >
           <Link
-            href={navData.instagramLink}
+            href={navData.instagram}
             aria-label="Open Instagram on a new tab"
             target="_blank"
             className="m-4"
@@ -63,7 +65,7 @@ const NavBar = ({ navData }) => {
           className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
         >
           <Link
-            href={navData.vimeoLink}
+            href={navData.vimeo}
             aria-label="Open Vimeo on a new tab"
             target="_blank"
             className="m-4"

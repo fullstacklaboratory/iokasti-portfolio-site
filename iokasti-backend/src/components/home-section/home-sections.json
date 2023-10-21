@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_home_section_home_sections",
+  "info": {
+    "displayName": "home_sections",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 120
+    },
+    "subtitle": {
+      "type": "string",
+      "maxLength": 120,
+      "required": true
+    },
+    "home_section_image": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "home_section_description": {
+      "type": "text",
+      "maxLength": 1000,
+      "required": true
+    },
+    "home_section_url": {
+      "type": "string",
+      "maxLength": 50,
+      "required": true
+    },
+    "align_content": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "required": true
+    }
+  }
+}
