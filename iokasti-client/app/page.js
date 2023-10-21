@@ -1,12 +1,12 @@
+import { Suspense } from "react";
 import { getLandPage } from "@/lib/landpage";
 
 export default async function Home() {
   const data = await getLandPage();
-  console.log(process.env.NEXT_CMS_URL);
 
   return (
     <>
-      <h1 className="p-4 text-2xl text-white">Who's Iokasti?</h1>
+      <h2 className="p-4 text-2xl  relative z-10 text-white ">Who's Iokasti?</h2>
 
       {/* it doesn't autoplay on refresh? */}
 
@@ -24,26 +24,18 @@ export default async function Home() {
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
         ></iframe> */}
-
-      <video
-        autoPlay
-        loop
-        muted
-        style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          right: "0",
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: "-1",
-        }}
-      >
-        <source src={data.video} type="video/webm" />
-        Your browser does not support the video tag. Please use a modern
-        browser.
-      </video>
+      <Suspense fallback={<div className="w-full h-screen flex justify-center items-center"><p>Loading video...</p></div> }>
+        <video
+          className="banner-video"
+          autoPlay
+          loop
+          muted
+        >
+          <source src={data.video} type="video/webm" />
+          Your browser does not support the video tag. Please use a modern
+          browser.
+        </video>
+      </Suspense>
 
       <marquee
         direction="left"

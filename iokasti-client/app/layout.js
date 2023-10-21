@@ -30,7 +30,7 @@ export default async function RootLayout({ children }) {
           <NavBar navData={navData} />
         </header>
 
-        <main className="bg-slate-900 mt-20">{children}</main>
+        <main className="bg-slate-900 pt-20 min-h-screen" >{children}</main>
       </body>
     </html>
   );

@@ -1,8 +1,7 @@
 "use client";
-import { getLandPage } from "@/lib/landpage";
 import Link from "next/link";
 import { useState } from "react";
-import { FiInstagram, FiVideo, FiMail } from "react-icons/fi";
+import { FiInstagram, FiMail } from "react-icons/fi";
 import { TfiVimeo } from "react-icons/tfi";
 import "./navbar.css";
 
@@ -11,31 +10,68 @@ const email = ""; //has to be fetched from strapi
 const instagram = "#"; //has to be fetched from strapi
 const vimeo = "#"; //has to be fetched from strapi
 
+const textHoverColor = "hover:text-amber-400";
+
 const NavBar = ({ navData }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <nav className="flex flex-col h-1">
-      <div className="flex justify-between h-20 bg-gray-700 text-white py-4 ">
-        <p
-          className="text-xl p-2 basis-1/3 cursor-pointer"
-          onClick={() => setShowMenu(!showMenu)}
+    <nav className="flex flex-row justify-between items-center text-white w-full p-4 border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-150 ease-in-out">
+      <p className="basis-1/3 cursor " onClick={() => setShowMenu(!showMenu)}>
+        Menu
+      </p>
+      <h1
+        className={`text-center uppercase text-xl sm:text-m`}
+      >
+        <Link
+          aria-label="Navigate to Home"
+          href="/"
+          className={`${textHoverColor} `}
         >
-          Menu
-        </p>
-        <p className="text-center text-4xl basis-1/3">{navData.name}</p>
-        <div className="flex basis-1/3 justify-end text-2xl ">
-          <Link href={`mailto: ${navData.email}`} className="m-2">
+          {navData.name}
+        </Link>
+      </h1>
+
+      <ul
+        aria-label="Contact and social links"
+        className="basis-1/3 flex flex-row flex-wrap justify-end leading-[0rem]"
+      >
+        <li
+          className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
+        >
+          <Link
+            aria-label={`Send an email to ${navData.name}`}
+            href={`mailto: ${navData.email}`}
+            target="_blank"
+          >
             <FiMail />
           </Link>
-          <Link href={navData.instagramLink} target="_blank" className="m-2">
+        </li>
+        <li
+          className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
+        >
+          <Link
+            href={navData.instagramLink}
+            aria-label="Open Instagram on a new tab"
+            target="_blank"
+            className="m-4"
+          >
             <FiInstagram />
           </Link>
-          <Link href={navData.vimeoLink} target="_blank" className="m-2">
+        </li>
+        <li
+          className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
+        >
+          <Link
+            href={navData.vimeoLink}
+            aria-label="Open Vimeo on a new tab"
+            target="_blank"
+            className="m-4"
+          >
             <TfiVimeo />
           </Link>
-        </div>
-      </div>
+        </li>
+      </ul>
 
       {showMenu && (
         <ul className="w-1/4 text-3xl grow bg-gray-700 text-white flex flex-col p-5 justify-around slide-in-box h-screen">

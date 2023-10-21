@@ -11,10 +11,11 @@ export const getLandPage = async () => {
         Video: { fields: ["url"] },
       },
     });
+
   const response = await fetch(url);
   const { data } = await response.json();
-
   const { attributes } = data;
+
   return {
     video: CMS_URL + attributes.Video.data[0].attributes.url,
   };
@@ -28,9 +29,9 @@ export const getNavData = async () => {
 
   const { attributes } = data;
   return {
-    name: attributes.Name,
-    instagramLink: attributes.Instagram_Link,
-    vimeoLink: attributes.vimeo_link,
-    email: attributes.Email,
+    name: attributes.Name || "",
+    instagramLink: attributes.Instagram_Link || "",
+    vimeoLink: attributes.vimeo_link || "",
+    email: attributes.Email || "",
   };
 };
