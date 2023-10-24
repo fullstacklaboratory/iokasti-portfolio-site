@@ -822,47 +822,6 @@ export interface ApiTeachingTeaching extends Schema.CollectionType {
   };
 }
 
-export interface ApiTeachingScheduleTeachingSchedule
-  extends Schema.CollectionType {
-  collectionName: 'teaching_schedules';
-  info: {
-    singularName: 'teaching-schedule';
-    pluralName: 'teaching-schedules';
-    displayName: 'teaching_schedule';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    regular_schedule: Attribute.Boolean;
-    weekDay: Attribute.String;
-    from: Attribute.Time;
-    to: Attribute.Time;
-    upcoming_dates: Attribute.RichText;
-    teaching: Attribute.Relation<
-      'api::teaching-schedule.teaching-schedule',
-      'oneToOne',
-      'api::teaching.teaching'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::teaching-schedule.teaching-schedule',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::teaching-schedule.teaching-schedule',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Shared {
     export interface ContentTypes {
@@ -883,7 +842,6 @@ declare module '@strapi/strapi' {
       'api::land-page.land-page': ApiLandPageLandPage;
       'api::project.project': ApiProjectProject;
       'api::teaching.teaching': ApiTeachingTeaching;
-      'api::teaching-schedule.teaching-schedule': ApiTeachingScheduleTeachingSchedule;
     }
   }
 }

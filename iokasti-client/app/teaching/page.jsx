@@ -7,7 +7,7 @@ import { AiOutlineLink } from "react-icons/ai";
 
 const Teaching = async () => {
   const content = await getTeachings();
-  console.log(content)
+  console.log(content);
   return (
     <div>
       <h1>Teaching</h1>
@@ -30,22 +30,33 @@ const Teaching = async () => {
                   <AiOutlineLink />
                 </Link>
               </p>
-              {item.regular_schedule ? <div>
-                <p>Day : {item.weekday}</p>
-                <p>from : {item.from.slice(0, 4)} - to {item.to} </p>
-              </div> : <div>
-                <h1>Upcoming dates</h1>
-                <ul>
-                {item.upcoming_dates.map((date, i)=> {
-                  return (
-                    <li key={i}>
-                      {date.upcoming_date.split("-").reverse().join("-")} {date.from.slice(0,5)} - {date.to.slice(0,5)}
-                    </li>
-                  )
-                })}
-                </ul>
+              <div>
+                <article
+                  dangerouslySetInnerHTML={{ __html: item.map_url }}
+                ></article>
               </div>
-              }
+              {item.regular_schedule ? (
+                <div>
+                  <p>Day : {item.weekday}</p>
+                  <p>
+                    from : {item.from.slice(0, 4)} - to {item.to}{" "}
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  <h1>Upcoming dates</h1>
+                  <ul>
+                    {item.upcoming_dates.map((date, i) => {
+                      return (
+                        <li key={i}>
+                          {date.upcoming_date.split("-").reverse().join("-")}{" "}
+                          {date.from.slice(0, 5)} - {date.to.slice(0, 5)}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
             </li>
           );
         })}
