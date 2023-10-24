@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "land_pages",
+  "collectionName": "landing_pages",
   "info": {
-    "singularName": "land-page",
-    "pluralName": "land-pages",
-    "displayName": "landPage",
+    "singularName": "landing-page",
+    "pluralName": "landing-pages",
+    "displayName": "Home",
     "description": ""
   },
   "options": {
@@ -32,7 +32,7 @@
     "site_name": {
       "type": "string"
     },
-    "section": {
+    "sections": {
       "type": "dynamiczone",
       "components": [
         "home-section.home-sections"

@@ -4,16 +4,16 @@ import { marked } from "marked";
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 export const getLandingPage = async () => {
-  const url = `${CMS_URL}/api/land-page?populate=video&populate=section.home_section_image`;
+  const url = `${CMS_URL}/api/landing-page?populate=video&populate=sections.home_section_image`;
     const res = await fetch(url)
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
    
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
+      const error = ("Fetch failed because: " + res.statusText)
+      return ({error: error})
     }
-    // console.log(res)
     return res.json()
   }
 
@@ -42,12 +42,17 @@ export const getLandingPage = async () => {
 // };
 
 export const getNavData = async () => {
-  const url = `${CMS_URL}/api/land-page?`;
+  const url = `${CMS_URL}/api/landing-page?`;
 
   const response = await fetch(url);
+
+  if (!response.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    const error = ("Fetch failed because: " + response.statusText)
+    return ({error: error})
+  }
+
   const { data } = await response.json();
-
-
   const { attributes } = data;
   return {
     siteTitle: attributes.site_name || "",

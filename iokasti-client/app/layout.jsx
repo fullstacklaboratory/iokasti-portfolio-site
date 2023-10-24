@@ -1,5 +1,5 @@
 import NavBar from "@/components/NavBar";
-import { getLandPage, getNavData } from "@/lib/landpage";
+import { getNavData } from "@/lib/landingPage";
 import "./globals.css";
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata

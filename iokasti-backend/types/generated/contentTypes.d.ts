@@ -681,7 +681,8 @@ export interface ApiAboutAbout extends Schema.SingleType {
   info: {
     singularName: 'about';
     pluralName: 'abouts';
-    displayName: 'about';
+    displayName: 'About';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -709,12 +710,12 @@ export interface ApiAboutAbout extends Schema.SingleType {
   };
 }
 
-export interface ApiLandPageLandPage extends Schema.SingleType {
-  collectionName: 'land_pages';
+export interface ApiLandingPageLandingPage extends Schema.SingleType {
+  collectionName: 'landing_pages';
   info: {
-    singularName: 'land-page';
-    pluralName: 'land-pages';
-    displayName: 'landPage';
+    singularName: 'landing-page';
+    pluralName: 'landing-pages';
+    displayName: 'Home';
     description: '';
   };
   options: {
@@ -726,18 +727,18 @@ export interface ApiLandPageLandPage extends Schema.SingleType {
     email: Attribute.Email;
     video: Attribute.Media & Attribute.Required;
     site_name: Attribute.String;
-    section: Attribute.DynamicZone<['home-section.home-sections']>;
+    sections: Attribute.DynamicZone<['home-section.home-sections']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::land-page.land-page',
+      'api::landing-page.landing-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::land-page.land-page',
+      'api::landing-page.landing-page',
       'oneToOne',
       'admin::user'
     > &
@@ -882,7 +883,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about.about': ApiAboutAbout;
-      'api::land-page.land-page': ApiLandPageLandPage;
+      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::project.project': ApiProjectProject;
       'api::teaching.teaching': ApiTeachingTeaching;
       'api::teaching-schedule.teaching-schedule': ApiTeachingScheduleTeachingSchedule;

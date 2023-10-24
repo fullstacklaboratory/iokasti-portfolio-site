@@ -16,8 +16,9 @@ export interface DateUpcomingDates extends Schema.Component {
 export interface HomeSectionHomeSections extends Schema.Component {
   collectionName: 'components_home_section_home_sections';
   info: {
-    displayName: 'home_sections';
+    displayName: 'home_section';
     icon: 'apps';
+    description: '';
   };
   attributes: {
     title: Attribute.String &
