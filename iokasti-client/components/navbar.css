@@ -1,15 +1,52 @@
+.menu__ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(5px);
+  height: 100vh;
+}
 
+.menu__ul 
+li {
+  font-size: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 2rem;
+}
+
+/* .menu__button {
+  -webkit-appearance: button;
+  background: rgba(235, 41, 41, 0.449);
+  backdrop-filter: blur(5px);
+  color: purple;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+.menu__button path {
+  fill: white;
+}
 
 @keyframes slideIn {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(0);
-    }
+  from {
+    transform: translateX(-100%);
   }
-  
-  .slide-in-box {
-    animation: slideIn 0.5s forwards;
+  to {
+    transform: translateX(0);
   }
-  
+}
+
+.slide-in-box {
+  animation: slideIn 0.5s forwards;
+}
