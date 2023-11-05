@@ -1,13 +1,5 @@
-.menu__ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  backdrop-filter: blur(5px);
-  height: 100vh;
-}
 
-.menu__ul 
+.list_ul 
 li {
   font-size: 2rem;
   list-style: none;
