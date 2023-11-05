@@ -15,7 +15,7 @@ const nextConfig = {
         pathname: "/uploads/**",
       },
     ],
-  }
+  },
 };
 
 module.exports = nextConfig;

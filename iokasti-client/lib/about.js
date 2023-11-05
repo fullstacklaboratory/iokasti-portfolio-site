@@ -18,6 +18,7 @@ export const getAbout = async () => {
   const { data } = await response.json();
 
   const { attributes } = data;
+  
 
   return {
     title: attributes.title,
