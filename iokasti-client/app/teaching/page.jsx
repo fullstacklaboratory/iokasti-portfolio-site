@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import "./teaching.scss"
 
 import { getTeachings } from "@/lib/teaching";
 import { AiOutlineLink } from "react-icons/ai";
@@ -14,28 +15,20 @@ const Teaching = async () => {
       <ul>
         {content.map((item, i) => {
           return (
-            <li key={i} className="text-white">
-              <h1>{item.title}</h1>
+            <li key={i} className="text-white teaching-box">
+              <h1 className="" >{item.title}</h1>
+            <div className="">
+              <div className="">
               <Image
                 src={item.image}
                 width="480"
                 height="280"
                 priority={i === 0}
                 alt="image"
+               
               />
-              <p>{item.description}</p>
-              <p className="flex">
-                Where : {item.place_name}{" "}
-                <Link href={item.external_url} target="_blank">
-                  <AiOutlineLink />
-                </Link>
-              </p>
-              <div>
-                <article
-                  dangerouslySetInnerHTML={{ __html: item.map_url }}
-                ></article>
-              </div>
-              {item.regular_schedule ? (
+
+{item.regular_schedule ? (
                 <div>
                   <p>Day : {item.weekday}</p>
                   <p>
@@ -57,6 +50,27 @@ const Teaching = async () => {
                   </ul>
                 </div>
               )}
+              </div>
+              <div className="">
+              <p>{item.description}</p>
+              
+              <div>
+              <p className="">
+              Where :
+                <Link href={item.external_url} target="_blank" className="">
+                   {item.place_name} <AiOutlineLink />
+                </Link>
+              </p>
+              </div>
+              <div>
+                <article 
+                  dangerouslySetInnerHTML={{ __html: item.map_url }}
+                ></article>
+              </div>
+              </div>
+              </div>
+              
+             
             </li>
           );
         })}
