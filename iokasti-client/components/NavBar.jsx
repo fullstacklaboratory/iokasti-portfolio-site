@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FiInstagram, FiMail } from "react-icons/fi";
 import { TfiVimeo } from "react-icons/tfi";
 import "./navbar.css";
-import { motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 //TODO: email/instagram/vimeo should be added to strapi, and fetched from there.
 const email = ""; //has to be fetched from strapi
@@ -102,12 +102,14 @@ const NavBar = ({ navData }) => {
             </li>
           </motion.ul>
         </motion.div>
+
         <motion.ul
-          className="menu__ul bg-slate-700/30"
+          className="list_ul flex flex-col items-center gap-3 backdrop-blur-sm  bg-slate-700/30 "
           onClick={() => setIsOpen(!isOpen)}
           variants={{
             open: {
               clipPath: "inset(0% 0% 0% 0% round 0px)",
+              height: "100vh",
               transition: {
                 type: "spring",
                 bounce: 0,
@@ -118,6 +120,7 @@ const NavBar = ({ navData }) => {
             },
             closed: {
               clipPath: "inset(10% 50% 90% 50% round 100px)",
+              height: "0vh",
               transition: {
                 type: "spring",
                 bounce: 0,
