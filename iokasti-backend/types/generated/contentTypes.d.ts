@@ -759,13 +759,14 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
   attributes: {
     description: Attribute.Text & Attribute.Required;
-    date: Attribute.Date & Attribute.Required;
+    starting_date: Attribute.Date & Attribute.Required;
     images: Attribute.Media & Attribute.Required;
     banner_Image: Attribute.Media & Attribute.Required;
     Title: Attribute.String & Attribute.Required;
     body: Attribute.RichText & Attribute.Required;
     category: Attribute.Enumeration<['project', 'collab']> & Attribute.Required;
     slug: Attribute.UID & Attribute.Required;
+    ending_date: Attribute.Date & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -16,7 +16,7 @@
       "type": "text",
       "required": true
     },
-    "date": {
+    "starting_date": {
       "type": "date",
       "required": true
     },
@@ -55,6 +55,10 @@
     },
     "slug": {
       "type": "uid",
+      "required": true
+    },
+    "ending_date": {
+      "type": "date",
       "required": true
     }
   }

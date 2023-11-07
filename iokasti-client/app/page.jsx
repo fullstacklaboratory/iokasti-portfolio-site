@@ -76,9 +76,7 @@ export default async function Home() {
               );
             })}
         </div>
-        {news.map((item) => {
-          return <NewsSlide item={item}/>;
-        })}
+        {news.length > 0 && <NewsSlide news={news} />}
       </>
     );
   } else {
