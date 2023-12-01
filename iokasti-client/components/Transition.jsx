@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-export function Transition() {
+const Transition = () => {
   return (
     <div>
       <svg
@@ -49,4 +49,6 @@ export function Transition() {
       </svg>
     </div>
   );
-}
+};
+
+export default Transition;
