@@ -1,20 +1,20 @@
 import { Suspense } from "react";
-import { getLandingPage } from "@/lib/landingPage";
+import { getLandingPage, getNewsData } from "@/lib/landingPage";
 import Link from "next/link";
 import Image from "next/image";
 import LoadingAnim from "@/components/loadingAnim";
 // import { motion } from "framer-motion";
 import "./globals.css";
+import NewsSlide from "@/components/NewsSlide";
 import { Transition } from "@/components/Transition";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 export default async function Home() {
-  // const data = await getLandPage();
   const data = await getLandingPage();
-  console.log(data.data.attributes);
+  const news = await getNewsData();
+  console.log("News", news);
   const landingpageData = data.data.attributes;
-  console.log(landingpageData);
 
   if (!data.error) {
     return (
@@ -80,12 +80,7 @@ export default async function Home() {
               );
             })}
         </div>
-        <marquee
-          direction="left"
-          className="text-white fixed bottom-0 p-2 backdrop-blur-sm border-t border-t-white"
-        >
-          //some text to move
-        </marquee>
+        {news.length > 0 && <NewsSlide news={news} />}
       </>
     );
   } else {

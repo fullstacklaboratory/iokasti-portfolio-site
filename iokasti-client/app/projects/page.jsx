@@ -69,6 +69,7 @@ const Projects = async () => {
                   <p className="text-center text-white text-2xl">
                     {item.description}
                   </p>
+                  <p>from : {item.starting_date} to : {item.ending_date}</p>
                 </div>
               </li>
             );

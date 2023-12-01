@@ -6,17 +6,17 @@ const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 export const getLandingPage = async () => {
   const url = `${CMS_URL}/api/landing-page?populate=video&populate=sections.home_section_image`;
-    const res = await fetch(url)
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-   
-    if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      const error = ("Fetch failed because: " + res.statusText)
-      return ({error: error})
-    }
-    return res.json()
+  const res = await fetch(url);
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    const error = "Fetch failed because: " + res.statusText;
+    return { error: error };
   }
+  return res.json();
+};
 
 // export const getLandPage = async () => {
 //   const url =
@@ -29,7 +29,7 @@ export const getLandingPage = async () => {
 //     });
 
 //   const response = await fetch(url);
-  
+
 //   const { data } = await response.json();
 //   console.log(data.attributes)
 //   const { attributes } = data;
@@ -49,8 +49,8 @@ export const getNavData = async () => {
 
   if (!response.ok) {
     // This will activate the closest `error.js` Error Boundary
-    const error = ("Fetch failed because: " + response.statusText)
-    return ({error: error})
+    const error = "Fetch failed because: " + response.statusText;
+    return { error: error };
   }
 
   const { data } = await response.json();
@@ -61,4 +61,26 @@ export const getNavData = async () => {
     vimeo: attributes.vimeo_link || "",
     email: attributes.email || "",
   };
+};
+
+const today = new Date()
+
+export const getNewsData = async () => {
+  const url =
+    "http://localhost:1337/api/projects" +
+    "?" +
+    qs.stringify({
+      filters: { ending_date: { $gt: today } },
+      fields: ["title", "starting_date", "ending_date", "slug"],
+      sort: ["ending_date:desc"],
+    });
+
+  const response = await fetch(url);
+  const { data } = await response.json();
+  return data.map(({ attributes }) => ({
+    title: attributes.Title,
+    starting_date: attributes.starting_date,
+    ending_date: attributes.ending_date,
+    slug : attributes.slug
+  }));
 };
