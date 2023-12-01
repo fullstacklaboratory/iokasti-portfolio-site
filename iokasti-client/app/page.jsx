@@ -53,7 +53,7 @@ export default async function Home() {
             </Suspense>
           </section>
 
-          <Instagram />
+          
 
           {/* {landingpageData.sections &&
             landingpageData.sections.map((section) => {

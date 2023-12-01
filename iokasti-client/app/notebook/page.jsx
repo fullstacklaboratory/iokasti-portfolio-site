@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import Instagram from "@/components/Instagram";
 
 const Notebook = () => {
-  return (
-    <div>Notebook</div>
-  )
-}
+  return <Instagram />;
+};
 
-export default Notebook
+export default Notebook;

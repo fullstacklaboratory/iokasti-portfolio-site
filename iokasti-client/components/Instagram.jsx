@@ -11,7 +11,6 @@ const images = [
   "002.webp",
   "003.webp",
   "004.webp",
-  "005.webp",
   "006.webp",
   "007.webp",
   "008.jpg",
@@ -27,6 +26,7 @@ const images = [
   "001.webp",
   "004.webp",
   "012.webp",
+  "005.webp",
 ];
 
 const Instagram = () => {

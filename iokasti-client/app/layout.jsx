@@ -1,5 +1,5 @@
 import NavBar from "@/components/NavBar";
-import { getNavData } from "@/lib/landingPage";
+import { getNavData, getNewsData } from "@/lib/landingPage";
 import "./globals.css";
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata
@@ -22,15 +22,16 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const navData = await getNavData();
+  const news = await getNewsData();
 
   return (
     <html lang="en" className="snap-y snap-mandatory">
       <body>
         <header className="fixed top-0 left-0 right-0 z-10">
-          <NavBar navData={navData} />
+          <NavBar navData={navData} newsData={news} />
         </header>
 
-        <main className="bg-slate-900 min-h-screen" >{children}</main>
+        <main className="bg-slate-900 min-h-screen">{children}</main>
       </body>
     </html>
   );

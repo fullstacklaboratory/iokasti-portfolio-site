@@ -17,7 +17,9 @@ const itemVariants = {
   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
 };
 
-const NavBar = ({ navData }) => {
+const NavBar = ({ navData, newsData }) => {
+  //check news data heigth and change menu height accordingly
+
   const [showMenu, setShowMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   if (!navData.error) {
