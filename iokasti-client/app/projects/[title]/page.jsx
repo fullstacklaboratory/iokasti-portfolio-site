@@ -4,7 +4,6 @@ import React from "react";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
-
 export async function generateStaticParams() {
   // this will generate all the reviews paths on build. That means we don't have to rerender dynamic path component again
   const slugs = await getSlugs();
@@ -13,15 +12,20 @@ export async function generateStaticParams() {
 
 export default async function ProjectPage({ params }) {
   const project = await getProject(params.title);
+  const date = project.ending_date
+  console.log(new Date(date).toLocaleDateString());
   return (
-    <div>
+    <div className="text-white">
       <h1>{project.title}</h1>
       <Image src={project.bannerImage} width="480" height="280" alt="image" />
       <article
         dangerouslySetInnerHTML={{ __html: project.body }}
         className="text-3xl"
       ></article>
-
+      <h1>dates</h1>
+      <p>
+        from : {new Date(project.starting_date).toLocaleDateString()} to {new Date(project.ending_date).toLocaleDateString()}
+      </p>
       <h2>Carousel</h2>
       {project.images.map((item) => {
         return (

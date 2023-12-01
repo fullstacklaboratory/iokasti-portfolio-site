@@ -1,29 +1,29 @@
 import { Suspense } from "react";
-import { getLandingPage } from "@/lib/landingPage";
+import { getLandingPage, getNewsData } from "@/lib/landingPage";
 import Link from "next/link";
 import Image from "next/image";
 import LoadingAnim from "@/components/LoadingAnim";
 // import { motion } from "framer-motion";
 import "./globals.css";
-import { Transition } from "@/components/Transition";
-import Mariquue from "@/components/Mariquue";
+import NewsSlide from "@/components/NewsSlide";
+// import { Transition } from "@/components/Transition";
+
 import Instagram from "@/components/Instagram";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 export default async function Home() {
-  // const data = await getLandPage();
   const data = await getLandingPage();
-  console.log(data.data.attributes);
+  const news = await getNewsData();
+  console.log("News", news);
   const landingpageData = data.data.attributes;
-  console.log(landingpageData);
 
   if (!data.error) {
     return (
       <>
         {/* Page transition test, don't delete! */}
         {/* <Transition /> */}
-        <div className="text-white" >
+        <div className="text-white">
           <section className="h-screen  grid grid-cols-12 grid-rows-6">
             <Suspense
               fallback={
@@ -52,15 +52,6 @@ export default async function Home() {
               </h2>
             </Suspense>
           </section>
-
-          {/* Home page sections */}
-          {/* <div className="section-title-container  snap-start w-full text-center relative bg-black">
-            <h6>Projects</h6>
-            <h6>Projects</h6>
-            <h6>Projects</h6>
-            <h6>Projects</h6>
-            <h6>Projects</h6>
-          </div> */}
 
           <Instagram />
 
@@ -93,35 +84,10 @@ export default async function Home() {
               );
             })} */}
         </div>
-        {/* <Mariquue /> */}
-        {/* <marquee
-          direction="left"
-          className="text-white fixed bottom-0 p-2 backdrop-blur-sm border-t border-t-white"
-        >
-          //some text to move
-        </marquee> */}
+        {news.length > 0 && <NewsSlide news={news} />}
       </>
     );
   } else {
     return <div className="text-white">{data.error}</div>;
   }
-}
-
-{
-  /* Iframe video embed example code
-  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-          <iframe
-            src="https://player.vimeo.com/video/368412716?h=9e28e76ddd&autoplay=1&loop=1&autopause=0&muted=1&background=1"
-            style={{
-              position: "absolute",
-              top: "0",
-              left: "0",
-              width: "100%",
-              height: "100%",
-            }}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          ></iframe> 
-          </div>*/
 }
