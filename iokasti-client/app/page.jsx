@@ -2,10 +2,12 @@ import { Suspense } from "react";
 import { getLandingPage } from "@/lib/landingPage";
 import Link from "next/link";
 import Image from "next/image";
-import LoadingAnim from "@/components/loadingAnim";
+import LoadingAnim from "@/components/LoadingAnim";
 // import { motion } from "framer-motion";
 import "./globals.css";
 import { Transition } from "@/components/Transition";
+import Mariquue from "@/components/Mariquue";
+import Instagram from "@/components/Instagram";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
@@ -22,8 +24,7 @@ export default async function Home() {
         {/* Page transition test, don't delete! */}
         {/* <Transition /> */}
         <div className="text-white" >
-          <section className="min-h-screen snap-start grid grid-cols-12 grid-rows-6">
-
+          <section className="h-screen  grid grid-cols-12 grid-rows-6">
             <Suspense
               fallback={
                 <div className="w-full h-screen flex justify-center items-center z-50">
@@ -31,7 +32,13 @@ export default async function Home() {
                 </div>
               }
             >
-              <video className="banner-video col-start-1 col-end-13 row-span-full" autoPlay loop muted background="true">
+              <video
+                className="banner-video col-start-1 col-end-13 row-span-full"
+                autoPlay
+                loop
+                muted
+                background="true"
+              >
                 <source
                   src={CMS_URL + landingpageData.video.data[0].attributes.url}
                   alt={landingpageData.video.data[0].attributes.alternativeText}
@@ -40,15 +47,24 @@ export default async function Home() {
                 Your browser does not support videos. Please use a modern
                 browser.
               </video>
-              <h2 className="text-5xl col-start-2 col-span-4 row-start-5 self-center ">
-              Who's Iokasti?
-            </h2>
+              <h2 className="text-5xl col-start-2 col-span-4 row-start-5 self-end ">
+                Who's Iokasti?
+              </h2>
             </Suspense>
           </section>
 
           {/* Home page sections */}
+          {/* <div className="section-title-container  snap-start w-full text-center relative bg-black">
+            <h6>Projects</h6>
+            <h6>Projects</h6>
+            <h6>Projects</h6>
+            <h6>Projects</h6>
+            <h6>Projects</h6>
+          </div> */}
 
-          {landingpageData.sections &&
+          <Instagram />
+
+          {/* {landingpageData.sections &&
             landingpageData.sections.map((section) => {
               const sectionImage = section.home_section_image.data.attributes;
               {
@@ -57,35 +73,33 @@ export default async function Home() {
               return (
                 <section
                   key={section.id}
-                  className="min-h-screen pt-[5rem] pb-[5rem]  snap-start flex flex-col justify-center items-center relative "
+                  className="h-screen pt-[5rem] pb-[5rem]  snap-start grid grid-cols-12 grid-rows-6"
                 >
-                  <div className="flex flex-col items-start w-[33%]">
-                    <h2 className="text-5xl">{section.title}</h2>
-                    <h3>{section.subtitle}</h3>
-                    <div className="flex flex-row flex-wrap">
-                      <p>{section.home_section_description}</p>
-                      <Image
-                        src={CMS_URL + sectionImage.url}
-                        width="500"
-                        height="600"
-                        alt={sectionImage.alternativeText}
-                      />
-                    </div>
+                  <h2 className="text-5xl">{section.title}</h2>
+                  <h3>{section.subtitle}</h3>
 
-                    <Link href={`/${section.home_section_url}`}>
-                      See their projects
-                    </Link>
-                  </div>
+                  <p className="col-start-2 col-span-4 row-start-5 ">{section.home_section_description}</p>
+                  <Image
+                    src={CMS_URL + sectionImage.url}
+                    width="500"
+                    height="600"
+                    alt={sectionImage.alternativeText}
+                  />
+
+                  <Link href={`/${section.home_section_url}`}>
+                    See their projects
+                  </Link>
                 </section>
               );
-            })}
+            })} */}
         </div>
-        <marquee
+        {/* <Mariquue /> */}
+        {/* <marquee
           direction="left"
           className="text-white fixed bottom-0 p-2 backdrop-blur-sm border-t border-t-white"
         >
           //some text to move
-        </marquee>
+        </marquee> */}
       </>
     );
   } else {

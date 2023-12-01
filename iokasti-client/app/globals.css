@@ -18,3 +18,11 @@
   height: 4rem;
   background-color: #fff;
 }
+
+.section-title-container h6 {
+  font-size: clamp(5rem, 5vw, 10rem);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  color: black;
+}

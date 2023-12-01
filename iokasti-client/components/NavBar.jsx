@@ -6,12 +6,8 @@ import { TfiVimeo } from "react-icons/tfi";
 import "./navbar.css";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 
-//TODO: email/instagram/vimeo should be added to strapi, and fetched from there.
-const email = ""; //has to be fetched from strapi
-const instagram = "#"; //has to be fetched from strapi
-const vimeo = "#"; //has to be fetched from strapi
-
 const textHoverColor = "hover:text-amber-400";
+
 const itemVariants = {
   open: {
     opacity: 1,
@@ -27,15 +23,15 @@ const NavBar = ({ navData }) => {
   if (!navData.error) {
     return (
       <motion.nav initial={false} animate={isOpen ? "open" : "closed"}>
-        <motion.div className="flex flex-row justify-between items-center text-white w-full border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-300 ease-in-out backdrop-blur-sm">
+        <motion.div className="flex flex-row justify-between items-center text-white w-full border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-300 ease-in-out backdrop-blur-sm h-[7vh]">
           <motion.button
-            className="basis-1/3 menu__button flex items-center m-4"
+            className="basis-1/3 menu__button flex items-center ml-4 text-sm sm:text-md"
             whileTap={{ scale: 0.97 }}
             onClick={() => setIsOpen(!isOpen)}
           >
             Menu
             <motion.div
-              className="m-4"
+              className="ml-2"
               variants={{
                 open: { rotate: 180 },
                 closed: { rotate: 0 },
@@ -49,8 +45,10 @@ const NavBar = ({ navData }) => {
             </motion.div>
           </motion.button>
 
-          <motion.div>
-            <h1 className={`text-center uppercase text-xl sm:text-m basis-1/3`}>
+          <div className="basis-2/3 sm:basis-1/3">
+            <h1
+              className={`text-center uppercase text-sm sm:text-base md:text-lg`}
+            >
               <Link
                 onClick={() => setIsOpen(false)}
                 aria-label="Site Title - Navigate to Home"
@@ -60,10 +58,10 @@ const NavBar = ({ navData }) => {
                 {navData.siteTitle}
               </Link>
             </h1>
-          </motion.div>
-          <motion.ul
+          </div>
+          <ul
             aria-label="Contact and social links"
-            className="basis-1/3 flex flex-row flex-wrap justify-end leading-[0rem]"
+            className="basis-1/3 flex flex-row flex-wrap justify-end leading-[0rem] invisible sm:visible"
           >
             <li
               className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
@@ -79,37 +77,37 @@ const NavBar = ({ navData }) => {
             <li
               className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
             >
-              <Link
+              <a
                 href={navData.instagram}
                 aria-label="Open Instagram on a new tab"
                 target="_blank"
                 className="m-4"
               >
                 <FiInstagram />
-              </Link>
+              </a>
             </li>
             <li
               className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
             >
-              <Link
+              <a
                 href={navData.vimeo}
                 aria-label="Open Vimeo on a new tab"
                 target="_blank"
                 className="m-4"
               >
                 <TfiVimeo />
-              </Link>
+              </a>
             </li>
-          </motion.ul>
+          </ul>
         </motion.div>
 
         <motion.ul
-          className="list_ul flex flex-col items-center gap-3 backdrop-blur-sm  bg-slate-700/30 "
+          className="list_ul flex flex-col justify-center items-center gap-4 backdrop-blur-sm  bg-slate-700/30"
           onClick={() => setIsOpen(!isOpen)}
           variants={{
             open: {
               clipPath: "inset(0% 0% 0% 0% round 0px)",
-              height: "100vh",
+              height: "93vh",
               transition: {
                 type: "spring",
                 bounce: 0,
@@ -122,9 +120,14 @@ const NavBar = ({ navData }) => {
               clipPath: "inset(10% 50% 90% 50% round 100px)",
               height: "0vh",
               transition: {
-                type: "spring",
-                bounce: 0,
-                duration: 0.3,
+                clipPath: {
+                  type: "spring",
+                  bounce: 0,
+                  duration: 0.3,
+                },
+                height: {
+                  duration: 0.4,
+                },
               },
             },
           }}
@@ -181,97 +184,6 @@ const NavBar = ({ navData }) => {
           </motion.li>
         </motion.ul>
       </motion.nav>
-      // <nav className="flex flex-row justify-between items-center text-white w-full p-4 border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-300 ease-in-out backdrop-blur-sm">
-      //   <div
-      //     className={`basis-1/3`}
-      //     onClick={() => setShowMenu(!showMenu)}
-      //     aria-label="Main menu"
-      //   >
-      //     <span
-      //       className={` cursor-pointer ${textHoverColor} transition duration-150 ease-in-out`}
-      //     >
-      //       Menu
-      //     </span>
-      //   </div>
-      //   <h1 className={`text-center uppercase text-xl sm:text-m basis-1/3`}>
-      //     <Link
-      //       aria-label="Navigate to Home"
-      //       href="/"
-      //       className={`${textHoverColor} transition duration-150 ease-in-out `}
-      //     >
-      //       {navData.siteTitle}
-      //     </Link>
-      //   </h1>
-
-      //   <ul
-      //     aria-label="Contact and social links"
-      //     className="basis-1/3 flex flex-row flex-wrap justify-end leading-[0rem]"
-      //   >
-      //     <li
-      //       className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
-      //     >
-      //       <Link
-      //         aria-label={`Send an email to ${navData.siteTitle}`}
-      //         href={`mailto: ${navData.email}`}
-      //         target="_blank"
-      //       >
-      //         <FiMail />
-      //       </Link>
-      //     </li>
-      //     <li
-      //       className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
-      //     >
-      //       <Link
-      //         href={navData.instagram}
-      //         aria-label="Open Instagram on a new tab"
-      //         target="_blank"
-      //         className="m-4"
-      //       >
-      //         <FiInstagram />
-      //       </Link>
-      //     </li>
-      //     <li
-      //       className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
-      //     >
-      //       <Link
-      //         href={navData.vimeo}
-      //         aria-label="Open Vimeo on a new tab"
-      //         target="_blank"
-      //         className="m-4"
-      //       >
-      //         <TfiVimeo />
-      //       </Link>
-      //     </li>
-      //   </ul>
-
-      //   {showMenu && (
-      //     <ul className="absolute top-[5.1rem] left-0 w-full text-3xl grow bg-gray-700 text-white flex flex-col p-5 justify-around slide-in-box h-screen">
-      //       <li onClick={() => setShowMenu(!showMenu)}>
-      //         <Link href="/">Home</Link>
-      //       </li>
-      //       <li onClick={() => setShowMenu(!showMenu)}>
-      //         <Link href="/about" prefetch={false}>
-      //           About
-      //         </Link>
-      //       </li>
-      //       <li onClick={() => setShowMenu(!showMenu)}>
-      //         <Link href="/projects">Projects</Link>
-      //       </li>
-      //       <li onClick={() => setShowMenu(!showMenu)}>
-      //         <Link href="/collabs">Collaborations</Link>
-      //       </li>
-      //       <li onClick={() => setShowMenu(!showMenu)}>
-      //         <Link href="/news">News</Link>
-      //       </li>
-      //       <li onClick={() => setShowMenu(!showMenu)}>
-      //         <Link href="/teaching">Teaching</Link>
-      //       </li>
-      //       <li onClick={() => setShowMenu(!showMenu)}>
-      //         <Link href="/notebook">Notebook</Link>
-      //       </li>
-      //     </ul>
-      //   )}
-      // </nav>
     );
   } else return <div>{navData.error}</div>;
 };

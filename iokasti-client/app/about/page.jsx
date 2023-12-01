@@ -16,8 +16,8 @@ const About = async () => {
     <>
       <header className="flex justify-between p-3 items-center text-white">
         <h1 className="text-4xl">About {content.title}</h1>
-        
-          <object
+        <iframe src="http://localhost:1337/uploads/MARCELL_CSOKAS_CV_2023_6370f56327.pdf" />
+          {/* <object
             data="http://localhost:1337/uploads/MARCELL_CSOKAS_CV_2023_6370f56327.pdf"
             type="application/pdf"
             width="500px"
@@ -29,7 +29,7 @@ const About = async () => {
                 to the PDF!
               </a>
             </p>
-          </object>
+          </object> */}
           <Link href={content.cv}>cv</Link>
           {/* <span>CV</span> */}
           {/* <BsPersonVcardFill /> */}
