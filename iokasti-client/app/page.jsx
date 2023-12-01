@@ -3,9 +3,10 @@ import { getLandingPage, getNewsData } from "@/lib/landingPage";
 import Link from "next/link";
 import Image from "next/image";
 import LoadingAnim from "@/components/loadingAnim";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import "./globals.css";
 import NewsSlide from "@/components/NewsSlide";
+import { Transition } from "@/components/Transition";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
@@ -18,11 +19,11 @@ export default async function Home() {
   if (!data.error) {
     return (
       <>
-        <div className="text-white">
-          <section className="min-h-screen pt-[5rem] snap-start">
-            <h2 className="absolute bottom-14 left-8 z-10 text-5xl">
-              Who's Iokasti?
-            </h2>
+        {/* Page transition test, don't delete! */}
+        {/* <Transition /> */}
+        <div className="text-white" >
+          <section className="min-h-screen snap-start grid grid-cols-12 grid-rows-6">
+
             <Suspense
               fallback={
                 <div className="w-full h-screen flex justify-center items-center z-50">
@@ -30,7 +31,7 @@ export default async function Home() {
                 </div>
               }
             >
-              <video className="banner-video" autoPlay loop muted>
+              <video className="banner-video col-start-1 col-end-13 row-span-full" autoPlay loop muted background="true">
                 <source
                   src={CMS_URL + landingpageData.video.data[0].attributes.url}
                   alt={landingpageData.video.data[0].attributes.alternativeText}
@@ -39,6 +40,9 @@ export default async function Home() {
                 Your browser does not support videos. Please use a modern
                 browser.
               </video>
+              <h2 className="text-5xl col-start-2 col-span-4 row-start-5 self-center ">
+              Who's Iokasti?
+            </h2>
             </Suspense>
           </section>
 
