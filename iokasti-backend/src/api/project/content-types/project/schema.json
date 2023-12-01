@@ -60,6 +60,9 @@
     "ending_date": {
       "type": "date",
       "required": true
+    },
+    "video_link": {
+      "type": "string"
     }
   }
 }

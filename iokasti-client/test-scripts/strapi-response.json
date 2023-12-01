@@ -1,9 +1,11 @@
 {
-  "data": null,
-  "error": {
-    "status": 404,
-    "name": "NotFoundError",
-    "message": "Not Found",
-    "details": {}
+  "data": [],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 0,
+      "total": 0
+    }
   }
 }

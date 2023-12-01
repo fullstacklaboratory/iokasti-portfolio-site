@@ -767,6 +767,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     category: Attribute.Enumeration<['project', 'collab']> & Attribute.Required;
     slug: Attribute.UID & Attribute.Required;
     ending_date: Attribute.Date & Attribute.Required;
+    video_link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
