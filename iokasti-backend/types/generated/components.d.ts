@@ -47,11 +47,27 @@ export interface HomeSectionHomeSections extends Schema.Component {
   };
 }
 
+export interface NotebookImageNotebookEntry extends Schema.Component {
+  collectionName: 'components_notebook_image_notebook_entries';
+  info: {
+    displayName: 'Notebook Entry';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media;
+    date: Attribute.Date;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Shared {
     export interface Components {
       'date.upcoming-dates': DateUpcomingDates;
       'home-section.home-sections': HomeSectionHomeSections;
+      'notebook-image.notebook-entry': NotebookImageNotebookEntry;
     }
   }
 }

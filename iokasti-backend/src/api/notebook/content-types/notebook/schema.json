@@ -4,7 +4,7 @@
   "info": {
     "singularName": "notebook",
     "pluralName": "notebooks",
-    "displayName": "notebook",
+    "displayName": "Notebook",
     "description": ""
   },
   "options": {
@@ -12,16 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "notebookEntry": {
+      "type": "component",
+      "repeatable": true,
+      "component": "notebook-image.notebook-entry"
     },
-    "text": {
-      "type": "richtext"
+    "pageTitle": {
+      "type": "string"
     }
   }
 }

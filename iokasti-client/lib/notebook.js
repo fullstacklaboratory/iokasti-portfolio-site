@@ -1,22 +1,26 @@
 import qs from "qs";
-import { marked } from "marked";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
-export const getNotebook = async () => {
+export const getNotebookPage = async () => {
   const url =
-    `${CMS_URL}/api/notebook?` +
+    "http://localhost:1337/api/notebook" +
+    "?" +
     qs.stringify({
+      fields: ["pageTitle"],
+
       populate: {
-        images: { fields: ["url"] },
+        notebookEntry: {
+          populate: "image",
+        },
       },
     });
+
   const response = await fetch(url);
   const { data } = await response.json();
-
   const { attributes } = data;
-
   return {
-    images: attributes.images.data,
+    pageTitle: attributes.pageTitle,
+    notebookEntries: attributes.notebookEntry,
   };
 };
