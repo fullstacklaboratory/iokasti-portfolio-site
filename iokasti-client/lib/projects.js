@@ -9,7 +9,14 @@ export async function getProject(slug) {
     qs.stringify(
       {
         filters: { slug: { $eq: slug } },
-        fields: ["title", "body", "category", "ending_date", "starting_date"],
+        fields: [
+          "title",
+          "body",
+          "category",
+          "ending_date",
+          "starting_date",
+          "video_link",
+        ],
         populate: {
           images: { fields: ["url"] },
           banner_Image: { fields: ["url"] },
@@ -27,6 +34,7 @@ export async function getProject(slug) {
   }
 
   const { attributes } = data[0];
+  console.log(attributes);
   return {
     title: attributes.Title,
     body: marked(attributes.body),
@@ -34,6 +42,7 @@ export async function getProject(slug) {
     ending_date: attributes.ending_date,
     bannerImage: CMS_URL + attributes.banner_Image.data.attributes.url,
     images: attributes.images.data,
+    video_link: attributes.video_link,
   };
 }
 
@@ -62,7 +71,6 @@ export async function getProjects() {
 
   const response = await fetch(url);
   const { data } = await response.json();
-  console.log("data", data);
   return data.map(({ attributes }) => ({
     title: attributes.Title,
     description: attributes.description,
