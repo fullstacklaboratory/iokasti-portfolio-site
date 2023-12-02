@@ -746,6 +746,38 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
   };
 }
 
+export interface ApiNotebookNotebook extends Schema.SingleType {
+  collectionName: 'notebooks';
+  info: {
+    singularName: 'notebook';
+    pluralName: 'notebooks';
+    displayName: 'notebook';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    images: Attribute.Media;
+    text: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notebook.notebook',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notebook.notebook',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -845,6 +877,7 @@ declare module '@strapi/strapi' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about.about': ApiAboutAbout;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
+      'api::notebook.notebook': ApiNotebookNotebook;
       'api::project.project': ApiProjectProject;
       'api::teaching.teaching': ApiTeachingTeaching;
     }

@@ -6,30 +6,9 @@ import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import useDimensions from "@/hooks/useDimensions";
 
-const images = [
-  "001.webp",
-  "002.webp",
-  "003.webp",
-  "004.webp",
-  "006.webp",
-  "007.webp",
-  "008.jpg",
-  "009.webp",
-  "010.jpg",
-  "011.jpg",
-  "012.webp",
-  "013.webp",
-  "014.webp",
-  "015.jpg",
-  "016.webp",
-  "017.webp",
-  "001.webp",
-  "004.webp",
-  "012.webp",
-  "005.webp",
-];
+const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
-const Instagram = () => {
+const Instagram = ({ images }) => {
   const container = useRef(null);
   const { height } = useDimensions();
 
@@ -73,7 +52,7 @@ const Column = ({ images, y = 0 }) => {
     <motion.div style={{ y }} className={styles.gallery_column}>
       {images.map((src, index) => (
         <div key={index} className={styles.imageContainer}>
-          <Image src={`/images/${src}`} fill alt="image" />
+          <Image src={CMS_URL + src} fill alt="image" />
         </div>
       ))}
     </motion.div>

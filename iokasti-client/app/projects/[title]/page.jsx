@@ -26,6 +26,9 @@ export default async function ProjectPage({ params }) {
       <p>
         from : {new Date(project.starting_date).toLocaleDateString()} to {new Date(project.ending_date).toLocaleDateString()}
       </p>
+      <p> video_link : </p>
+      <iframe src="https://player.vimeo.com/video/353036633?h=a7b727b73e&color=ffffff&title=0&byline=0&portrait=0&badge=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<p><a href={project.video_link}>The Freak</a> from <a href="https://vimeo.com/grantkolton">Grant Kolton</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
       <h2>Carousel</h2>
       {project.images.map((item) => {
         return (

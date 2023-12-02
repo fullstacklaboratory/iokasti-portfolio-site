@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "notebooks",
+  "info": {
+    "singularName": "notebook",
+    "pluralName": "notebooks",
+    "displayName": "notebook",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "text": {
+      "type": "richtext"
+    }
+  }
+}
