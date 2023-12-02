@@ -11,7 +11,6 @@ const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 const About = async () => {
   const content = await getAbout();
-  console.log(content.cv);
   return (
     <>
       <header className="flex justify-between p-3 items-center text-white">
