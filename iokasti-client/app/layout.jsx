@@ -25,13 +25,15 @@ export default async function RootLayout({ children }) {
   const news = await getNewsData();
 
   return (
-    <html lang="en" className="snap-y snap-mandatory">
-      <body>
+    <html lang="en"
+    // className="snap-y snap-mandatory"
+    >
+      <body className="bg-slate-900">
         <header className="fixed top-0 left-0 right-0 z-10">
           <NavBar navData={navData} newsData={news} />
         </header>
 
-        <main className="bg-slate-900 min-h-screen">{children}</main>
+        <main className="min-h-screen absolute top-0 left-0 right-0">{children}</main>
       </body>
     </html>
   );

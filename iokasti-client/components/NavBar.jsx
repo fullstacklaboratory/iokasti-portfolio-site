@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FiInstagram, FiMail } from "react-icons/fi";
 import { TfiVimeo } from "react-icons/tfi";
-import "./navbar.css";
+import styles from "./navbar.module.scss";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 
 const textHoverColor = "hover:text-amber-400";
@@ -27,7 +27,7 @@ const NavBar = ({ navData, newsData }) => {
       <motion.nav initial={false} animate={isOpen ? "open" : "closed"}>
         <motion.div className="flex flex-row justify-between items-center text-white w-full border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-300 ease-in-out backdrop-blur-sm h-[7vh]">
           <motion.button
-            className="basis-1/3 menu__button flex items-center ml-4 text-sm sm:text-md"
+            className={`${styles.menu__button} basis-1/3 flex items-center ml-4 text-sm sm:text-md`}
             whileTap={{ scale: 0.97 }}
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -104,7 +104,7 @@ const NavBar = ({ navData, newsData }) => {
         </motion.div>
 
         <motion.ul
-          className="list_ul flex flex-col justify-center items-center gap-4 backdrop-blur-sm  bg-slate-700/30"
+          className={`${styles.list_ul} flex flex-col justify-center items-center gap-4 backdrop-blur-sm  bg-slate-700/30`}
           onClick={() => setIsOpen(!isOpen)}
           variants={{
             open: {

@@ -783,7 +783,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
   info: {
     singularName: 'project';
     pluralName: 'projects';
-    displayName: 'Project';
+    displayName: 'Projects';
     description: '';
   };
   options: {

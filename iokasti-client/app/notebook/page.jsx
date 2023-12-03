@@ -1,6 +1,6 @@
-import React from "react";
 import Instagram from "@/components/Instagram";
-import { getNotebookPage } from "@/lib/notebook";
+import { getNotebookPage } from "@/lib/notebook"
+import styles from "./notebook.module.scss";
 
 const Notebook = async () => {
   const data = await getNotebookPage();
@@ -13,6 +13,8 @@ const Notebook = async () => {
         entryDate: entry.date,
         entryDescription: entry.description,
         entryImage: entry.image.data.attributes.url,
+        entryImageWidth: entry.image.data.attributes.width,
+        entryImageHeight: entry.image.data.attributes.height,
       };
     }
   });
@@ -25,10 +27,10 @@ const Notebook = async () => {
   // });
 
   return (
-    <>
+    <div className={styles.container}>
       <h1>{pageTitle}</h1>
       <Instagram entries={notebookEntries} />
-    </>
+    </div>
   );
 };
 export default Notebook;

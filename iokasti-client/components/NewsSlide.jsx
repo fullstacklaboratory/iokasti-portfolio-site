@@ -1,13 +1,5 @@
 import Link from "next/link";
 import "./slide.scss";
-import {
-  animate,
-  calcLength,
-  motion,
-  useAnimationControls,
-  useAnimate,
-  useAnimation,
-} from "framer-motion";
 
 const NewsSlide = ({ news }) => {
   return (
@@ -18,13 +10,10 @@ const NewsSlide = ({ news }) => {
             return (
               <Link href={`projects/${item.slug}`} className="mr-4">
                 {new Date(item.starting_date).toLocaleDateString()}:{item.title}
-                Lorem ipsum dolor 
               </Link>
             );
           })}
-           <Link href={`projects}`} className="mr-4">
-               
-              </Link>
+          <Link href={`projects}`} className="mr-4"></Link>
         </div>
       </div>
     </>
