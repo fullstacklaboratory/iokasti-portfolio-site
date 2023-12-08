@@ -4,14 +4,11 @@
     position: relative;
 }
 
-.text a {
+.text-container {
     position         : absolute;
     width            : fit-content;
     height           : 100%;
     margin           : 0;
-    line-height      : 30px;
-    text-align       : center;
-    /* Starting position */
     -moz-transform   : translateX(100vw);
     -webkit-transform: translateX(100vw);
     transform        : translateX(100vw);
@@ -19,6 +16,18 @@
     -moz-animation   : text 20s linear infinite;
     -webkit-animation: text 20s linear infinite;
     animation        : text 20s linear infinite;
+}
+
+.text a {
+  
+    width            : fit-content;
+    height           : 100%;
+    margin-right           : 30px;
+    line-height      : 30px;
+    text-align       : center;
+
+    /* Starting position */
+   
 }
 
 /* Move it (define the animation) */
