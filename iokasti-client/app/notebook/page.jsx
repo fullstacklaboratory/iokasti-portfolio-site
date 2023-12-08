@@ -1,5 +1,5 @@
 import Instagram from "@/components/Instagram";
-import { getNotebookPage } from "@/lib/notebook"
+import { getNotebookPage } from "@/lib/notebook";
 import styles from "./notebook.module.scss";
 
 const Notebook = async () => {
@@ -15,16 +15,10 @@ const Notebook = async () => {
         entryImage: entry.image.data.attributes.url,
         entryImageWidth: entry.image.data.attributes.width,
         entryImageHeight: entry.image.data.attributes.height,
+        entryAlternativeText: entry.image.data.attributes.alternativeText,
       };
     }
   });
-
-  console.log(notebookEntries)
-  // const images = data.images.map((item) => {
-  //   {
-  //     return item.attributes.url;
-  //   }
-  // });
 
   return (
     <div className={styles.container}>
@@ -34,7 +28,3 @@ const Notebook = async () => {
   );
 };
 export default Notebook;
-
-{
-  /* <Instagram images={images} /> */
-}

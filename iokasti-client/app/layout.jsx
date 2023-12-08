@@ -1,6 +1,6 @@
 import NavBar from "@/components/NavBar";
 import { getNavData, getNewsData } from "@/lib/landingPage";
-import "./globals.css";
+import "./globals.scss";
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata
 export const metadata = {

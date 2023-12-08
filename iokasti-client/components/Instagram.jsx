@@ -67,7 +67,7 @@ const Column = ({ entries, y = 0 }) => {
             src={CMS_URL + entry.entryImage}
             width={entry.entryImageWidth}
             height={entry.entryImageHeight}
-            alt="image"
+            alt={entry.entryAlternativeText}
           />
         </div>
       ))}
