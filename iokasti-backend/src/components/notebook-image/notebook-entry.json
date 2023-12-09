@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_notebook_image_notebook_entries",
+  "info": {
+    "displayName": "Notebook Entry",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}

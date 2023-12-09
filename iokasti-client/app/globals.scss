@@ -1,6 +1,13 @@
+@use '@/app/styles/variables' as *;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+
 
 .banner-video {
   /* position: absolute;
@@ -12,6 +19,7 @@
   object-fit: cover;
   /* z-index: 0; */
 }
+
 
 .box {
   width: 4rem;

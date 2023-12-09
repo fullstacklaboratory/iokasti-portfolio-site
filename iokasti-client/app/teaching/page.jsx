@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import "./teaching.scss"
+import "./teaching.module.scss"
 
 import { getTeachings } from "@/lib/teaching";
 import { AiOutlineLink } from "react-icons/ai";
