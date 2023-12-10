@@ -1,0 +1,24 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: clamp(60vh, 80vw, 100vh);
+    display: flex;
+    align-items: flex-end;
+  
+    color: #fafafa;
+    padding: 0 0 clamp(2rem, 3vw, 4rem) clamp(2rem, 3vw, 4rem);
+    h2.banner {
+      width: 45%;
+    }
+  
+    @media screen and (min-width: 431px) {
+      height: 100vh;
+      align-items: center;
+  
+      h2.banner {
+        transform: translateX(-50%) translateY(7vh) rotate(-90deg);
+        width: unset;
+      }
+    }
+  }

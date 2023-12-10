@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/about/about.module.scss";
+import AboutContent from "@/components/AboutContent";
 
 import { BsPersonVcardFill } from "react-icons/bs";
 
@@ -14,7 +15,7 @@ const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 const About = async () => {
   const content = await getAbout();
-  console.log(content);
+
   return (
     <>
       <section className={styles.header}>
@@ -25,10 +26,10 @@ const About = async () => {
           width={content.images.attributes.width}
           height={content.images.attributes.height}
         />
-        <h2>{content.title}</h2>
+        <h2 className={styles.banner}>{content.title}</h2>
       </section>
+      <AboutContent content={content} />
 
-      <article className={styles.content} dangerouslySetInnerHTML={{ __html: content.body }}></article>
     </>
   );
 };

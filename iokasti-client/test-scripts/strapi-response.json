@@ -2,24 +2,17 @@
   "data": {
     "id": 1,
     "attributes": {
-      "title": "Iokasti Disgusty",
-      "artistic_statement": "\n**Artist Statement: \"Embracing Fluidity: Navigating Identities through Performance\"**\n\nIn the heart of Berlin's diverse artistic landscape, I, a queer non-binary performer hailing from Greece, find my canvas to explore the nuanced interplay of identities. My work is a celebration of fluidity, a dance between binaries, an ode to the kaleidoscope of experiences that shape us. Through performance, I seek to dismantle the confines of prescribed norms, inviting audiences into a realm where gender, sexuality, and self-expression intersect in a vibrant tapestry of expression.\n\nBerlin, with its rich history of inclusivity and acceptance, serves as a muse and a sanctuary. It is here that I draw inspiration from the resilient spirit of this city, channeling its energy into my art. Through movement, I transcend the boundaries of conventional gender roles, inviting viewers to question, to challenge, and ultimately, to embrace the beautifully complex spectrum of human existence. The stage becomes a sanctuary, a space where authenticity flourishes, where the intersections of queerness and non-binary identities are not just acknowledged, but celebrated.\n\nDrawing from my Greek heritage, I infuse elements of ancient myth and contemporary social commentary into my performances. The juxtaposition of tradition and modernity becomes a canvas on which I paint stories that resonate with audiences on a primal level. Through ritualistic movements and evocative storytelling, I bridge the gap between the past and the present, inviting viewers to reflect on the enduring nature of queer and non-binary experiences across time.\n\nUltimately, my artistic journey is a testament to the power of self-discovery, of embracing the fluidity that defines us. It is a call to arms, an invitation to re-imagine the world through a lens of inclusivity, empathy, and boundless self-expression. Through performance, I invite you to embark on a journey of discovery, to challenge preconceptions, and to celebrate the beautifully complex mosaic of identities that define us all. Together, we navigate the uncharted waters of self, guided by the unwavering truth that in our diversity, we find our strength.",
-      "images": {
+      "createdAt": "2023-12-10T20:35:05.142Z",
+      "updatedAt": "2023-12-10T20:38:54.011Z",
+      "publishedAt": "2023-12-10T20:38:54.006Z",
+      "banner_image_or_video": {
         "data": {
-          "id": 37,
+          "id": 38,
           "attributes": {
             "width": null,
             "height": null,
-            "mime": "video/mp4",
-            "url": "/uploads/Iokasti_Totale_Trim_4fba978baa.mp4"
-          }
-        }
-      },
-      "cv": {
-        "data": {
-          "id": 36,
-          "attributes": {
-            "url": "/uploads/Stundennachweis_Praktikum_Marcell_da62463381.pdf"
+            "mime": "video/webm",
+            "url": "/uploads/project_banner_1_be798eed23.webm"
           }
         }
       }

@@ -19,7 +19,7 @@ export async function getProject(slug) {
         ],
         populate: {
           images: { fields: ["url"] },
-          banner_Image: { fields: ["url"] },
+          banner_image: { fields: ["url"] },
         },
         pagination: { pageSize: 2 },
       },
@@ -71,6 +71,7 @@ export async function getProjects() {
 
   const response = await fetch(url);
   const { data } = await response.json();
+  console.log(data)
   return data.map(({ attributes }) => ({
     title: attributes.Title,
     description: attributes.description,
@@ -78,7 +79,7 @@ export async function getProjects() {
     ending_date: attributes.ending_date,
     slug: attributes.slug,
     category: attributes.category,
-    image: CMS_URL + attributes.banner_Image.data.attributes.url,
+    // banner_image: CMS_URL + attributes.banner_image.data.attributes.url,
   }));
 }
 
@@ -118,7 +119,7 @@ export async function getCollabs() {
           "starting_date",
         ],
         populate: {
-          banner_Image: { fields: ["url"] },
+          // banner_image: { fields: ["url"] },
         },
         pagination: { pageSize: 10 },
         sort: ["starting_date:desc"],
@@ -135,6 +136,26 @@ export async function getCollabs() {
     ending_date: attributes.ending_date,
     slug: attributes.slug,
     category: attributes.category,
-    image: CMS_URL + attributes.banner_Image.data.attributes.url,
+    // image: CMS_URL + attributes.banner_Image.data.attributes.url,
   }));
 }
+
+export async function getProjectPage() {
+  const url =
+    `${CMS_URL}/api/project-page?` +
+    qs.stringify({
+      populate: {
+        banner_image_or_video: { fields: ["width", "height", "mime", "url"] },
+      },
+    });
+
+  const response = await fetch(url);
+  const { data } = await response.json();
+  const { attributes } = data;
+
+  return {
+    banner: attributes.banner_image_or_video.data,
+  };
+}
+
+// /api/project-page

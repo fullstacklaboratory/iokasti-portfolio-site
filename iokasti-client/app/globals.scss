@@ -1,13 +1,79 @@
-@use '@/app/styles/variables' as *;
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+$mobile-font-size: 1rem;
+$desktop-font-size: 1.5rem;
+$mobile-margin: 1rem;
+$desktop-margin: 2rem;
 
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
 
+/* total width */
+body::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0);
+  height: 80vh;
+  width: 6px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+  background-color: rgb(66, 66, 66);
+}
 
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+  background-color: #8d8dc9;
+  border-radius: 16px;
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {
+  display: none;
+}
+
+a {
+  margin: 0 !important;
+}
+
+// h1 {
+//   font-size: clamp($mobile-font-size * 2.5, 5vw, $desktop-font-size * 2);
+//   margin: clamp($mobile-margin, 2vw, $desktop-margin) 0 0 0;
+// }
+
+h2 {
+  font-size: clamp($mobile-font-size * 2.5, 5vw, $desktop-font-size * 2);
+  margin: clamp($mobile-margin, 2vw, $desktop-margin) 0 0 0;
+}
+
+h3 {
+  font-size: clamp($mobile-font-size * 1.75, 3.5vw, $desktop-font-size * 1.5);
+  margin: 0 0 clamp($mobile-margin, 1.25vw, $desktop-margin) 0;
+}
+
+h4 {
+  font-size: clamp($mobile-font-size * 1.5, 3vw, $desktop-font-size * 1.25);
+  margin: clamp($mobile-margin, 1vw, $desktop-margin) 0 0 0;
+}
+
+h5 {
+  font-size: clamp($mobile-font-size * 1.25, 2.5vw, $desktop-font-size * 1.1);
+  margin: clamp($mobile-margin, 0.75vw, $desktop-margin) 0 0 0;
+}
+
+h6 {
+  font-size: clamp($mobile-font-size, 2vw, $desktop-font-size);
+  margin: clamp($mobile-margin, 0.5vw, $desktop-margin) 0;
+}
+
+p {
+  font-size: clamp($mobile-font-size, 2vw, $desktop-font-size);
+  margin: clamp($mobile-margin, 2vw, $desktop-margin) 0;
+}
 
 .banner-video {
   /* position: absolute;
@@ -19,7 +85,6 @@
   object-fit: cover;
   /* z-index: 0; */
 }
-
 
 .box {
   width: 4rem;
@@ -34,3 +99,7 @@
   top: 0;
   color: black;
 }
+
+
+//firefox hack to remove picture in picute effect
+

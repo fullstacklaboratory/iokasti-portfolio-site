@@ -1,23 +1,48 @@
 .header {
-  position: relative;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: clamp(60vh, 80vw, 100vh);
   display: flex;
   align-items: flex-end;
+
   color: #fafafa;
   padding: 0 0 clamp(2rem, 3vw, 4rem) clamp(2rem, 3vw, 4rem);
-  h2 {
-    font-size: clamp(3rem, 4vw, 4rem);
-    width: 50%;
+  h2.banner {
+    width: 45%;
+  }
+
+  @media screen and (min-width: 431px) {
+    height: 100vh;
+    align-items: center;
+
+    h2.banner {
+      transform: translateX(-50%) translateY(7vh) rotate(-90deg);
+      width: unset;
+    }
   }
 }
 
 .content {
+  position: absolute;
+  top: clamp(52vh, 80vw, 100vh);
   color: #fafafa;
-  padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem) 0
+  padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem)
     clamp(2rem, 4vw, 4rem);
 
   margin: 3rem auto;
   font-size: clamp(1rem, 2vw, 1.5rem);
   line-height: 1.5;
+  width: 100%;
+  background-color: #ffffff17;
+  backdrop-filter: blur(5px);
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+
+  @media screen and (min-width: 431px) {
+    top: clamp(20vh, 65vh, 80vh);
+    right: clamp(2rem, 3vw, 4rem);
+    width: 45%;
+    margin: 0 auto;
+  }
 }
