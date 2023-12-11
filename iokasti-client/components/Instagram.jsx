@@ -8,7 +8,11 @@ import useDimensions from "@/hooks/useDimensions";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
-const Instagram = ({ images }) => {
+const truncate = (str, n) => {
+  return str.length > n ? str.substr(0, str.lastIndexOf(" ", n)) + "..." : str;
+};
+
+const Instagram = ({ entries }) => {
   const container = useRef(null);
   const { height } = useDimensions();
 
@@ -17,10 +21,10 @@ const Instagram = ({ images }) => {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 2.5]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, height * -0.5]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 0.65]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * -0.75]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 0]);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -37,22 +41,34 @@ const Instagram = ({ images }) => {
     <>
       <div className={`${styles.spacer}`}> </div>
       <section ref={container} className={styles.image_gallery}>
-        <Column images={images.slice(0, 5)} y={y} />
-        <Column images={images.slice(5, 10)} y={y2} />
-        <Column images={images.slice(10, 15)} y={y3} />
-        <Column images={images.slice(15, 20)} y={y4} />
+        <Column entries={entries.slice(0, 5)} y={y} />
+        <Column entries={entries.slice(5, 10)} y={y2} />
+        <Column entries={entries.slice(10, 15)} y={y3} />
+        <Column entries={entries.slice(15, 20)} y={y4} />
       </section>
       <div className={`${styles.spacer}`}> </div>
     </>
   );
 };
 
-const Column = ({ images, y = 0 }) => {
+const Column = ({ entries, y = 0 }) => {
   return (
     <motion.div style={{ y }} className={styles.gallery_column}>
-      {images.map((src, index) => (
+      {entries.map((entry, index) => (
         <div key={index} className={styles.imageContainer}>
-          <Image src={CMS_URL + src} fill alt="image" />
+          <div className={styles.overlay}>
+            <div className={styles.overlay_text}>
+              <h3>{entry.entryTitle}</h3>
+              <p>{truncate(entry.entryDescription, 180)}</p>
+              <p>{entry.entryDate}</p>
+            </div>
+          </div>
+          <Image
+            src={CMS_URL + entry.entryImage}
+            width={entry.entryImageWidth}
+            height={entry.entryImageHeight}
+            alt={entry.entryAlternativeText}
+          />
         </div>
       ))}
     </motion.div>

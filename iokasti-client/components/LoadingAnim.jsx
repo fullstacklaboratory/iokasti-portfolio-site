@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import "../app/globals.css";
+// import "../app/globals.css";
 
 const LoadingAnim = () => {
   return (

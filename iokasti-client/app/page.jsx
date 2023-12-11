@@ -1,11 +1,10 @@
 import { Suspense } from "react";
 import { getLandingPage, getNewsData } from "@/lib/landingPage";
-import Link from "next/link";
-import Image from "next/image";
 import LoadingAnim from "@/components/LoadingAnim";
-// import { motion } from "framer-motion";
-import "./globals.css";
-import NewsSlide from "@/components/NewsSlide";
+import NewsScroll from "@/components/NewsScroll";
+import Image from "next/image";
+import Link from "next/link";
+// Page transition test, pls. don't delete!
 // import { Transition } from "@/components/Transition";
 
 import Instagram from "@/components/Instagram";
@@ -53,9 +52,7 @@ export default async function Home() {
             </Suspense>
           </section>
 
-          
-{/* 
-          {landingpageData.sections &&
+           {landingpageData.sections &&
             landingpageData.sections.map((section) => {
               const sectionImage = section.home_section_image.data.attributes;
               {
@@ -84,7 +81,7 @@ export default async function Home() {
               );
             })} */}
         </div>
-        {news.length > 0 && <NewsSlide news={news} />}
+        {news.length > 0 && <NewsScroll news={news} />}
       </>
     );
   } else {
