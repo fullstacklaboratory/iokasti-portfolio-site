@@ -34,7 +34,6 @@ export async function getProject(slug) {
   }
 
   const { attributes } = data[0];
-  console.log(attributes);
   return {
     title: attributes.Title,
     body: marked(attributes.body),
@@ -51,7 +50,7 @@ export async function getProjects() {
     `${CMS_URL}/api/projects?` +
     qs.stringify(
       {
-        filters: { category: { $eq: "project" } },
+        // filters: { category: { $eq: "project" } },
         fields: [
           "title",
           "slug",
@@ -61,24 +60,24 @@ export async function getProjects() {
           "ending_date",
         ],
         populate: {
-          banner_Image: { fields: ["url"] },
+          images: { fields: ["url", "width", "height"] },
         },
         pagination: { pageSize: 10 },
         sort: ["starting_date:desc"],
       },
       { encodeValuesOnly: true }
     );
-
   const response = await fetch(url);
   const { data } = await response.json();
-  console.log(data)
+
   return data.map(({ attributes }) => ({
-    title: attributes.Title,
+    title: attributes.title,
     description: attributes.description,
     starting_date: attributes.starting_date,
     ending_date: attributes.ending_date,
     slug: attributes.slug,
     category: attributes.category,
+    images: attributes.images.data,
     // banner_image: CMS_URL + attributes.banner_image.data.attributes.url,
   }));
 }

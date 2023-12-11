@@ -1,15 +1,19 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "@/components/projectCard.module.scss";
+import { useLimitString } from "@/hooks/useLimitString";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
+
+const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 const ProjectCard = ({
   i,
   title,
   description,
-  src,
-  url,
+  images,
+  slug,
   color,
   progress,
   range,
@@ -20,6 +24,7 @@ const ProjectCard = ({
     target: container,
     offset: ["start end", "start start"],
   });
+  console.log(images[0].attributes.width)
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
@@ -28,7 +33,7 @@ const ProjectCard = ({
     <div ref={container} className={styles.cardContainer}>
       <motion.div
         style={{
-          backgroundColor: color,
+          // backgroundColor: "yellow",
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
@@ -37,11 +42,11 @@ const ProjectCard = ({
         <h2>{title}</h2>
         <div className={styles.body}>
           <div className={styles.description}>
-            <p>{description}</p>
+            <p>{useLimitString(description, 220)}</p>
             <span>
-              <a href={url} target="_blank">
+              <Link href={`/projects/${slug}`} target="_blank">
                 See more
-              </a>
+              </Link>
               <svg
                 width="22"
                 height="12"
@@ -59,7 +64,12 @@ const ProjectCard = ({
 
           <div className={styles.imageContainer}>
             <motion.div className={styles.inner} style={{ scale: imageScale }}>
-              <Image fill src={`/${src}`} alt="image" />
+              <Image
+                width={images[0].attributes.width}
+                height={images[0].attributes.height}
+                src={`${CMS_URL}${images[0].attributes.url}`}
+                alt="image"
+              />
             </motion.div>
           </div>
         </div>

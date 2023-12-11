@@ -6,12 +6,33 @@ const CMS_URL = "http://localhost:1337";
 // http://localhost:1337/api/teachings?filters\[upcoming_dates\][upcoming_date][$gt]=10/23/2023
 
 const url =
-`${CMS_URL}/api/project-page?` +
-qs.stringify({
-  populate: {
-    banner_image_or_video: { fields: ["width", "height", "mime", "url"] },
-  },
-});
+  `${CMS_URL}/api/projects?` +
+  qs.stringify(
+    {
+      // filters: { category: { $eq: "project" } },
+      fields: [
+        "title",
+        "slug",
+        "description",
+        "category",
+        "starting_date",
+        "ending_date",
+      ],
+      populate: {
+        images: { fields: ["url", "width", "height"] },
+      },
+      pagination: { pageSize: 10 },
+      sort: ["starting_date:desc"],
+    },
+    { encodeValuesOnly: true }
+  );
+// const url =
+// `${CMS_URL}/api/project-page?` +
+// qs.stringify({
+//   populate: {
+//     banner_image_or_video: { fields: ["width", "height", "mime", "url"] },
+//   },
+// });
 
 const response = await fetch(url);
 const body = await response.json();

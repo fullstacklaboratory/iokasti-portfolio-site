@@ -28,7 +28,7 @@
         "images"
       ]
     },
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },

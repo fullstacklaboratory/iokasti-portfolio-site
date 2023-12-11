@@ -793,7 +793,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     starting_date: Attribute.Date & Attribute.Required;
     images: Attribute.Media & Attribute.Required;
-    Title: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
     body: Attribute.RichText & Attribute.Required;
     category: Attribute.Enumeration<['project', 'collab']> & Attribute.Required;
     slug: Attribute.UID & Attribute.Required;

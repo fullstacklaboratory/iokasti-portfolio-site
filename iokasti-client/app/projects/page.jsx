@@ -11,6 +11,8 @@ const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 const Projects = async () => {
   const header = await getProjectPage();
   const projects = await getProjects();
+  console.log("projects", projects.images)
+
 
   // const displayProjects = (cat) => {
   //   return projects.map((item, index) => {
@@ -51,7 +53,7 @@ const Projects = async () => {
         />
         <h2 className={styles.banner}>Projects</h2>
       </section>
-      <ProjectPageSection />
+      <ProjectPageSection projects={projects}/>
     </>
 
     // <div className="bg-gray-700 flex flex-col items-center">
