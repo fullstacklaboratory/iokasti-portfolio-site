@@ -54,7 +54,7 @@ export default async function Home() {
           </section>
 
           
-
+{/* 
           {landingpageData.sections &&
             landingpageData.sections.map((section) => {
               const sectionImage = section.home_section_image.data.attributes;
@@ -82,7 +82,7 @@ export default async function Home() {
                   </Link>
                 </section>
               );
-            })}
+            })} */}
         </div>
         {news.length > 0 && <NewsSlide news={news} />}
       </>
