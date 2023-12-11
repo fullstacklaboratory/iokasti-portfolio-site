@@ -751,15 +751,15 @@ export interface ApiNotebookNotebook extends Schema.SingleType {
   info: {
     singularName: 'notebook';
     pluralName: 'notebooks';
-    displayName: 'notebook';
+    displayName: 'Notebook';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    images: Attribute.Media;
-    text: Attribute.RichText;
+    notebookEntry: Attribute.Component<'notebook-image.notebook-entry', true>;
+    pageTitle: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -783,7 +783,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
   info: {
     singularName: 'project';
     pluralName: 'projects';
-    displayName: 'Project';
+    displayName: 'Projects';
     description: '';
   };
   options: {

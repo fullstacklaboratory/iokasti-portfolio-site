@@ -1,0 +1,22 @@
+
+.list_ul 
+li {
+  font-size: clamp(1.75rem, -0.875rem + 8.333vw, 2.5rem);
+  list-style: none;
+  margin: 0;
+}
+
+/* media device orientation landscape */
+@media screen and  (max-width: 932px) and ( orientation: landscape) {
+  .list_ul li {
+    font-size: clamp(0.85rem, -0.875rem + 8.333vw, 1rem);
+    list-style: none;
+    margin: 0;
+  }
+}
+
+
+.menu__button path {
+  fill: white;
+}
+

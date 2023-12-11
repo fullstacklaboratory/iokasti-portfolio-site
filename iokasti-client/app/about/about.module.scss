@@ -1,0 +1,23 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: clamp(60vh, 80vw, 100vh);
+  display: flex;
+  align-items: flex-end;
+  color: #fafafa;
+  padding: 0 0 clamp(2rem, 3vw, 4rem) clamp(2rem, 3vw, 4rem);
+  h2 {
+    font-size: clamp(3rem, 4vw, 4rem);
+    width: 50%;
+  }
+}
+
+.content {
+  color: #fafafa;
+  padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem) 0
+    clamp(2rem, 4vw, 4rem);
+
+  margin: 3rem auto;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.5;
+}
