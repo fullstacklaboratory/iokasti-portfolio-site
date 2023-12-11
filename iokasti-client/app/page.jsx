@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { getLandingPage, getNewsData } from "@/lib/landingPage";
 import LoadingAnim from "@/components/LoadingAnim";
 import NewsScroll from "@/components/NewsScroll";
+import Image from "next/image";
+import Link from "next/link";
 // Page transition test, pls. don't delete!
 // import { Transition } from "@/components/Transition";
 
@@ -50,7 +52,7 @@ export default async function Home() {
             </Suspense>
           </section>
 
-          {/* {landingpageData.sections &&
+           {landingpageData.sections &&
             landingpageData.sections.map((section) => {
               const sectionImage = section.home_section_image.data.attributes;
               {
