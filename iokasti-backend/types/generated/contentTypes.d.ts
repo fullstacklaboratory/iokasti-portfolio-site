@@ -690,8 +690,8 @@ export interface ApiAboutAbout extends Schema.SingleType {
   attributes: {
     title: Attribute.String;
     artistic_statement: Attribute.RichText;
-    images: Attribute.Media & Attribute.Required;
     cv: Attribute.Media;
+    banner_image_or_video: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -793,8 +793,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     starting_date: Attribute.Date & Attribute.Required;
     images: Attribute.Media & Attribute.Required;
-    banner_Image: Attribute.Media & Attribute.Required;
-    Title: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
     body: Attribute.RichText & Attribute.Required;
     category: Attribute.Enumeration<['project', 'collab']> & Attribute.Required;
     slug: Attribute.UID & Attribute.Required;
@@ -811,6 +810,36 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectPageProjectPage extends Schema.SingleType {
+  collectionName: 'project_pages';
+  info: {
+    singularName: 'project-page';
+    pluralName: 'project-pages';
+    displayName: 'Project page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_image_or_video: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project-page.project-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project-page.project-page',
       'oneToOne',
       'admin::user'
     > &
@@ -879,6 +908,7 @@ declare module '@strapi/strapi' {
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::notebook.notebook': ApiNotebookNotebook;
       'api::project.project': ApiProjectProject;
+      'api::project-page.project-page': ApiProjectPageProjectPage;
       'api::teaching.teaching': ApiTeachingTeaching;
     }
   }

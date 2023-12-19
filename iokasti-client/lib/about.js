@@ -9,20 +9,18 @@ export const getAbout = async () => {
     qs.stringify({
       fields: ["title", "artistic_statement"],
       populate: {
-        images: { fields: ["width", "height", "mime", "url"] },
+        banner_image_or_video: { fields: ["width", "height", "mime", "url"] },
         cv: { fields: ["url"] },
-        pagination: { pageSize: 1, withCount: false },
       },
     });
   const response = await fetch(url);
   const { data } = await response.json();
-
   const { attributes } = data;
 
   return {
     title: attributes.title,
     body: marked(attributes.artistic_statement),
-    images: attributes.images.data,
+    images: attributes.banner_image_or_video.data,
     cv: attributes.cv.data,
   };
 };

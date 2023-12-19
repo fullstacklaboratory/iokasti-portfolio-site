@@ -18,15 +18,6 @@
     "artistic_statement": {
       "type": "richtext"
     },
-    "images": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
     "cv": {
       "type": "media",
       "multiple": false,
@@ -34,6 +25,15 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "banner_image_or_video": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

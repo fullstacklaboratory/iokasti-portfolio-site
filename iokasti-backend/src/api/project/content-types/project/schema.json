@@ -28,16 +28,7 @@
         "images"
       ]
     },
-    "banner_Image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
