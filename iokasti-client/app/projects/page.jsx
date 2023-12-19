@@ -5,41 +5,11 @@ import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/projects/projects.module.scss";
 import ProjectPageSection from "@/components/ProjectPageSection";
 
-
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 const Projects = async () => {
   const header = await getProjectPage();
   const projects = await getProjects();
-  console.log("projects", projects.images)
-
-
-  // const displayProjects = (cat) => {
-  //   return projects.map((item, index) => {
-  //     if (item.category === cat) {
-  //       return (
-  //         <li key={item.slug} className="flex">
-  //           <Link href={`/projects/${item.slug}`}>
-  //             {" "}
-  //             <Image
-  //               src={item.image}
-  //               width="480"
-  //               height="280"
-  //               priority={index === 0}
-  //               alt="image"
-  //             />
-  //           </Link>
-  //           <div className="w-1/2 flex justify-evenly">
-  //             <h1 className="text-center text-white text-4xl">{item.title}</h1>
-  //             <p className="text-center text-white text-2xl">
-  //               {item.description}
-  //             </p>
-  //           </div>
-  //         </li>
-  //       );
-  //     }
-  //   });
-  // };
 
   return (
     <>
@@ -53,7 +23,7 @@ const Projects = async () => {
         />
         <h2 className={styles.banner}>Projects</h2>
       </section>
-      <ProjectPageSection projects={projects}/>
+      <ProjectPageSection projects={projects} />
     </>
 
     // <div className="bg-gray-700 flex flex-col items-center">

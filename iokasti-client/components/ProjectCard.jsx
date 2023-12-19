@@ -5,6 +5,7 @@ import styles from "@/components/projectCard.module.scss";
 import { useLimitString } from "@/hooks/useLimitString";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
+import useDimensions from "@/hooks/useDimensions";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
@@ -24,7 +25,10 @@ const ProjectCard = ({
     target: container,
     offset: ["start end", "start start"],
   });
-  console.log(images[0].attributes.width)
+  const { width, height } = useDimensions();
+
+  console.log(width);
+  console.log(height);
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
@@ -35,7 +39,7 @@ const ProjectCard = ({
         style={{
           // backgroundColor: "yellow",
           scale,
-          top: `calc(-5vh + ${i * 25}px)`,
+          top: (width < 431) ? `calc(8vh + ${i * 25}px)` : `calc(-5vh + ${i * 25}px)`,
         }}
         className={styles.card}
       >

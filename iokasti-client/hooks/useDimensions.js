@@ -1,3 +1,8 @@
+/**
+ * Returns devide height and width
+ * 
+ */
+
 import { useEffect, useState } from "react";
 
 const useDimensions = () => {

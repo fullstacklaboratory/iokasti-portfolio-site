@@ -5,8 +5,8 @@ import { useScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 
-const ProjectPageSection = ({projects}) => {
-  console.log(projects)
+const ProjectPageSection = ({ projects }) => {
+  console.log(projects);
 
   // const projects = [
   //   {
@@ -55,14 +55,14 @@ const ProjectPageSection = ({projects}) => {
   return (
     <section ref={container} className={styles.card_container}>
       {projects.map((project, i) => {
-        const targetScale = 1 - (Array.isArray(projects) &&  projects.length - i) * 0.05;
+        const targetScale = 1 - (projects.length - i) * 0.05;
         return (
           <ProjectCard
             key={`p_${i}`}
             i={i}
             {...project}
             progress={scrollYProgress}
-            range={[i * 0.25, 1]}
+            range={[0, 1]}
             targetScale={targetScale}
             slug={project.slug}
           />
