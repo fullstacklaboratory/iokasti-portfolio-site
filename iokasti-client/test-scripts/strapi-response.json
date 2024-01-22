@@ -2,27 +2,68 @@
   "data": {
     "id": 1,
     "attributes": {
-      "title": "Iokasti Disgusty",
-      "artistic_statement": "\n**Artist Statement: \"Embracing Fluidity: Navigating Identities through Performance\"**\n\nIn the heart of Berlin's diverse artistic landscape, I, a queer non-binary performer hailing from Greece, find my canvas to explore the nuanced interplay of identities. My work is a celebration of fluidity, a dance between binaries, an ode to the kaleidoscope of experiences that shape us. Through performance, I seek to dismantle the confines of prescribed norms, inviting audiences into a realm where gender, sexuality, and self-expression intersect in a vibrant tapestry of expression.\n\nBerlin, with its rich history of inclusivity and acceptance, serves as a muse and a sanctuary. It is here that I draw inspiration from the resilient spirit of this city, channeling its energy into my art. Through movement, I transcend the boundaries of conventional gender roles, inviting viewers to question, to challenge, and ultimately, to embrace the beautifully complex spectrum of human existence. The stage becomes a sanctuary, a space where authenticity flourishes, where the intersections of queerness and non-binary identities are not just acknowledged, but celebrated.\n\nDrawing from my Greek heritage, I infuse elements of ancient myth and contemporary social commentary into my performances. The juxtaposition of tradition and modernity becomes a canvas on which I paint stories that resonate with audiences on a primal level. Through ritualistic movements and evocative storytelling, I bridge the gap between the past and the present, inviting viewers to reflect on the enduring nature of queer and non-binary experiences across time.\n\nUltimately, my artistic journey is a testament to the power of self-discovery, of embracing the fluidity that defines us. It is a call to arms, an invitation to re-imagine the world through a lens of inclusivity, empathy, and boundless self-expression. Through performance, I invite you to embark on a journey of discovery, to challenge preconceptions, and to celebrate the beautifully complex mosaic of identities that define us all. Together, we navigate the uncharted waters of self, guided by the unwavering truth that in our diversity, we find our strength.",
-      "images": {
-        "data": {
-          "id": 37,
-          "attributes": {
-            "width": null,
-            "height": null,
-            "mime": "video/mp4",
-            "url": "/uploads/Iokasti_Totale_Trim_4fba978baa.mp4"
+      "vimeo_link": "https://vimeo.com",
+      "instagram_link": "https://instagram.com",
+      "email": "a@a.hu",
+      "site_name": "Iokasti Disgusty",
+      "createdAt": "2023-10-22T11:18:17.103Z",
+      "updatedAt": "2023-12-11T09:10:28.279Z",
+      "publishedAt": "2023-10-22T11:20:11.971Z",
+      "video": {
+        "data": [
+          {
+            "id": 11,
+            "attributes": {
+              "url": "/uploads/iokasti_home_313c10bee6.webm"
+            }
           }
-        }
+        ]
       },
-      "cv": {
-        "data": {
-          "id": 36,
-          "attributes": {
-            "url": "/uploads/Stundennachweis_Praktikum_Marcell_da62463381.pdf"
+      "sections": [
+        {
+          "id": 4,
+          "__component": "home-section.home-sections",
+          "title": "Dancer",
+          "subtitle": "Subtitle for Dancer",
+          "home_section_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pellentesque dignissim enim sit amet venenatis urna. Quis lectus nulla at volutpat diam ut venenatis tellus. A iaculis at erat pellentesque adipiscing commodo elit at imperdiet. Orci porta non pulvinar neque laoreet suspendisse. Duis at tellus at urna condimentum mattis pellentesque id. Et egestas quis ipsum suspendisse ultrices. Mattis rhoncus urna neque viverra justo nec ultrices. Aliquam sem fringilla ut morbi. Lectus vestibulum mattis ullamcorper velit sed. Tortor pretium viverra suspendisse potenti nullam ac. Sollicitudin nibh sit amet commodo nulla facilisi nullam. Leo duis ut diam ",
+          "home_section_url": "projects",
+          "align_content": "left",
+          "home_section_image": {
+            "data": [
+              {
+                "id": 28,
+                "attributes": {
+                  "url": "/uploads/017_9f45658b32.webp"
+                }
+              },
+              {
+                "id": 27,
+                "attributes": {
+                  "url": "/uploads/016_ca226719c9.webp"
+                }
+              },
+              {
+                "id": 26,
+                "attributes": {
+                  "url": "/uploads/014_8ccd53fdb2.webp"
+                }
+              },
+              {
+                "id": 25,
+                "attributes": {
+                  "url": "/uploads/013_2c6df81a52.webp"
+                }
+              },
+              {
+                "id": 21,
+                "attributes": {
+                  "url": "/uploads/009_cb431af2db.webp"
+                }
+              }
+            ]
           }
         }
-      }
+      ]
     }
   },
   "meta": {}

@@ -41,10 +41,10 @@ const Instagram = ({ entries }) => {
     <>
       <div className={`${styles.spacer}`}> </div>
       <section ref={container} className={styles.image_gallery}>
-        <Column entries={entries.slice(0, 5)} y={y} />
-        <Column entries={entries.slice(5, 10)} y={y2} />
-        <Column entries={entries.slice(10, 15)} y={y3} />
-        <Column entries={entries.slice(15, 20)} y={y4} />
+        <Column entries={entries.slice(0, 3)} y={y} />
+        <Column entries={entries.slice(3, 6)} y={y2} />
+        <Column entries={entries.slice(6, 9)} y={y3} />
+        <Column entries={entries.slice(9, 12)} y={y4} />
       </section>
       <div className={`${styles.spacer}`}> </div>
     </>

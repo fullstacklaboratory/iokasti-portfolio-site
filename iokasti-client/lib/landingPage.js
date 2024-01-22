@@ -5,17 +5,29 @@ import { marked } from "marked";
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 export const getLandingPage = async () => {
-  const url = `${CMS_URL}/api/landing-page?populate=video&populate=sections.home_section_image`;
+  const url = `${CMS_URL}/api/landing-page?` +  qs.stringify({
+    populate: {
+      video: { fields: ["url"] },
+      sections: { fields: ["*"] },
+      sections: { populate : { home_section_image: { fields: ["url"] } }},
+      pagination: { pageSize: 1, withCount: false },
+    },  
+  });  
+  // if (!res.ok) {
+  //   // This will activate the closest `error.js` Error Boundary
+  //   const error = "Fetch failed because: " + res.statusText;
+  //   return { error: error };
+  // }
   const res = await fetch(url);
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+  const {data} = await res.json();
+  const {attributes} = data 
+  return {
+    video: attributes.video.data[0].attributes.url,
+    sections: attributes.sections,
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    const error = "Fetch failed because: " + res.statusText;
-    return { error: error };
-  }
-  return res.json();
+  };
+  
+ 
 };
 
 // export const getLandPage = async () => {

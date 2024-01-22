@@ -1,0 +1,82 @@
+.reverse {
+    flex-direction  : row-reverse;
+    background-color: #14524ED9;
+}
+
+.no_reverse {
+    background-color: #A5A5A5;
+
+}
+
+.section {
+    display        : flex;
+    height         : calc(50vh - 32.89px);
+    align-items    : center;
+    justify-content: space-between;
+    color          : white;
+
+    .content {
+        max-width   : 70%;
+        padding-left: 3rem;
+
+        h2 {
+            font-size    : 3.5rem;
+            margin-bottom: 1rem;
+
+        }
+    }
+
+    .imageContainer {
+        min-width: 30%;
+
+
+        img {
+            height    : calc(50vh - 32.89px);
+            width     : 100%;
+            padding   : 10px 0;
+            object-fit: cover;
+
+        }
+
+
+    }
+
+
+}
+
+@media screen and (max-width: 780px) {
+
+    .reverse {
+        flex-direction: column;
+    }
+
+    .section {
+        flex-direction: column;
+        height        : auto;
+
+        .content {
+            max-width   : 100%;
+            padding-left: 3rem;
+
+            h2 {
+                font-size    : 3.5rem;
+                margin-bottom: 1rem;
+
+            }
+        }
+
+        .imageContainer {
+            min-width: 100%;
+
+
+            img {
+                height    : 50vh;
+                width     : 100%;
+                object-fit: contain;
+
+            }
+
+        }
+
+    }
+}

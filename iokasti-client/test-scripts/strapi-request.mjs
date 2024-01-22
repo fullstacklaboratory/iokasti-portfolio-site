@@ -5,7 +5,7 @@ const CMS_URL = "http://localhost:1337";
 
 // http://localhost:1337/api/teachings?filters\[upcoming_dates\][upcoming_date][$gt]=10/23/2023
 
-const url =
+/* const url =
   `${CMS_URL}/api/about?` +
   qs.stringify({
     fields: ["title", "artistic_statement"],
@@ -21,7 +21,7 @@ const body = await response.json();
 console.log(body);
 const formatted = JSON.stringify(body, null, 2);
 const file = "test-scripts/strapi-response.json";
-writeFileSync(file, formatted, "utf8");
+writeFileSync(file, formatted, "utf8"); */
 
 // const url =
 //   "http://localhost:1337/api/notebook" +
@@ -104,3 +104,23 @@ writeFileSync(file, formatted, "utf8");
 // const formatted = JSON.stringify(body, null, 2);
 // const file = "test-scripts/strapi-response.json";
 // writeFileSync(file, formatted, "utf8");
+
+// landing page
+
+const url =
+  `${CMS_URL}/api/landing-page?` +
+  qs.stringify({
+    populate: {
+      video: { fields: ["url"] },
+      sections: { fields: ["*"] },
+      sections: { populate : { home_section_image: { fields: ["url"] } }},
+      pagination: { pageSize: 1, withCount: false },
+    },
+  });
+
+const response = await fetch(url);
+const body = await response.json();
+console.log(body);
+const formatted = JSON.stringify(body, null, 2);
+const file = "test-scripts/strapi-response.json";
+writeFileSync(file, formatted, "utf8");
