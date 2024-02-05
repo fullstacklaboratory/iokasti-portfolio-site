@@ -161,7 +161,7 @@ const NavBar = ({ navData, newsData }) => {
             className={`${textHoverColor} text-white`}
             onClick={() => setIsOpen(!isOpen)}
           >
-            <Link href="/collabs">Collaborations</Link>
+            <Link href="/collaborations">Collaborations</Link>
           </motion.li>
           <motion.li
             variants={itemVariants}

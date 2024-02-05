@@ -4,7 +4,8 @@
   "info": {
     "singularName": "project-page",
     "pluralName": "project-pages",
-    "displayName": "Project page"
+    "displayName": "Projects Banner Videos or Images",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,13 +13,13 @@
   "pluginOptions": {},
   "attributes": {
     "banner_image_or_video": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     }
   }
 }

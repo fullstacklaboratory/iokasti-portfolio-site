@@ -1,84 +1,3 @@
-// .cardContainer {
-//   height: 100vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: sticky;
-//   top: 0px;
-//   .card {
-//     border: 1px solid white;
-//     color: #fafafa;
-//     display: flex;
-//     flex-direction: column;
-//     position: relative;
-//     height: 500px;
-//     width: 1000px;
-//     border-radius: 25px;
-//     padding: 50px;
-//     transform-origin: top;
-//     background-color: rgba(163, 163, 163, 0.212);
-//     backdrop-filter: blur(20px);
-//     h2 {
-//       text-align: center;
-//       margin: 0px;
-//       font-size: 28px;
-//     }
-//     .body {
-//       display: flex;
-//       height: 70%;
-//       margin-top: 50px;
-//       gap: 50px;
-//       align-items: center;
-
-//       .description {
-//         width: 40%;
-//         // position: relative;
-//         // top: 10%;
-//         p {
-//           margin-top: 0;
-//           font-size: 16px;
-//           &::first-letter {
-//             font-size: 28px;
-//             font-family: "Title";
-//           }
-//         }
-//         span {
-//           display: flex;
-//           align-items: center;
-//           gap: 5px;
-//           svg {
-//             path {
-//               fill: #fafafa;
-//             }
-//           }
-
-//           a {
-//             font-size: 12px;
-//             text-decoration: underline;
-//             cursor: pointer;
-//           }
-//         }
-//       }
-
-//       .imageContainer {
-//         position: relative;
-//         width: 60%;
-//         height: 100%;
-//         border-radius: 25px;
-//         overflow: hidden;
-//         .inner {
-//           width: 100%;
-//           height: 100%;
-//         }
-//         img {
-//           object-fit: cover;
-//           height: 100%;
-//         }
-//       }
-//     }
-//   }
-// }
-
 .cardContainer {
   height: 80vh;
   display: flex;
@@ -94,7 +13,7 @@
     justify-content: space-evenly;
     position: relative;
     height: 100%;
-    width: 1000px;
+    width: 100%;
     border-radius: 25px;
     padding: 5vw;
     transform-origin: top;
@@ -105,7 +24,8 @@
     h2 {
       text-align: center;
       margin: 0px;
-      font-size: 28px;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 700;
     }
     .body {
       display: flex;
@@ -120,11 +40,7 @@
         width: 100%;
         p {
           margin-top: 0;
-          font-size: 16px;
-          &::first-letter {
-            font-size: 28px;
-            font-family: "Title";
-          }
+          font-size: clamp(0.75rem, 2vw, 1.2rem);
         }
         span {
           display: flex;
@@ -137,7 +53,8 @@
           }
 
           a {
-            font-size: 12px;
+            // font-size: 12px;
+            font-size: clamp(0.75rem, 2vw, 1rem);
             text-decoration: underline;
             cursor: pointer;
           }
@@ -159,9 +76,9 @@
   }
 }
 
-@media screen and (min-width: 431px) {
+@media screen and (min-width: 650px) and (orientation: landscape) {
   .cardContainer {
-    height: 100vh;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,59 +90,33 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      height: 500px;
-      width: 1000px;
+      height: 100%;
+      width: 80vw;
       border-radius: 25px;
-      padding: 50px;
+      padding: clamp(1rem, 4vw, 2rem);
       transform-origin: top;
       background-color: rgba(163, 163, 163, 0.212);
       backdrop-filter: blur(20px);
       h2 {
         text-align: center;
         margin: 0px;
-        font-size: 28px;
+        font-size: clamp(1rem, 3vw, 2rem);
       }
       .body {
         display: flex;
         flex-direction: row;
         height: 70%;
-        margin-top: 50px;
-        gap: 50px;
+        margin-top: clamp(0.75rem, 2vw, 1rem);
+        gap: 20px;
         align-items: center;
 
         .description {
-          width: 40%;
-          // position: relative;
-          // top: 10%;
-          p {
-            margin-top: 0;
-            font-size: 16px;
-            &::first-letter {
-              font-size: 28px;
-              font-family: "Title";
-            }
-          }
-          span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            svg {
-              path {
-                fill: #fafafa;
-              }
-            }
-
-            a {
-              font-size: 12px;
-              text-decoration: underline;
-              cursor: pointer;
-            }
-          }
+          width: 60%;
         }
 
         .imageContainer {
           position: relative;
-          width: 60%;
+          width: 40%;
           height: 100%;
           border-radius: 25px;
           overflow: hidden;
@@ -237,6 +128,37 @@
             object-fit: cover;
             height: 100%;
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cardContainer {
+    height: 100vh;
+
+    .card {
+      height: 60vh;
+      width: 60vw;
+      padding: 50px;
+
+      h2 {
+        text-align: center;
+        margin: 0px;
+        font-size: clamp(1rem, 3vw, 2rem);
+      }
+      .body {
+        height: 70%;
+        margin-top: 50px;
+        gap: 50px;
+
+        .description {
+          width: 50%;
+        }
+
+        .imageContainer {
+          width: 50%;
         }
       }
     }

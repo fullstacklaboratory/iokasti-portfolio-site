@@ -18,7 +18,7 @@ export async function getProject(slug) {
           "video_link",
         ],
         populate: {
-          images: { fields: ["url"] },
+          images: { fields: ["width", "height", "mime", "url"] },
           banner_image: { fields: ["url"] },
         },
         pagination: { pageSize: 2 },
@@ -35,11 +35,11 @@ export async function getProject(slug) {
 
   const { attributes } = data[0];
   return {
-    title: attributes.Title,
+    title: attributes.title,
     body: marked(attributes.body),
     starting_date: attributes.starting_date,
     ending_date: attributes.ending_date,
-    bannerImage: CMS_URL + attributes.banner_Image.data.attributes.url,
+    // bannerImage: CMS_URL + attributes.banner_Image.data.attributes.url,
     images: attributes.images.data,
     video_link: attributes.video_link,
   };
@@ -50,7 +50,7 @@ export async function getProjects() {
     `${CMS_URL}/api/projects?` +
     qs.stringify(
       {
-        // filters: { category: { $eq: "project" } },
+        filters: { category: { $eq: "project" } },
         fields: [
           "title",
           "slug",
@@ -60,7 +60,7 @@ export async function getProjects() {
           "ending_date",
         ],
         populate: {
-          images: { fields: ["url", "width", "height"] },
+          images: { fields: ["width", "height", "mime", "url"] },
         },
         pagination: { pageSize: 10 },
         sort: ["starting_date:desc"],
@@ -82,11 +82,49 @@ export async function getProjects() {
   }));
 }
 
-export async function getSlugs() {
+export async function getCollabs() {
+  const url =
+  `${CMS_URL}/api/projects?` +
+  qs.stringify(
+    {
+      filters: { category: { $eq: "collaboration" } },
+      fields: [
+        "title",
+        "slug",
+        "description",
+        "category",
+        "starting_date",
+        "ending_date",
+      ],
+      populate: {
+        images: { fields: ["url", "width", "height"] },
+      },
+      pagination: { pageSize: 10 },
+      sort: ["starting_date:desc"],
+    },
+    { encodeValuesOnly: true }
+  );
+const response = await fetch(url);
+const { data } = await response.json();
+
+return data.map(({ attributes }) => ({
+  title: attributes.title,
+  description: attributes.description,
+  starting_date: attributes.starting_date,
+  ending_date: attributes.ending_date,
+  slug: attributes.slug,
+  category: attributes.category,
+  images: attributes.images.data,
+  // banner_image: CMS_URL + attributes.banner_image.data.attributes.url,
+}));
+}
+
+export async function getSlugsForProjects() {
   const url =
     `${CMS_URL}/api/projects?` +
     qs.stringify(
       {
+        filters: { category: { $eq: "project" } },
         fields: ["slug"],
         sort: ["starting_date:desc"],
         pagination: { pageSize: 100 },
@@ -103,41 +141,6 @@ export async function getSlugs() {
   return data.map((item) => item.attributes.slug);
 }
 
-export async function getCollabs() {
-  const url =
-    `${CMS_URL}/api/projects?` +
-    qs.stringify(
-      {
-        filters: { category: { $eq: "collab" } },
-        fields: [
-          "title",
-          "slug",
-          "description",
-          "category",
-          "ending_date",
-          "starting_date",
-        ],
-        populate: {
-          // banner_image: { fields: ["url"] },
-        },
-        pagination: { pageSize: 10 },
-        sort: ["starting_date:desc"],
-      },
-      { encodeValuesOnly: true }
-    );
-
-  const response = await fetch(url);
-  const { data } = await response.json();
-  return data.map(({ attributes }) => ({
-    title: attributes.Title,
-    description: attributes.description,
-    starting_date: attributes.starting_date,
-    ending_date: attributes.ending_date,
-    slug: attributes.slug,
-    category: attributes.category,
-    // image: CMS_URL + attributes.banner_Image.data.attributes.url,
-  }));
-}
 
 export async function getProjectPage() {
   const url =
@@ -151,10 +154,11 @@ export async function getProjectPage() {
   const response = await fetch(url);
   const { data } = await response.json();
   const { attributes } = data;
+  
 
   return {
     banner: attributes.banner_image_or_video.data,
   };
 }
 
-// /api/project-page
+

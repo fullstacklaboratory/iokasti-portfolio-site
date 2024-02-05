@@ -14,7 +14,6 @@ const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 export default async function Home() {
   const data = await getLandingPage();
   const news = await getNewsData();
-  console.log("News", news);
   const landingpageData = data.data.attributes;
 
   if (!data.error) {
@@ -52,12 +51,10 @@ export default async function Home() {
             </Suspense>
           </section>
 
-           {landingpageData.sections &&
+          {landingpageData.sections &&
             landingpageData.sections.map((section) => {
               const sectionImage = section.home_section_image.data.attributes;
-              {
-                console.log(section.home_section_description);
-              }
+
               return (
                 <section
                   key={section.id}
@@ -66,7 +63,9 @@ export default async function Home() {
                   <h2 className="text-5xl">{section.title}</h2>
                   <h3>{section.subtitle}</h3>
 
-                  <p className="col-start-2 col-span-4 row-start-5 ">{section.home_section_description}</p>
+                  <p className="col-start-2 col-span-4 row-start-5 ">
+                    {section.home_section_description}
+                  </p>
                   <Image
                     src={CMS_URL + sectionImage.url}
                     width="500"

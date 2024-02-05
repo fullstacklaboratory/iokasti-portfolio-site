@@ -1,6 +1,4 @@
 import { getAbout } from "@/lib/about";
-import Image from "next/image";
-import Link from "next/link";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";

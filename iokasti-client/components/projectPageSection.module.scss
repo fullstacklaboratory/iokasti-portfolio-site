@@ -7,3 +7,11 @@
 //   margin-top: clamp(40vh, 80vw, 100vh);
 // }
 
+
+@media screen and (min-width: 650px) and (orientation: landscape) { 
+  .card_container {
+    margin-top: clamp(49vh, 36vw, 100vh);
+    // margin-bottom: 50vh;
+  }
+
+}

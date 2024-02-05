@@ -40,13 +40,15 @@
       "type": "enumeration",
       "enum": [
         "project",
-        "collab"
+        "collaboration"
       ],
       "required": true
     },
     "slug": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "title",
+      "maxLength": 120
     },
     "ending_date": {
       "type": "date",

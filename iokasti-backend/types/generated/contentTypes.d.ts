@@ -795,8 +795,13 @@ export interface ApiProjectProject extends Schema.CollectionType {
     images: Attribute.Media & Attribute.Required;
     title: Attribute.String & Attribute.Required;
     body: Attribute.RichText & Attribute.Required;
-    category: Attribute.Enumeration<['project', 'collab']> & Attribute.Required;
-    slug: Attribute.UID & Attribute.Required;
+    category: Attribute.Enumeration<['project', 'collaboration']> &
+      Attribute.Required;
+    slug: Attribute.UID<'api::project.project', 'title'> &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     ending_date: Attribute.Date & Attribute.Required;
     video_link: Attribute.String;
     createdAt: Attribute.DateTime;
@@ -822,7 +827,8 @@ export interface ApiProjectPageProjectPage extends Schema.SingleType {
   info: {
     singularName: 'project-page';
     pluralName: 'project-pages';
-    displayName: 'Project page';
+    displayName: 'Projects Banner Videos or Images';
+    description: '';
   };
   options: {
     draftAndPublish: true;
