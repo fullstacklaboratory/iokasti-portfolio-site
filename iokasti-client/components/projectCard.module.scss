@@ -8,18 +8,25 @@
   .card {
     // border: 1px solid white;
     color: #fafafa;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-evenly;
     position: relative;
     height: 100%;
     width: 100%;
     border-radius: 25px;
     padding: 5vw;
     transform-origin: top;
-    background-color: rgba(163, 163, 163, 0.212);
+    background-color: rgba(51, 65, 85, 0.302);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 100%;
+    }
 
     h2 {
       text-align: center;

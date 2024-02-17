@@ -32,20 +32,20 @@ const ProjectCard = ({
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
-    <a href={`/projects/${slug}`}>
-      <div ref={container} className={styles.cardContainer}>
-        <motion.div
-          // initial={false}
-          style={{
-            // backgroundColor: "yellow",
-            scale,
-            top:
-              width < 431
-                ? `calc(8vh + ${i * 25}px)`
-                : `calc(-5vh + ${i * 25}px)`,
-          }}
-          className={styles.card}
-        >
+    <div ref={container} className={styles.cardContainer}>
+      <motion.div
+        // initial={false}
+        style={{
+          // backgroundColor: "yellow",
+          scale,
+          top:
+            width < 431
+              ? `calc(8vh + ${i * 25}px)`
+              : `calc(-5vh + ${i * 25}px)`,
+        }}
+        className={styles.card}
+      >
+        <a href={`/projects/${slug}`}>
           <h2>{title}</h2>
           <div className={styles.body}>
             <div className={styles.description}>
@@ -81,9 +81,9 @@ const ProjectCard = ({
               </motion.div>
             </div>
           </div>
-        </motion.div>
-      </div>
-    </a>
+        </a>
+      </motion.div>
+    </div>
   );
 };
 
