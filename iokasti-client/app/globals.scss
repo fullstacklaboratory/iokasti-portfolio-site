@@ -1,11 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "@/app/variables.scss";
 
 $mobile-font-size: 1rem;
 $desktop-font-size: 1.5rem;
 $mobile-margin: 1rem;
 $desktop-margin: 2rem;
+
+body {
+  background-color: $color-slate-900;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+main {
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
 
 /* Customize website's scrollbar like Mac OS
 Not supports in Firefox and IE */
@@ -40,10 +63,10 @@ a {
   margin: 0 !important;
 }
 
-// h1 {
-//   font-size: clamp($mobile-font-size * 2.5, 5vw, $desktop-font-size * 2);
-//   margin: clamp($mobile-margin, 2vw, $desktop-margin) 0 0 0;
-// }
+h1 {
+  font-size: clamp($mobile-font-size * 2.5, 5vw, $desktop-font-size * 2);
+  // margin: clamp($mobile-margin, 2vw, $desktop-margin) 0 0 0;
+}
 
 h2 {
   font-size: clamp($mobile-font-size * 2.5, 5vw, $desktop-font-size * 2);
@@ -99,7 +122,3 @@ p {
   top: 0;
   color: black;
 }
-
-
-//firefox hack to remove picture in picute effect
-

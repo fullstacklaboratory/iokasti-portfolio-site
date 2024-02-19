@@ -1,7 +1,10 @@
+@import "@/app/variables.scss";
 
-.list_ul 
-li {
-  font-size: clamp(1.75rem, -0.875rem + 8.333vw, 2.5rem);
+.list_ul li {
+  font-size: clamp($font-size-sm, -0.875rem + 8.333vw, $font-size-2xl);
+  @media screen and (orientation: landscape) and (max-width: 932px) {
+    font-size: clamp($font-size-sm, -0.875rem + 6vw, $font-size-lg);
+  }
   list-style: none;
   margin: 0;
   a {
@@ -9,17 +12,91 @@ li {
   }
 }
 
-/* media device orientation landscape */
-@media screen and  (max-width: 932px) and ( orientation: landscape) {
-  .list_ul li {
-    font-size: clamp(0.85rem, -0.875rem + 8.333vw, 1rem);
-    list-style: none;
-    margin: 0;
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-white;
+  width: 100%;
+  border-bottom: 1px solid $color-white;
+  background-color: $color-navbar;
+  transition: all 0.3s $transition-ease-in-out;
+  backdrop-filter: blur($blur-sm);
+  height: $navbar-height;
+
+  &:hover {
+    background-color: $color-navbar-hover;
   }
 }
 
-
-.menu__button path {
-  fill: white;
+.menu__button {
+  flex-basis: 33.33%;
+  display: flex;
+  align-items: center;
+  margin-left: $margin-4;
+  font-size: clamp($font-size-sm, 2vw, $font-size-md);
 }
 
+.menu__button path {
+  fill: $color-white;
+}
+
+.siteTitle {
+  flex-basis: 66.66%;
+  text-align: center;
+  text-transform: uppercase;
+  h1 {
+    font-size: clamp($font-size-sm, 2vw, $font-size-lg);
+  }
+}
+
+.siteTitleLink {
+  color: inherit;
+  transition: all $transition-duration $transition-ease-in-out;
+
+  &:hover {
+    color: $color-amber-400;
+  }
+}
+
+.contactLinks {
+  flex-basis: 33.33%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  line-height: 0;
+  visibility: hidden;
+
+  @media (min-width: 640px) {
+    visibility: visible;
+  }
+}
+
+.contactLinkItem {
+  margin: $margin-4;
+  transition: all $transition-duration $transition-ease-in-out;
+
+  &:hover {
+    color: $color-amber-400;
+  }
+}
+
+.list_ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-4;
+  backdrop-filter: blur($blur-md);
+  background-color: $color-slate-700;
+}
+
+.listItem {
+  color: $color-white;
+
+  &:hover {
+    color: $color-amber-400;
+  }
+}

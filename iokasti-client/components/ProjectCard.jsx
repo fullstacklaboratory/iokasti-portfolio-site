@@ -21,6 +21,7 @@ const ProjectCard = ({
   range,
   targetScale,
 }) => {
+  
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -45,8 +46,8 @@ const ProjectCard = ({
         }}
         className={styles.card}
       >
-        <a href={`/projects/${slug}`}>
-          <h2>{title}</h2>
+        <a href={`/${category}s/${slug}`}>
+          <h3>{title}</h3>
           <div className={styles.body}>
             <div className={styles.description}>
               <p>{useLimitString(description, 220)}</p>

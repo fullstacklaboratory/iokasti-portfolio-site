@@ -1,17 +1,12 @@
+// Define your breakpoints
+$breakpoint-medium: 650px;
+
 .card_container {
   margin-top: clamp(49vh, 80vw, 100vh);
-  // margin-bottom: 50vh;
 }
 
-// @media screen and (min-width: 431px) {
-//   margin-top: clamp(40vh, 80vw, 100vh);
-// }
-
-
-@media screen and (min-width: 650px) and (orientation: landscape) { 
+@media screen and (min-width: $breakpoint-medium) and (orientation: landscape) {
   .card_container {
     margin-top: clamp(49vh, 36vw, 100vh);
-    // margin-bottom: 50vh;
   }
-
 }

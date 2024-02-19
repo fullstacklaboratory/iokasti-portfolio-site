@@ -14,7 +14,7 @@ const truncate = (str, n) => {
 
 const Instagram = ({ entries }) => {
   const container = useRef(null);
-  const { height } = useDimensions();
+  const { height, width } = useDimensions();
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -41,10 +41,10 @@ const Instagram = ({ entries }) => {
     <>
       <div className={`${styles.spacer}`}> </div>
       <section ref={container} className={styles.image_gallery}>
-        <Column entries={entries.slice(0, 5)} y={y} />
-        <Column entries={entries.slice(5, 10)} y={y2} />
-        <Column entries={entries.slice(10, 15)} y={y3} />
-        <Column entries={entries.slice(15, 20)} y={y4} />
+        <Column entries={entries.slice(0, 5)} y={width <= 768 ? y : y} />
+        <Column entries={entries.slice(5, 10)} y={width <= 768 ? y4 : y2} />
+        <Column entries={entries.slice(10, 15)} y={width <= 768 ? y : y3} />
+        <Column entries={entries.slice(15, 20)} y={width <= 768 ? y4 : y4} />
       </section>
       <div className={`${styles.spacer}`}> </div>
     </>
@@ -60,7 +60,7 @@ const Column = ({ entries, y = 0 }) => {
             <div className={styles.overlay_text}>
               <h3>{entry.entryTitle}</h3>
               <p>{truncate(entry.entryDescription, 180)}</p>
-              <p>{entry.entryDate}</p>
+              {/* <p>{entry.entryDate}</p> */}
             </div>
           </div>
           <Image
