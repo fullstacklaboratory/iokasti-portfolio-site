@@ -5,15 +5,22 @@
   height: clamp(60vh, 80vw, 100vh);
   display: flex;
   align-items: flex-end;
-
   color: #fafafa;
   padding: 0 clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 4rem)
     clamp(1rem, 3vw, 4rem);
+
   h2.banner {
     display: none;
     width: 100%;
   }
-
+  .swiper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
   @media screen and (min-width: 431px) {
     height: 100vh;
     align-items: center;
@@ -60,5 +67,4 @@
     width: 45%;
     margin: 0 auto;
   }
-
 }

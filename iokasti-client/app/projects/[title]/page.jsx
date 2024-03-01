@@ -1,5 +1,6 @@
 import { getProject, getSlugsForProjects } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
+import ProjectsImagesCard from "@/components/ProjectsImagesCard";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
 import { useLimitString } from "@/hooks/useLimitString";
@@ -14,6 +15,7 @@ export async function generateStaticParams() {
 
 const ProjectPage = async ({ params }) => {
   const content = await getProject(params.title);
+  // console.log(content.images)
   const { mime, url, alternativeText, width, height } =
     content.images[0].attributes;
   const date = content.ending_date;
@@ -21,17 +23,20 @@ const ProjectPage = async ({ params }) => {
   return (
     <>
       <section className={styles.header}>
+        <ProjectsImagesCard images={content.images} />
+        {/* 
         <BannerImageOrVideo
           mime={mime}
           src={CMS_URL + url}
           alt={alternativeText}
           width={width}
           height={height}
-        />
+        /> */}
         <h2 className={styles.banner} title={content.title}>
           {useLimitString(content.title, 20)}
         </h2>
       </section>
+      <ProjectsImagesCard images={content.images} />
       <AboutContent content={content} />
     </>
   );
