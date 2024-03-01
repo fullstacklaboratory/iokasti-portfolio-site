@@ -12,7 +12,7 @@ export const getNotebookPage = async () => {
       populate: {
         notebookEntry: {
           populate: {
-            image: { fields: ["width", "height", "url", "alternativeText"] },
+            image: { fields: ["width", "height", "url", "mime", "alternativeText"] },
           },
         },
       },

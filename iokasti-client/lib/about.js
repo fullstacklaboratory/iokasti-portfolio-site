@@ -21,6 +21,7 @@ export const getAbout = async () => {
     title: attributes.title,
     body: marked(attributes.artistic_statement),
     images: attributes.banner_image_or_video.data,
-    cv: attributes.cv.data,
+    cv: attributes.cv.data
   };
 };
+
