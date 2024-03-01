@@ -4,7 +4,7 @@ import "./globals.scss";
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata
 export const metadata = {
-  title: { default: "Iokasti Zografou", template: "%s | Dancer" },
+  title: { default: "Iokasti Zografou", template: "%s | Iokasti Zografou" },
   description: "Personal website for the performer, dancer and trainer Iokasti",
   keywords: [
     "Dancing",

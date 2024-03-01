@@ -78,7 +78,7 @@ export const getNewsData = async () => {
   const response = await fetch(url);
   const { data } = await response.json();
   return data.map(({ attributes }) => ({
-    title: attributes.Title,
+    title: attributes.title,
     starting_date: attributes.starting_date,
     ending_date: attributes.ending_date,
     slug : attributes.slug
