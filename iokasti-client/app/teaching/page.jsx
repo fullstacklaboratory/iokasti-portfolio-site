@@ -8,7 +8,7 @@ import { AiOutlineLink } from "react-icons/ai";
 
 const Teaching = async () => {
   const content = await getTeachings();
-  console.log(content);
+
   return (
     <div>
       <h1>Teaching</h1>

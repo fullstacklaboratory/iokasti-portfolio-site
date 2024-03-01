@@ -18,16 +18,16 @@ const itemVariants = {
 };
 
 const NavBar = ({ navData, newsData }) => {
-  //check news data heigth and change menu height accordingly
+  //check news data height and change menu height accordingly
 
   const [showMenu, setShowMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   if (!navData.error) {
     return (
       <motion.nav initial={false} animate={isOpen ? "open" : "closed"}>
-        <motion.div className="flex flex-row justify-between items-center text-white w-full border-b border-b-white bg-slate-700/30 hover:bg-slate-700/90 transition duration-300 ease-in-out backdrop-blur-sm h-[7vh]">
+        <motion.div className={styles.navBar}>
           <motion.button
-            className={`${styles.menu__button} basis-1/3 flex items-center ml-4 text-sm sm:text-md`}
+            className={styles.menu__button}
             whileTap={{ scale: 0.97 }}
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -47,15 +47,13 @@ const NavBar = ({ navData, newsData }) => {
             </motion.div>
           </motion.button>
 
-          <div className="basis-2/3 sm:basis-1/3">
-            <h1
-              className={`text-center uppercase text-sm sm:text-base md:text-lg`}
-            >
+          <div className={styles.siteTitle}>
+            <h1>
               <Link
                 onClick={() => setIsOpen(false)}
                 aria-label="Site Title - Navigate to Home"
                 href="/"
-                className={`${textHoverColor} transition duration-150 ease-in-out `}
+                className={styles.siteTitleLink}
               >
                 {navData.siteTitle}
               </Link>
@@ -63,11 +61,9 @@ const NavBar = ({ navData, newsData }) => {
           </div>
           <ul
             aria-label="Contact and social links"
-            className="basis-1/3 flex flex-row flex-wrap justify-end leading-[0rem] invisible sm:visible"
+            className={styles.contactLinks}
           >
-            <li
-              className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
-            >
+            <li className={styles.contactLinkItem}>
               <Link
                 aria-label={`Send an email to ${navData.siteTitle}`}
                 href={`mailto: ${navData.email}`}
@@ -76,9 +72,7 @@ const NavBar = ({ navData, newsData }) => {
                 <FiMail />
               </Link>
             </li>
-            <li
-              className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
-            >
+            <li className={styles.contactLinkItem}>
               <a
                 href={navData.instagram}
                 aria-label="Open Instagram on a new tab"
@@ -88,9 +82,7 @@ const NavBar = ({ navData, newsData }) => {
                 <FiInstagram />
               </a>
             </li>
-            <li
-              className={`${textHoverColor} m-4 hover:text-amber-400 transition duration-150 ease-in-out`}
-            >
+            <li className={styles.contactLinkItem}>
               <a
                 href={navData.vimeo}
                 aria-label="Open Vimeo on a new tab"
@@ -104,7 +96,7 @@ const NavBar = ({ navData, newsData }) => {
         </motion.div>
 
         <motion.ul
-          className={`${styles.list_ul} flex flex-col justify-center items-center gap-4 backdrop-blur-sm  bg-slate-700/30`}
+          className={styles.list_ul}
           onClick={() => setIsOpen(!isOpen)}
           variants={{
             open: {
@@ -137,52 +129,52 @@ const NavBar = ({ navData, newsData }) => {
         >
           <motion.li
             variants={itemVariants}
-            className={`${textHoverColor} text-white `}
+            className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
             <Link href="/">Home</Link>
           </motion.li>
           <motion.li
             variants={itemVariants}
-            className={`${textHoverColor} text-white `}
+            className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
             <Link href="/about">About</Link>
           </motion.li>
           <motion.li
             variants={itemVariants}
-            className={`${textHoverColor} text-white `}
+            className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
             <Link href="/projects">Projects</Link>
           </motion.li>
           <motion.li
             variants={itemVariants}
-            className={`${textHoverColor} text-white`}
+            className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
-            <Link href="/collabs">Collaborations</Link>
+            <Link href="/collaborations">Collaborations</Link>
           </motion.li>
-          <motion.li
+          {/* <motion.li
             variants={itemVariants}
-            className={`${textHoverColor} text-white `}
+            className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
             <Link href="/news">News</Link>
-          </motion.li>
-          <motion.li
+          </motion.li> */}
+          {/* <motion.li
             variants={itemVariants}
-            className={`${textHoverColor} text-white `}
+            className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
             <Link href="/teaching">Teaching</Link>
-          </motion.li>
+          </motion.li> */}
           <motion.li
             variants={itemVariants}
-            className={`${textHoverColor} text-white `}
+            className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
-            <Link href="/notebook">Notebook</Link>
+            <Link href="/notebook">Memories</Link>
           </motion.li>
         </motion.ul>
       </motion.nav>
