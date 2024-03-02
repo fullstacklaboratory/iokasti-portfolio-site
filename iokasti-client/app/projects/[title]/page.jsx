@@ -23,15 +23,15 @@ const ProjectPage = async ({ params }) => {
   return (
     <>
       <section className={styles.header}>
-        <ProjectsImagesCard images={content.images} />
-        {/* 
+        {/* <ProjectsImagesCard images={content.images} /> */}
+        
         <BannerImageOrVideo
           mime={mime}
           src={CMS_URL + url}
           alt={alternativeText}
           width={width}
           height={height}
-        /> */}
+        />
         <h2 className={styles.banner} title={content.title}>
           {useLimitString(content.title, 20)}
         </h2>

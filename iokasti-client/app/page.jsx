@@ -11,6 +11,7 @@ export default async function Home() {
   const data = await getLandingPage();
   const news = await getNewsData();
   const landingPageData = data.data.attributes;
+  const bannerVideo = landingPageData.video.data[0].attributes;
 
   if (!data.error) {
     return (
@@ -34,16 +35,16 @@ export default async function Home() {
                 background="true"
               >
                 <source
-                  src={CMS_URL + landingPageData.video.data[0].attributes.url}
-                  alt={landingPageData.video.data[0].attributes.alternativeText}
-                  type="video/webm"
+                  src={CMS_URL + bannerVideo.url}
+                  alt={bannerVideo.alternativeText}
+                  type={bannerVideo.mime    }
                 />
                 Your browser does not support videos. Please use a modern
                 browser.
               </video>
-              <h2 className="text-5xl col-start-2 col-span-4 row-start-5 self-end ">
+              {/* <h2 className="text-5xl col-start-2 col-span-4 row-start-5 self-end ">
                 Who's Iokasti?
-              </h2>
+              </h2> */}
             </Suspense>
           </section>
           {/* DONT DELETE THIS!!! */}
