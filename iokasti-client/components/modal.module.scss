@@ -1,0 +1,30 @@
+@import "@/app/variables.scss";
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    // background-color: rgba(0, 0, 0, 0.5);
+    background-color: $color-slate-700;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    backdrop-filter: blur(5px);
+
+
+  }
+
+  .modal {
+    max-width: 20%;
+  }
+
+  
+  .modal img {
+    width: 100%;
+
+  }
