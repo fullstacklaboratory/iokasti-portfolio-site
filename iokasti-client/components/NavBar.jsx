@@ -174,7 +174,7 @@ const NavBar = ({ navData, newsData }) => {
             className={styles.listItem}
             onClick={() => setIsOpen(!isOpen)}
           >
-            <Link href="/notebook">Memories</Link>
+            <Link href="/notebook">Pelagos</Link>
           </motion.li>
         </motion.ul>
       </motion.nav>

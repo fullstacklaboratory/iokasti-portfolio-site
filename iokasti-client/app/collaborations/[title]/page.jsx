@@ -12,6 +12,8 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+
+
 const ProjectPage = async ({ params }) => {
   const content = await getProject(params.title);
   const { mime, url, alternativeText, width, height } =

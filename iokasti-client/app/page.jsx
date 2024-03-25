@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { getLandingPage, getNewsData } from "@/lib/landingPage";
 import LoadingAnim from "@/components/LoadingAnim";
 import NewsScroll from "@/components/NewsScroll";
+import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 // Page transition test, pls. don't delete!
 // import { Transition } from "@/components/Transition";
 
@@ -11,7 +12,7 @@ export default async function Home() {
   const data = await getLandingPage();
   const news = await getNewsData();
   const landingPageData = data.data.attributes;
-  const bannerVideo = landingPageData.video.data[0].attributes;
+  const { mime, url, alternativeText, width, height } = landingPageData.video.data.attributes;
 
   if (!data.error) {
     return (
@@ -27,7 +28,14 @@ export default async function Home() {
                 </div>
               }
             >
-              <video
+              <BannerImageOrVideo
+                mime={mime}
+                src={CMS_URL + url}
+                alt={alternativeText}
+                width={width}
+                height={height}
+              />
+              {/* <video
                 className="banner-video col-start-1 col-end-13 row-span-full"
                 autoPlay
                 loop
@@ -37,11 +45,11 @@ export default async function Home() {
                 <source
                   src={CMS_URL + bannerVideo.url}
                   alt={bannerVideo.alternativeText}
-                  type={bannerVideo.mime    }
+                  type={bannerVideo.mime}
                 />
                 Your browser does not support videos. Please use a modern
                 browser.
-              </video>
+              </video> */}
               {/* <h2 className="text-5xl col-start-2 col-span-4 row-start-5 self-end ">
                 Who's Iokasti?
               </h2> */}

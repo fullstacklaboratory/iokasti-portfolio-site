@@ -1,4 +1,4 @@
-//PROJECTS
+//PROJECTS LIST PAGE
 
 import { getProjects, getProjectPage } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";

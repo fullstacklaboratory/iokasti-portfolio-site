@@ -13,21 +13,24 @@ const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 const About = async () => {
   const content = await getAbout();
+  const { mime, url, alternativeText, width, height } =
+    content.images && content.images.attributes
+      ? content.images.attributes
+      : {};
 
   return (
     <>
       <section className={styles.header}>
         <BannerImageOrVideo
-          mime={content.images.attributes.mime}
-          src={CMS_URL + content.images.attributes.url}
-          alt={content.images.attributes.alternativeText}
-          width={content.images.attributes.width}
-          height={content.images.attributes.height}
+          mime={mime}
+          src={CMS_URL + url}
+          alt={alternativeText}
+          width={width}
+          height={height}
         />
         <h2 className={styles.banner}>{content.title}</h2>
       </section>
       <AboutContent content={content} />
-
     </>
   );
 };
