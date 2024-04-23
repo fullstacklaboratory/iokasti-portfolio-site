@@ -1,17 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import "./teaching.module.scss"
+import "./teaching.module.scss";
 
 import { getTeachings } from "@/lib/teaching";
 import { AiOutlineLink } from "react-icons/ai";
 
 const Teaching = async () => {
-  const content = await getTeachings();
+  // const content = await getTeachings();
 
   return (
     <div>
-      <h1>Teaching</h1>
+      {/* <h1>Teaching</h1>
       <ul>
         {content.map((item, i) => {
           return (
@@ -74,7 +74,8 @@ const Teaching = async () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
+      Test
     </div>
   );
 };

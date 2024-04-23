@@ -4,14 +4,30 @@ import ProjectsImagesCard from "@/components/ProjectsImagesCard";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
 import { useLimitString } from "@/hooks/useLimitString";
+// import { Metadata } from "next";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
-export async function generateStaticParams() {
+export const generateMetadata = async ({ params }) => {
+  const content = await getProject(params.title);
+  const { mime, url, alternativeText } = content.images[0].attributes;
+
+  return {
+    title: content.title,
+    description: content.description,
+    openGraph: {
+      title: content.title,
+      // description: content.description,
+      images: [`${CMS_URL}${url}`],
+    },
+  };
+};
+
+export const generateStaticParams = async () => {
   // this will generate all the reviews paths on build. That means we don't have to rerender dynamic path component again
   const slugs = await getSlugsForProjects();
   return slugs.map((slug) => ({ slug }));
-}
+};
 
 const ProjectPage = async ({ params }) => {
   const content = await getProject(params.title);
