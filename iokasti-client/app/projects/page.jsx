@@ -1,15 +1,27 @@
-//PROJECTS LIST PAGE
-
-import { getProjects, getProjectPage } from "@/lib/projects";
+import { getProjectsByCategory, getProjectPage } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/projects/projects.module.scss";
 import ProjectPageSection from "@/components/ProjectPageSection";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
+export const metadata = {
+  title: "Projects",
+  description:
+    "Explore the dynamic projects of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+  alternates: { canonical: `/projects` },
+  keywords: "projects, iokasti, mantzog, performer, dancer, trainer",
+  openGraph: {
+    title: "Projects",
+    description:
+      "Explore the dynamic projects of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+    images: [`/public/opengraph-image.jpg`],
+  },
+};
+
 const Projects = async () => {
   const header = await getProjectPage();
-  const projects = await getProjects();
+  const projects = await getProjectsByCategory("project");
   const { mime, url, alternativeText, width, height } =
     header.banner[0].attributes;
 

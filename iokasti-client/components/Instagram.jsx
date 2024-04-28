@@ -39,8 +39,15 @@ const Instagram = ({ entries }) => {
     setWindowHeight(window.innerHeight);
   }, [imagesLoaded]);
 
-  const openModal = useCallback((url, alt, width, height, description) => {
-    setModalContent({ url, alt, width, height, description });
+  const openModal = useCallback((entry) => {
+    const { entryImage, entryAlternativeText, entryImageWidth, entryImageHeight, entryDescription } = entry;
+    setModalContent({
+      url: CMS_URL + entryImage,
+      alt: entryAlternativeText,
+      width: entryImageWidth,
+      height: entryImageHeight,
+      description: entryDescription
+    });
   }, []);
 
   const closeModal = useCallback(() => {
@@ -99,36 +106,22 @@ const Column = ({ entries, y = 0, openModal }) => {
     <motion.div style={{ y }} className={styles.gallery_column}>
       {entries.map((entry, index) => (
         <div
-          key={index}
+          key={index} // use uuid for unique key
           className={styles.imageContainer}
-          onClick={() =>
-            openModal(
-              CMS_URL + entry.entryImage,
-              entry.entryAlternativeText,
-              entry.entryImageWidth,
-              entry.entryImageHeight,
-              entry.entryDescription
-            )
-          }
+          onClick={() => openModal(entry)}
+          role="button" // Add role="button" for accessibility
+          tabIndex={0} // Add tabIndex={0} for keyboard accessibility
+          aria-label={entry.entryTitle} // Add aria-label for accessibility
         >
           <div className={styles.overlay}>
-            <div
-              className={styles.overlay_text}
-              role="button" // Add role="button" for accessibility
-              tabIndex={0} // Add tabIndex={0} for keyboard accessibility
-            >
-              <h3>{entry.entryTitle}</h3>
-              {/* {entry.entryDescription && (
-                <p>{useLimitString(entry.entryDescription, 180)}</p>
-              )} */}
-              {/* <p>{entry.entryDate}</p> */}
+            <div className={styles.overlay_text}>
+              {entry.entryTitle && <h3>{entry.entryTitle}</h3>}
             </div>
           </div>
           {entry.entryMime.startsWith("video/") ? (
             <video
               src={CMS_URL + entry.entryImage}
               alt={entry.entryAlternativeText}
-              // autoPlay
               loop
               muted
               background="true"

@@ -10,6 +10,17 @@ $desktop-margin: 2rem;
 
 body {
   background-color: $color-slate-900;
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-error;
+    text-align: center;
+    padding: 4rem;
+    h1 {
+      font-size: 2rem;
+    }
+  }
 }
 
 header {

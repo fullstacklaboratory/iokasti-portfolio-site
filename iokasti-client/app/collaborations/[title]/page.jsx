@@ -3,8 +3,38 @@ import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
 import { useLimitString } from "@/hooks/useLimitString";
+import { notFound } from "next/navigation";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+
+export const generateMetadata = async ({ params }) => {
+  try {
+    const content = await getProject(params.title);
+    const { url } = content.images[0].attributes;
+    if (!content)
+      return {
+        title: "Project not found",
+        description: "This project does not exist",
+      };
+    return {
+      title: content.title,
+      description: content.description,
+      alternates: { canonical: `/projects/${content.slug}` },
+      keywords: "projects, iokasti, collaborations",
+      openGraph: {
+        title: content.title,
+        description: content.description,
+        images: [`${CMS_URL}${url}`],
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      title: "Project not found",
+      description: "This project does not exist",
+    };
+  }
+};
 
 export async function generateStaticParams() {
   // this will generate all the reviews paths on build. That means we don't have to rerender dynamic path component again
@@ -12,10 +42,10 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-
-
 const ProjectPage = async ({ params }) => {
   const content = await getProject(params.title);
+  if (!content) return notFound();
+  const limitedTitle = useLimitString(content.title, 20);
   const { mime, url, alternativeText, width, height } =
     content.images[0].attributes;
   const date = content.ending_date;
@@ -31,7 +61,7 @@ const ProjectPage = async ({ params }) => {
           height={height}
         />
         <h2 className={styles.banner} title={content.title}>
-          {useLimitString(content.title, 20)}
+          {limitedTitle}
         </h2>
       </section>
       <AboutContent content={content} />

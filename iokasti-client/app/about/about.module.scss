@@ -6,13 +6,13 @@
   display: flex;
   align-items: flex-end;
   color: #fafafa;
-  padding: 0 clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 4rem)
-    clamp(1rem, 3vw, 4rem);
+  padding: 0 clamp(1rem, 3vw, 4rem);
 
   h2.banner {
     display: none;
     width: 100%;
   }
+
   .swiper {
     width: 100vw;
     height: 100vh;
@@ -21,20 +21,36 @@
     left: 0;
     right: 0;
   }
+
   @media screen and (min-width: 431px) {
     height: 100vh;
     align-items: center;
+  }
 
+  @media screen and (min-width: 540px) {
     h2.banner {
-      transform: translateX(-50%) translateY(5vh) rotate(-90deg);
+      display: block;
+      transform: translateX(-45%) translateY(5vh) rotate(-90deg);
       width: 70vh;
       text-align: center;
     }
   }
 
-  @media screen and (min-width: 741px) {
+  @media screen and (min-width: 812px) and (orientation: landscape) {
     h2.banner {
-      display: block;
+      transform: translateX(-30%) translateY(5vh) rotate(-90deg);
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (orientation: landscape) {
+    h2.banner {
+      transform: translateX(-45%) translateY(5vh) rotate(-90deg);
+    }
+  }
+
+  @media screen and (min-width: 1368px) and (orientation: landscape) {
+    h2.banner {
+      transform: translateX(-50%) translateY(5vh) rotate(-90deg);
     }
   }
 }
@@ -43,9 +59,7 @@
   position: absolute;
   top: clamp(52vh, 80vw, 100vh);
   color: #fafafa;
-  padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem)
-    clamp(2rem, 4vw, 4rem);
-
+  padding: clamp(2rem, 4vw, 4rem);
   margin: 3rem auto;
   font-size: clamp(1rem, 2vw, 1.5rem);
   line-height: 1.5;
@@ -54,17 +68,14 @@
   backdrop-filter: blur(5px);
   border-radius: 30px 30px 0 0;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+
   img {
     margin-top: clamp(1rem, 3vw, 3rem);
   }
 
   @media screen and (min-width: 431px) {
-    h2.banner {
-      display: none;
-    }
     top: clamp(20vh, 65vh, 80vh);
     right: clamp(2rem, 3vw, 4rem);
     width: 45%;
-    margin: 0 auto;
   }
 }

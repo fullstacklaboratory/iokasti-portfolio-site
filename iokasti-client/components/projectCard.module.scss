@@ -1,5 +1,5 @@
 .cardContainer {
-  height: 80vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,13 +69,42 @@
       .imageContainer {
         position: relative;
         width: 100%;
-        height: 250px;
+        height: 50%;
         border-radius: 25px;
         overflow: hidden;
 
+        .inner {
+          width: 100%;
+          height: 100%;
+        }
+
         img {
+          height: 100%;
           object-fit: cover;
-          height: 250px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 520px) {
+    height: 100vh;
+
+    .card {
+      height: 80vh;
+      width: 85vw;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .card {
+      height: 60vh;
+      width: 70vw;
+      padding: 50px;
+
+      .body {
+        .description,
+        .imageContainer {
+          width: 50%;
         }
       }
     }
@@ -92,14 +121,8 @@
       padding: clamp(1rem, 4vw, 2rem);
       background-color: rgba(163, 163, 163, 0.212);
 
-      h3 {
-        font-size: clamp(1rem, 3vw, 2rem);
-      }
-
       .body {
-        display: flex;
         flex-direction: row;
-        height: 70%;
         margin-top: clamp(0.75rem, 2vw, 1rem);
         gap: 20px;
         align-items: center;
@@ -109,46 +132,29 @@
         }
 
         .imageContainer {
-          width: 40%;
-
-          .inner {
-            width: 100%;
-            height: 100%;
-          }
-
-          img {
-            height: 100%;
-          }
+          width: 30%;
+          height: 80%;
         }
       }
     }
   }
 
-  @media screen and (min-width: 1024px) {
-    height: 100vh;
-
+  @media screen and (min-width: 1024px) and (orientation: landscape) {
     .card {
-      height: 60vh;
-      width: 60vw;
-      padding: 50px;
-
-      h3 {
-        font-size: clamp(1rem, 3vw, 2rem);
-      }
+      width: 75vw;
 
       .body {
-        height: 70%;
-        margin-top: 50px;
-        gap: 50px;
-
-        .description {
-          width: 50%;
-        }
-
+        .description,
         .imageContainer {
           width: 50%;
         }
       }
+    }
+  }
+
+  @media screen and (min-width: 1490px) and (orientation: landscape) {
+    .card {
+      width: 55vw;
     }
   }
 }

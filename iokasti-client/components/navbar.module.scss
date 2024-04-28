@@ -1,17 +1,5 @@
 @import "@/app/variables.scss";
 
-.list_ul li {
-  font-size: clamp($font-size-sm, -0.875rem + 8.333vw, $font-size-2xl);
-  @media screen and (orientation: landscape) and (max-width: 932px) {
-    font-size: clamp($font-size-sm, -0.875rem + 6vw, $font-size-lg);
-  }
-  list-style: none;
-  margin: 0;
-  a {
-    margin: 0;
-  }
-}
-
 .navBar {
   display: flex;
   flex-direction: row;
@@ -28,62 +16,69 @@
   &:hover {
     background-color: $color-navbar-hover;
   }
-}
 
-.menu__button {
-  flex-basis: 33.33%;
-  display: flex;
-  align-items: center;
-  margin-left: $margin-4;
-  font-size: clamp($font-size-sm, 2vw, $font-size-md);
-}
+  .menu__button {
+    flex-basis: 33.33%;
+    display: flex;
+    align-items: center;
+    margin-left: $margin-4;
+    font-size: clamp($font-size-sm, 2vw, $font-size-md);
 
-.menu__button path {
-  fill: $color-white;
-}
-
-.siteTitle {
-  flex-basis: 66.66%;
-  text-align: center;
-  text-transform: uppercase;
-  h1 {
-    font-size: clamp($font-size-sm, 2vw, $font-size-lg);
+    path {
+      fill: $color-white;
+    }
   }
-}
 
-.siteTitleLink {
-  color: inherit;
-  transition: all $transition-duration $transition-ease-in-out;
+  .siteTitle {
+    flex-basis: 66.66%;
+    text-align: center;
+    text-transform: uppercase;
 
-  &:hover {
-    color: $color-amber-400;
+    h1 {
+      font-size: clamp($font-size-sm, 2vw, $font-size-lg);
+    }
   }
-}
 
-.contactLinks {
-  flex-basis: 33.33%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  line-height: 0;
-  visibility: hidden;
+  .siteTitleLink {
+    color: inherit;
+    transition: all $transition-duration $transition-ease-in-out;
 
-  @media (min-width: 640px) {
-    visibility: visible;
+    &:hover {
+      color: $color-amber-400;
+    }
   }
-}
 
-.contactLinkItem {
-  margin: $margin-4;
-  transition: all $transition-duration $transition-ease-in-out;
+  .contactLinks {
+    flex-basis: 33.33%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    line-height: 0;
+    visibility: hidden;
 
-  &:hover {
-    color: $color-amber-400;
+    @media (min-width: 640px) {
+      visibility: visible;
+    }
+  }
+
+  .contactLinkItem {
+    margin: $margin-4;
+    transition: all $transition-duration $transition-ease-in-out;
+
+    &:hover {
+      color: $color-amber-400;
+    }
   }
 }
 
 .list_ul {
+  font-size: clamp($font-size-sm, -0.875rem + 8.333vw, $font-size-2xl);
+  @media screen and (orientation: landscape) and (max-width: 932px) {
+    font-size: clamp($font-size-sm, -0.875rem + 6vw, $font-size-lg);
+  }
+  list-style: none;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,12 +86,18 @@
   gap: $gap-4;
   backdrop-filter: blur($blur-md);
   background-color: $color-slate-700;
-}
 
-.listItem {
-  color: $color-white;
+  li {
+    a {
+      margin: 0;
+    }
+  }
 
-  &:hover {
-    color: $color-amber-400;
+  .listItem {
+    color: $color-white;
+
+    &:hover {
+      color: $color-amber-400;
+    }
   }
 }

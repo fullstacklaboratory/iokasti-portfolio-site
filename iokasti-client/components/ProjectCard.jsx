@@ -28,6 +28,7 @@ const ProjectCard = ({
     offset: ["start end", "start start"],
   });
   const { width, height } = useDimensions();
+  const useLimitDescription = useLimitString(description, 160)
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
@@ -50,7 +51,7 @@ const ProjectCard = ({
           <h3>{title}</h3>
           <div className={styles.body}>
             <div className={styles.description}>
-              <p>{useLimitString(description, 220)}</p>
+              <p>{useLimitDescription}</p>
               <span>
                 Read more
                 <svg

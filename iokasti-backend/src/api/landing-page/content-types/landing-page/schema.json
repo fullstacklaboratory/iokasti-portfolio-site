@@ -13,13 +13,16 @@
   "pluginOptions": {},
   "attributes": {
     "vimeo_link": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "instagram_link": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true
     },
     "video": {
       "type": "media",
@@ -30,7 +33,9 @@
       ]
     },
     "site_name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "maxLength": 120
     },
     "sections": {
       "type": "dynamiczone",
