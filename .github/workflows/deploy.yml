@@ -24,18 +24,18 @@ jobs:
           set -x
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} <<EOF
             set -x
-            cd /var/www/iokasti
+            cd ~/websites/iokasti
             git pull
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use
-            cd /var/www/iokasti/iokasti-backend
+            cd ~/websites/iokasti/iokasti-backend
             npm install
             npm run build
-            cd /var/www/iokasti/iokasti-client
+            cd ~/websites/iokasti/iokasti-client
             npm install
             npm run build
-            cd /var/www/iokasti
+            cd ~/websites/iokasti
             pm2 reload ecosystem.config.js
             pm2 save
           EOF
