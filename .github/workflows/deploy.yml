@@ -27,6 +27,7 @@ jobs:
             git pull
             nvm install
             nvm use
+            cd ~/websites/iokasti/iokasti-backend
             npm install
             npm run build
             cd ~/websites/iokasti/iokasti-client
