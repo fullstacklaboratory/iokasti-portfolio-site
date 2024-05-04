@@ -26,7 +26,6 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} <<'EOF'
-            [ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"
             cd ~/websites/iokasti
             git pull
             nvm install
