@@ -38,4 +38,4 @@ jobs:
             cd ~/websites/iokasti
             pm2 reload ecosystem.config.js
             pm2 save
-          EOF
+          "
