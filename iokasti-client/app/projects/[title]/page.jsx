@@ -44,31 +44,38 @@ export const generateStaticParams = async () => {
 };
 
 const ProjectPage = async ({ params }) => {
-  const content = await getProject(params.title);
-  if (!content) return notFound();
-  const limitedTitle = useLimitString(content.title, 20);
-  const { mime, url, alternativeText, width, height } =
-    content.images[0].attributes;
-  const date = content.ending_date;
+  try {
+    const content = await getProject(params.title);
+    if (!content) {
+      throw new Error("No data received from CMS");
+    }
+    const limitedTitle = useLimitString(content.title, 20);
+    const { mime, url, alternativeText, width, height } =
+      content.images[0]?.attributes;
+    const date = content.ending_date;
 
-  return (
-    <>
-      <section className={styles.header}>
-        <BannerImageOrVideo
-          mime={mime}
-          src={CMS_URL + url}
-          alt={alternativeText}
-          width={width}
-          height={height}
-        />
-        <h2 className={styles.banner} title={content.title}>
-          {limitedTitle}
-        </h2>
-      </section>
-      {/* <ProjectsImagesCard images={content.images} /> */}
-      <AboutContent content={content} />
-    </>
-  );
+    return (
+      <>
+        <section className={styles.header}>
+          <BannerImageOrVideo
+            mime={mime}
+            src={CMS_URL + url}
+            alt={alternativeText}
+            width={width}
+            height={height}
+          />
+          <h2 className={styles.banner} title={content.title}>
+            {limitedTitle}
+          </h2>
+        </section>
+        {/* <ProjectsImagesCard images={content.images} /> */}
+        <AboutContent content={content} />
+      </>
+    );
+  } catch (error) {
+    console.error(`Error in ProjectPage: ${error.message}`);
+    return notFound();
+  }
 };
 
 export default ProjectPage;
