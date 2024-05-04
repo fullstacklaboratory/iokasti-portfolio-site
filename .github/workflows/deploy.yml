@@ -19,11 +19,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "install-nvm"
-
       - name: Deploy to server
         run: |
           set -x
