@@ -19,6 +19,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
 
+      - name: Install Node.js
+        uses: dcodeIO/setup-node-nvm@master
+
+
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} <<'EOF'
