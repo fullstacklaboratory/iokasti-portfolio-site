@@ -24,6 +24,7 @@ jobs:
           set -x
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} <<EOF
             set -x
+            nvm --version
             cd ~/websites/iokasti
             git pull
             export NVM_DIR="/home/mrcll/.nvm"
