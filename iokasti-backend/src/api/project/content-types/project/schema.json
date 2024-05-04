@@ -14,7 +14,8 @@
   "attributes": {
     "description": {
       "type": "text",
-      "required": true
+      "required": true,
+      "maxLength": 160
     },
     "starting_date": {
       "type": "date",

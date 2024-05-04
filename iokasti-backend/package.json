@@ -2,7 +2,7 @@
   "name": "iokaste-backend",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "iokaste-backend strapi",
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",
@@ -17,7 +17,7 @@
     "better-sqlite3": "8.6.0"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "fullstacklaboratory.dev"
   },
   "strapi": {
     "uuid": "6ff1da34-0a1b-4992-ac11-623bcfc8d51d"

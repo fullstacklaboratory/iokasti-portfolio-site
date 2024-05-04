@@ -15,15 +15,15 @@ const AboutContent = (content) => {
     requestAnimationFrame(raf);
   }, []);
 
-  useEffect(() => {
-    // Apply styles or additional logic after the content is loaded
-    const imgElements = document.querySelectorAll('.content > img');
+  // useEffect(() => {
+  //   // Apply styles or additional logic after the content is loaded
+  //   const imgElements = document.querySelectorAll('.content > img');
 
-    imgElements.forEach((img) => {
-      img.style.marginTop = '3rem';
-      // Add any other styles you want to apply to the img element
-    });
-  }, [content]);
+  //   imgElements.forEach((img) => {
+  //     img.style.marginTop = '3rem';
+  //     // Add any other styles you want to apply to the img element
+  //   });
+  // }, [content]);
 
   return (
     <article

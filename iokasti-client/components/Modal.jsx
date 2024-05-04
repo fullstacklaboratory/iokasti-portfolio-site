@@ -1,28 +1,62 @@
-import React from 'react';
-import styles from './modal.module.scss';
-import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
+import styles from "./modal.module.scss";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+const backdrop = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+};
 
+const modal = {
+  hidden: { y: "-10vh", opacity: 0 },
+  visible: {
+    y: "0px",
+    opacity: 1,
+    transition: { delay: 0.2, type: "spring", stiffness: 300, damping: 20 },
+  },
+};
 
-const Modal = ({ modalImageUrl, onClose }) => {
-    const handleOverlayClick = (e) => {
-        if (e.target === e.currentTarget) {
-          onClose(); // Close the modal only if the click was on the overlay, not the modal content
-        }
-      };
-    console.log("modal", modalImageUrl)
+const Modal = ({ modalContent, onClose }) => {
+  useEffect(() => {
+    const closeOnEscapeKeyDown = (e) => {
+      if ((e.charCode || e.keyCode) === 27) {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", closeOnEscapeKeyDown);
+
+    return () => window.removeEventListener("keydown", closeOnEscapeKeyDown);
+  }, [onClose]);
+
   return (
-    <div className={styles.overlay} onClick={handleOverlayClick}>
-      <div className={styles.modal}>
-      <Image
-              src={modalImageUrl.url}
-              width={modalImageUrl.width}
-              height={modalImageUrl.height}
-              alt={modalImageUrl.alt}
-            />
-      </div>
-    </div>
+    <AnimatePresence>
+      {modalContent.url && (
+        <motion.div
+          className={styles.backdrop}
+          variants={backdrop}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          onClick={onClose}
+        >
+          <motion.img
+            src={modalContent.url}
+            alt={modalContent.alt}
+            className={styles.modal}
+            variants={modal}
+            layout
+            onClick={(e) => e.stopPropagation()}
+          />
+          {/* <motion.p
+          variants={modal}>
+            {modalContent.description}
+          </motion.p> */}
+          <button className={styles.closeButton} onClick={onClose}>
+            x
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

@@ -722,11 +722,15 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    vimeo_link: Attribute.String;
-    instagram_link: Attribute.String;
-    email: Attribute.Email;
+    vimeo_link: Attribute.String & Attribute.Required;
+    instagram_link: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
     video: Attribute.Media & Attribute.Required;
-    site_name: Attribute.String;
+    site_name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     sections: Attribute.DynamicZone<['home-section.home-sections']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -790,7 +794,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    description: Attribute.Text & Attribute.Required;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 160;
+      }>;
     starting_date: Attribute.Date & Attribute.Required;
     images: Attribute.Media & Attribute.Required;
     title: Attribute.String & Attribute.Required;

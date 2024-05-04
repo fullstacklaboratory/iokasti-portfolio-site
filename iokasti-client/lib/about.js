@@ -2,6 +2,7 @@ import qs from "qs";
 import { marked } from "marked";
 
 const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+export const CMS_ABOUT = "about";
 
 export const getAbout = async () => {
   const url =
@@ -13,7 +14,11 @@ export const getAbout = async () => {
         cv: { fields: ["url"] },
       },
     });
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    next: {
+      tags: [CMS_ABOUT],
+    }
+  });
   const { data } = await response.json();
   const { attributes } = data;
 
@@ -21,7 +26,6 @@ export const getAbout = async () => {
     title: attributes.title,
     body: marked(attributes.artistic_statement),
     images: attributes.banner_image_or_video.data,
-    cv: attributes.cv.data
+    cv: attributes.cv.data,
   };
 };
-

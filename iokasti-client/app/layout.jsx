@@ -2,39 +2,63 @@ import NavBar from "@/components/NavBar";
 import { getNavData, getNewsData } from "@/lib/landingPage";
 import "./globals.scss";
 
-// https://nextjs.org/docs/app/api-reference/file-conventions/metadata
+const PUBLIC_DOMAIN = process.env.NEXT_PUBLIC_ENV_DOMAIN_ADDRESS;
+
 export const metadata = {
-  title: { default: "Iokasti Zografou", template: "%s | Iokasti Zografou" },
-  description: "Personal website for the performer, dancer and trainer Iokasti",
+  metadataBase: new URL(PUBLIC_DOMAIN),
+  canonical: PUBLIC_DOMAIN,
+  title: { default: "Iokasti Mantzog", template: "%s | Iokasti Mantzog" },
+  description:
+    "Experience the mesmerizing artistry of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
   keywords: [
-    "Dancing",
+    "Dancer",
     "Berlin Dancing",
     "Performer",
     "Berlin Performer",
     "Dance classes berlin",
   ],
-  // https://developers.google.com/search/docs/crawling-indexing/special-tags
-  // openGraph : { // Important when you want to display on chat's or facebook etc... (check it out)
-
-  //   url :  "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields"
-  // }
+  openGraph: {
+    title: { default: "Iokasti Mantzog", template: "%s | Iokasti Mantzog" },
+    description:
+      "Experience the mesmerizing artistry of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+    images: [`/public/opengraph-image.jpg`],
+    type: "website",
+    url: PUBLIC_DOMAIN,
+    locale: "en_US",
+  },
 };
 
 export default async function RootLayout({ children }) {
   const navData = await getNavData();
   const news = await getNewsData();
 
-  return (
-    <html lang="en"
-    // className="snap-y snap-mandatory"
-    >
-      <body className="bg-slate-900">
-        <header className="fixed top-0 left-0 right-0 z-10">
-          <NavBar navData={navData} newsData={news} />
-        </header>
+  if (navData.error) {
+    console.error("Failed to fetch navigation data:", navData.error);
+  }
 
-        <main className="min-h-screen absolute top-0 left-0 right-0">{children}</main>
-      </body>
+  if (news.error) {
+    console.error("Failed to fetch news data:", news.error);
+  }
+
+  return (
+    <html lang="en">
+      {!navData.error ? (
+        <body>
+          <header>
+            <NavBar navData={navData} newsData={news} />
+          </header>
+          <main>{children}</main>
+        </body>
+      ) : (
+        <body>
+          <main className="error">
+            <h1>
+              Ups... Server temporarily down. Please check back
+              later!
+            </h1>
+          </main>
+        </body>
+      )}
     </html>
   );
 }
