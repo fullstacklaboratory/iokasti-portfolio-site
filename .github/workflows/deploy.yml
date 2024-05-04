@@ -21,16 +21,8 @@ jobs:
 
       - name: Deploy to server
         run: |
-          set -x
-          export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-          export PATH="$NVM_DIR/versions/node/$(nvm version)/bin:$PATH"
-
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
-            export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-            export PATH="$NVM_DIR/versions/node/$(nvm version)/bin:$PATH"
-
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} <<EOF
+            source ~/.bashrc
             cd ~/websites/iokasti
             git pull
             nvm install
@@ -43,4 +35,4 @@ jobs:
             cd ~/websites/iokasti
             pm2 reload ecosystem.config.js
             pm2 save
-          "
+          EOF
