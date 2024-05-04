@@ -22,10 +22,14 @@ jobs:
       - name: Deploy to server
         run: |
           set -x
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
-            source ~/.bashrc  # or source ~/.bash_profile, or source ~/.zshrc
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}
+            set -x
+            nvm --version
             cd ~/websites/iokasti
             git pull
+            export NVM_DIR="/home/mrcll/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install && nvm use
             npm install
             npm run build
             cd ~/websites/iokasti/iokasti-client
@@ -34,4 +38,3 @@ jobs:
             cd ~/websites/iokasti
             pm2 reload ecosystem.config.js
             pm2 save
-          "
