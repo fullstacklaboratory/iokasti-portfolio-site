@@ -12,7 +12,8 @@ export default async function Home() {
   const data = await getLandingPage();
   const news = await getNewsData();
   const landingPageData = data.data.attributes;
-  const { mime, url, alternativeText, width, height } = landingPageData.video.data.attributes;
+  const { mime, url, alternativeText, width, height } =
+    landingPageData.video.data.attributes;
 
   if (!data.error) {
     return (

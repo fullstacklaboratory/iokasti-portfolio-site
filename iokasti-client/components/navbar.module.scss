@@ -73,6 +73,25 @@
 }
 
 .list_ul {
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: $gap-4;
+
+    a {
+      color: $color-white;
+    }
+
+    svg {
+      width: clamp($font-size-sm, -0.875rem + 8.333vw, $font-size-2xl);
+      height: clamp($font-size-sm, -0.875rem + 8.333vw, $font-size-2xl);
+    }
+
+    @media (min-width: 640px) {
+      display: none;
+    }
+  }
   font-size: clamp($font-size-sm, -0.875rem + 8.333vw, $font-size-2xl);
   @media screen and (orientation: landscape) and (max-width: 932px) {
     font-size: clamp($font-size-sm, -0.875rem + 6vw, $font-size-lg);

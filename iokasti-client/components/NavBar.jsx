@@ -50,6 +50,8 @@ const NavBar = ({ navData, newsData }) => {
       animate={isOpen ? "open" : "closed"}
       role="navigation"
       aria-label="Main Navigation"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
     >
       <motion.div className={styles.navBar}>
         <motion.button
@@ -168,6 +170,7 @@ const NavBar = ({ navData, newsData }) => {
             const key = event.key;
             if (key === "Enter" || key === " ") {
               setIsOpen(!isOpen);
+              window.location.href = "/";
             }
           }}
         >
@@ -267,6 +270,31 @@ const NavBar = ({ navData, newsData }) => {
           }}
         >
           <Link href="/pelagos">Pelagos</Link>
+        </motion.li>
+
+        <motion.li className={styles.socialIcons} variants={itemVariants}>
+          <Link
+            aria-label={`Link to contact ${navData.siteTitle} via email`}
+            href={`mailto: ${navData.email}`}
+            target="_blank"
+          >
+            <FiMail />
+          </Link>
+          <a
+            href={navData.instagram}
+            aria-label={`Link to ${navData.siteTitle}'s Instagram page`}
+            target="_blank"
+          >
+            <FiInstagram />
+          </a>
+          <a
+            href={navData.vimeo}
+            aria-label={`Link to ${navData.siteTitle}'s Vimeo page`}
+            target="_blank"
+          >
+            <TfiVimeo />
+          </a>
+          {/* Add more social icons as needed */}
         </motion.li>
       </motion.ul>
     </motion.nav>
