@@ -8,7 +8,7 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "production":"NODE_ENV=production npm run build && NODE_ENV=production npm run start"
+    "production":"NODE_ENV=production npm run build"
   },
   "devDependencies": {},
   "dependencies": {
