@@ -33,10 +33,11 @@ jobs:
             nvm use
             cd ~/websites/iokasti/iokasti-backend
             npm install
-            npm run build
+            npm run production
             cd ~/websites/iokasti/iokasti-client
             npm install
             npm run build
+            npm run start
             cd ~/websites/iokasti
             pm2 reload ecosystem.config.js
             pm2 save
