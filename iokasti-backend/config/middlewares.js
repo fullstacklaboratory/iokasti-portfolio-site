@@ -12,12 +12,7 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      origin: [
-        "http://localhost:3000",
-        "http://localhost:1337",
-        "http://api.fullstacklaboratory.dev",
-        "https://api.fullstacklaboratory.dev",
-      ],
+      origin: ["http://localhost:3000", "https://iokastimantzog.com"],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: ["Content-Type", "Authorization", "Origin", "Accept"],
       keepHeaderOnError: true,
