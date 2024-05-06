@@ -23,7 +23,7 @@ jobs:
         uses: dcodeIO/setup-node-nvm@master
 
 
-      - name: Deploy to server
+      - name: Deploy to server and reload PM2
         run: |
           ssh -o StrictHostKeyChecking=no -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} <<'EOF'
             [ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"
@@ -37,7 +37,6 @@ jobs:
             cd ~/websites/iokasti/iokasti-client
             npm install
             npm run build
-            cd ~/websites/iokasti
-            pm2 reload ecosystem.config.js
+            pm2 reload ~/websites/iokasti/ecosystem.config.js
             pm2 save
           EOF
