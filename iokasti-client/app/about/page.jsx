@@ -17,7 +17,13 @@ export const metadata = {
     },
 };
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+let CMS_URL;
+
+if (process.env.NODE_ENV === 'development') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
+} else (process.env.NODE_ENV === 'production') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
+}
 
 const About = async () => {
   const content = await getAbout();

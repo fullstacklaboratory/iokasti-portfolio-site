@@ -1,7 +1,7 @@
 import qs from "qs";
 import { CMS_PROJECTS } from "./projects";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+const CMS_URL = process.env.BACKEND;
 export const CMS_LANDING_PAGE = "landing-page";
 
 export const getLandingPage = async () => {

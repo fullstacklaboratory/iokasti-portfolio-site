@@ -6,7 +6,15 @@ import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 // Page transition test, pls. don't delete!
 // import { Transition } from "@/components/Transition";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+let CMS_URL;
+
+if (process.env.NODE_ENV === 'development') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
+} else {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
+}
+
+// const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
 
 export default async function Home() {
   const data = await getLandingPage();

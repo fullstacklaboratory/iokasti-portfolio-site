@@ -9,7 +9,13 @@ import Modal from "./Modal";
 import styles from "./instagram.module.scss";
 import useLoadImages from "@/hooks/useLoadImages";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+let CMS_URL;
+
+if (process.env.NODE_ENV === 'development') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
+} else {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
+}
 
 const Instagram = ({ entries }) => {
   const container = useRef(null);

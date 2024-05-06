@@ -3,7 +3,13 @@ import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/projects/projects.module.scss";
 import ProjectPageSection from "@/components/ProjectPageSection";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+let CMS_URL;
+
+if (process.env.NODE_ENV === 'development') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
+} else  {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
+}
 
 export const metadata = {
   title: "Projects",

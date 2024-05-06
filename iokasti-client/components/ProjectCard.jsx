@@ -7,7 +7,13 @@ import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import useDimensions from "@/hooks/useDimensions";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+let CMS_URL;
+
+if (process.env.NODE_ENV === 'development') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
+} else {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
+}
 
 const ProjectCard = ({
   i,

@@ -8,7 +8,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "@/app/about/about.module.scss";
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+
+let CMS_URL;
+
+if (process.env.NODE_ENV === 'development') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
+} else  {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
+}
 
 const ProjectsCaroussel = (params) => {
     const {content}  = params;

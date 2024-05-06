@@ -4,7 +4,13 @@ import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+let CMS_URL;
+
+if (process.env.NODE_ENV === 'development') {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
+} else {
+  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
+}
 
 const ProjectsImagesCard = ({ images }) => {
   const { scrollYProgress } = useScroll();

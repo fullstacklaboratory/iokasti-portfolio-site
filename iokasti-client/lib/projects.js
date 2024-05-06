@@ -1,7 +1,7 @@
 import qs from "qs";
 import { marked } from "marked";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+const CMS_URL = process.env.BACKEND;
 export const CMS_PROJECTS = "projects";
 export const CMS_PROJECTS_PAGE = "project-page";
 

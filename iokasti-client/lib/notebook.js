@@ -1,6 +1,6 @@
 import qs from "qs";
 
-const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
+const CMS_URL = process.env.BACKEND;
 export const CMS_NOTEBOOK = "notebook";
 
 export const getNotebookPage = async () => {
