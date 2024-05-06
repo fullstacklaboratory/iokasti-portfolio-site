@@ -37,7 +37,6 @@ jobs:
             cd ~/websites/iokasti/iokasti-client
             npm install
             npm run build
-            npm run start
             cd ~/websites/iokasti
             pm2 reload ecosystem.config.js
             pm2 save
