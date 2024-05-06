@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "iokasti-backend",
-      cwd: "/home/mrcll/websites/iokasti/iokasti-backend",
+      cwd: "./iokasti-backend",
       script: "npm",
       args: "start",
       instances: "max",
@@ -13,7 +13,7 @@ module.exports = {
     },
     {
       name: "iokasti-frontend",
-      cwd: "/home/mrcll/websites/iokasti/iokasti-client",
+      cwd: "./iokasti-client",
       script: "npm",
       args: "start",
       instances: "max",
