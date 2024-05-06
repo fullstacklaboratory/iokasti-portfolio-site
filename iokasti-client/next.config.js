@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "api.fullstacklaboratory.dev",
+        hostname: "api.iokastimantzog.com",
         // port: "1337",
         pathname: "/uploads/**",
       },
