@@ -10,6 +10,8 @@ if (process.env.NODE_ENV === "development") {
   PUBLIC_DOMAIN = process.env.NEXT_PUBLIC_ENV_DOMAIN_ADDRESS_PROD;
 }
 
+console.log(PUBLIC_DOMAIN)
+
 export const metadata = {
   metadataBase: new URL(PUBLIC_DOMAIN),
   canonical: PUBLIC_DOMAIN,
