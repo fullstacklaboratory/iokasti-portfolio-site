@@ -20,5 +20,4 @@ module.exports = {
       exec_mode: "cluster",
     },
   ],
-  
 };
