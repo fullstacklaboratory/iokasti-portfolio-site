@@ -4,7 +4,7 @@ import "./globals.scss";
 
 let PUBLIC_DOMAIN;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   PUBLIC_DOMAIN = process.env.NEXT_PUBLIC_ENV_DOMAIN_ADDRESS_DEV;
 } else {
   PUBLIC_DOMAIN = process.env.NEXT_PUBLIC_ENV_DOMAIN_ADDRESS_PROD;
@@ -58,10 +58,7 @@ export default async function RootLayout({ children }) {
       ) : (
         <body>
           <main className="error">
-            <h1>
-              Ups... Server temporarily down. Please check back
-              later!
-            </h1>
+            <h1>Ups... Server temporarily down. Please check back later!</h1>
           </main>
         </body>
       )}
