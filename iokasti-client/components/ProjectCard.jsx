@@ -47,13 +47,13 @@ const ProjectCard = ({
           // backgroundColor: "yellow",
           scale,
           top:
-            width < 431
+            width && width < 431
               ? `calc(8vh + ${i * 25}px)`
               : `calc(-5vh + ${i * 25}px)`,
         }}
         className={styles.card}
       >
-        <a href={`/${category}s/${slug}`}>
+        <Link href={`/${category}s/${slug}`}>
           <h3>{title}</h3>
           <div className={styles.body}>
             <div className={styles.description}>
@@ -89,7 +89,7 @@ const ProjectCard = ({
               </motion.div>
             </div>
           </div>
-        </a>
+        </Link>
       </motion.div>
     </div>
   );
