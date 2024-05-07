@@ -30,7 +30,12 @@ export async function getProject(slug) {
     );
     const url = `${CMS_URL}/api/projects?${query}`;
 
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      next: {
+        tags: [CMS_PROJECTS_PAGE],
+      },
+    });
+
     const { data } = await response.json();
 
     if (data.length === 0) {
