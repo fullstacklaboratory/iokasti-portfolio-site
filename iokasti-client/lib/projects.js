@@ -115,7 +115,11 @@ export async function getSlugsForProjects() {
       { encodeValuesOnly: true }
     );
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    next: {
+      tags: [CMS_PROJECTS],
+    },
+  });
   if (!res.ok) {
     throw new Error(`CMS returned ${res.status} for ${url}`);
   }
