@@ -25,7 +25,7 @@ const ProjectPageSection = ({ projects }) => {
 
   return (
     <section ref={container} className={styles.card_container}>
-      {projects.map((project, i) => {
+      {projects && projects.map((project, i) => {
         const targetScale = 1 - (projects.length - i) * 0.05;
         return (
           <ProjectCard

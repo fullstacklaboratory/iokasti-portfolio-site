@@ -107,10 +107,10 @@ const Instagram = ({ entries }) => {
   );
 };
 
-const Column = ({ entries, y = 0, openModal }) => {
+const Column = ({ entries, y = 0, openModal, imagesLoaded }) => {
   return (
     <motion.div style={{ y }} className={styles.gallery_column}>
-      {entries.map((entry, index) => (
+      {entries && entries.map((entry, index) => (
         <div
           key={index} // use uuid for unique key
           className={styles.imageContainer}
