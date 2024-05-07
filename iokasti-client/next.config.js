@@ -11,7 +11,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "api.iokastimantzog.com",
-        port: "1337",
+        // port: "1337",
         pathname: "/uploads/**",
       },
     ],
