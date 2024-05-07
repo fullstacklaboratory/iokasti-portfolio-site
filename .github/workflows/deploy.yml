@@ -35,7 +35,6 @@ jobs:
             npm install
             npm run production
             cd /home/mrcll/websites/iokasti/iokasti-client
-            rm -rf .next
             npm install
             npm run build
             pm2 reload /home/mrcll/websites/iokasti/ecosystem.config.js
