@@ -5,6 +5,7 @@ const CMS_URL = process.env.BACKEND;
 export const CMS_PROJECTS = "projects";
 export const CMS_PROJECTS_PAGE = "project-page";
 
+
 export async function getProject(slug) {
   try {
     const query = qs.stringify(
