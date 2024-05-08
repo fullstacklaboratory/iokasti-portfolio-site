@@ -8,20 +8,21 @@ export const metadata = {
   title: "About",
   description:
     "Discover the captivating performances of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
-    alternates: { canonical: `/about` },
-    keywords: "about, iokasti, mantzog, performer, dancer, trainer",
-    openGraph: {
-      title: "About",
-      description: "Discover the captivating performances of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
-      images: [`/public/opengraph-image.jpg`],
-    },
+  alternates: { canonical: `/about` },
+  keywords: "about, iokasti, mantzog, performer, dancer, trainer",
+  openGraph: {
+    title: "About",
+    description:
+      "Discover the captivating performances of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+    images: [`/public/opengraph-image.jpg`],
+  },
 };
 
 let CMS_URL;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
-} else  {
+} else {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
 }
 

@@ -1,6 +1,5 @@
 import { getProject, getSlugsForProjects } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
-// import ProjectsImagesCard from "@/components/ProjectsImagesCard";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
 import { useLimitString } from "@/hooks/useLimitString";
@@ -8,9 +7,9 @@ import { notFound } from "next/navigation";
 
 let CMS_URL;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
-} else  {
+} else {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
 }
 
@@ -74,7 +73,6 @@ const ProjectPage = async ({ params }) => {
             {limitedTitle}
           </h2>
         </section>
-        {/* <ProjectsImagesCard images={content.images} /> */}
         <AboutContent content={content} />
       </>
     );

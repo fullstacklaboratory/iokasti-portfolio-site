@@ -1,6 +1,6 @@
 /**
  * Returns devide height and width
- * 
+ *
  */
 
 import { useEffect, useState } from "react";
@@ -12,10 +12,12 @@ const useDimensions = () => {
   });
 
   const updateDimensions = () => {
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+    if (typeof window !== "undefined") {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
   };
 
   useEffect(() => {

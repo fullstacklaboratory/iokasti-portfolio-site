@@ -1,16 +1,19 @@
 {
   "name": "iokaste-backend",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "iokaste-backend strapi",
-  "scripts": {
-    "dev": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi",
-    "production": "NODE_ENV=production npm run build"
+  "license": "MIT",
+  "author": {
+    "name": "fullstacklaboratory.dev"
   },
-  "devDependencies": {},
+  "scripts": {
+    "build": "strapi build",
+    "dev": "strapi develop",
+    "production": "NODE_ENV=production npm run build",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
   "dependencies": {
     "@strapi/plugin-i18n": "4.24.1",
     "@strapi/plugin-users-permissions": "4.24.1",
@@ -21,15 +24,12 @@
     "react-router-dom": "^5.3.4",
     "styled-components": "^5.3.11"
   },
-  "author": {
-    "name": "fullstacklaboratory.dev"
-  },
-  "strapi": {
-    "uuid": "6ff1da34-0a1b-4992-ac11-623bcfc8d51d"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "6ff1da34-0a1b-4992-ac11-623bcfc8d51d"
+  }
 }

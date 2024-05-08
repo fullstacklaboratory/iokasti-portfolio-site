@@ -6,7 +6,7 @@ import { motion, useScroll } from "framer-motion";
 
 let CMS_URL;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
 } else {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;

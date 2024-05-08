@@ -6,11 +6,10 @@
   display: flex;
   align-items: flex-end;
   color: #fafafa;
-  padding: 0 clamp(1rem, 3vw, 4rem);
+  padding: 0 0 clamp(2rem, 3vw, 4rem) clamp(2rem, 3vw, 4rem);
 
   h2.banner {
-    display: none;
-    width: 100%;
+    width: 45%;
   }
 
   .swiper {

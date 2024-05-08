@@ -2,8 +2,9 @@
 import styles from "@/components/projectPageSection.module.scss";
 import ProjectCard from "@/components/ProjectCard";
 import { useScroll } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
+import useDimensions from "@/hooks/useDimensions";
 
 const ProjectPageSection = ({ projects }) => {
   const container = useRef(null);
@@ -23,24 +24,37 @@ const ProjectPageSection = ({ projects }) => {
     requestAnimationFrame(raf);
   });
 
+  const { width, height } = useDimensions();
+
   return (
-    <section ref={container} className={styles.card_container}>
-      {projects && projects.map((project, i) => {
-        const targetScale = 1 - (projects.length - i) * 0.05;
-        return (
-          <ProjectCard
-            key={`p_${i}`}
-            i={i}
-            {...project}
-            progress={scrollYProgress}
-            range={[0, 1]}
-            targetScale={targetScale}
-            slug={project.slug}
-            category={project.category}
-          />
-        );
-      })}
-    </section>
+    <Suspense
+      fallback={
+        <div className={"text-white flex justify-center items-center"}>
+          Loading...
+        </div>
+      }
+    >
+      {width && (
+        <section ref={container} className={styles.card_container}>
+          {projects.map((project, i) => {
+            const targetScale = 1 - (projects.length - i) * 0.05;
+            return (
+              <ProjectCard
+                key={`p_${i}`}
+                i={i}
+                {...project}
+                width={width}
+                progress={scrollYProgress}
+                range={[0, 1]}
+                targetScale={targetScale}
+                slug={project.slug}
+                category={project.category}
+              />
+            );
+          })}
+        </section>
+      )}
+    </Suspense>
   );
 };
 

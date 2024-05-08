@@ -11,16 +11,15 @@ import styles from "@/app/about/about.module.scss";
 
 let CMS_URL;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
-} else  {
+} else {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
 }
 
 const ProjectsCaroussel = (params) => {
-    const {content}  = params;
-    console.log(content)
-    const { mime, url, alternativeText, width, height } =
+  const { content } = params;
+  const { mime, url, alternativeText, width, height } =
     content.images[0].attributes;
   return (
     <Swiper navigation={true} modules={[Navigation]} className={styles.header}>

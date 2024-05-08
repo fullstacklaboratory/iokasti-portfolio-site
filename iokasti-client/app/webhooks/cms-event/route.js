@@ -1,10 +1,9 @@
 import { revalidateTag } from "next/cache";
 import { CMS_ABOUT } from "@/lib/about";
 import { CMS_LANDING_PAGE } from "@/lib/landingPage";
-import { CMS_NOTEBOOK} from "@/lib/notebook";
+import { CMS_NOTEBOOK } from "@/lib/notebook";
 import { CMS_PROJECTS } from "@/lib/projects";
 import { CMS_PROJECTS_PAGE } from "@/lib/projects";
-
 
 export async function POST(request) {
   const payload = await request.json();
@@ -15,7 +14,6 @@ export async function POST(request) {
     revalidateTag(CMS_PROJECTS);
   }
   if (payload.model === "landing-page") {
-    console.log("landingpage")
     revalidateTag(CMS_LANDING_PAGE);
   }
   if (payload.model === "notebook") {
@@ -24,6 +22,5 @@ export async function POST(request) {
   if (payload.model === "project-page") {
     revalidateTag(CMS_PROJECTS_PAGE);
   }
-  console.log("payload:", payload);
   return new Response(null, { status: 204 });
 }

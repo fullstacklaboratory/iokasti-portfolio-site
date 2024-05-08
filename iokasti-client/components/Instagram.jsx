@@ -1,33 +1,18 @@
 "use client";
-// Import hooks at the top
-import { useEffect, useRef, useState, useCallback } from "react";
+
+import { Suspense, useState, useEffect } from "react";
 import Image from "next/image";
-import { useTransform, useScroll, motion } from "framer-motion";
-import Lenis from "@studio-freight/lenis";
-import useDimensions from "@/hooks/useDimensions";
 import Modal from "./Modal";
 import styles from "./instagram.module.scss";
-import useLoadImages from "@/hooks/useLoadImages";
+import Lenis from "@studio-freight/lenis";
 
-let CMS_URL;
-
-if (process.env.NODE_ENV === 'development') {
-  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
-} else {
-  CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
-}
+const CMS_URL =
+  process.env.NODE_ENV === "development"
+    ? process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV
+    : process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
 
 const Instagram = ({ entries }) => {
-  const container = useRef(null);
-  const { height, width } = useDimensions();
-  // const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [windowHeight, setWindowHeight] = useState(0);
-  const [modalContent, setModalContent] = useState({
-    url: null,
-    width: null,
-    height: null,
-    alt: null,
-  });
+  const [modalContent, setModalContent] = useState(null);
 
   // Use Lenis for smooth scroll
   useEffect(() => {
@@ -39,110 +24,83 @@ const Instagram = ({ entries }) => {
     requestAnimationFrame(raf);
   }, []);
 
-  const imagesLoaded = useLoadImages(entries, CMS_URL);
-
   useEffect(() => {
-    setWindowHeight(window.innerHeight);
-  }, [imagesLoaded]);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      document.documentElement.style.setProperty("--scroll", scrollY);
+    };
 
-  const openModal = useCallback((entry) => {
-    const { entryImage, entryAlternativeText, entryImageWidth, entryImageHeight, entryDescription } = entry;
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const openModal = (entry) => {
+    const {
+      entryImage,
+      entryAlternativeText,
+      entryImageWidth,
+      entryImageHeight,
+      entryDescription,
+    } = entry;
     setModalContent({
       url: CMS_URL + entryImage,
       alt: entryAlternativeText,
       width: entryImageWidth,
       height: entryImageHeight,
-      description: entryDescription
+      description: entryDescription,
     });
-  }, []);
+  };
 
-  const closeModal = useCallback(() => {
-    setModalContent({ url: null, alt: null, width: null, height: null });
-  }, []);
-
-  const numColumns = width <= 768 ? 2 : 4;
-  const numImagesPerColumn = Math.ceil(entries.length / numColumns);
-  const columns = Array.from({ length: numColumns }, (_, i) =>
-    entries.slice(i * numImagesPerColumn, (i + 1) * numImagesPerColumn)
-  );
-
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "end start"],
-  });
-
-  const yValues = [
-    useTransform(scrollYProgress, [0, 1], [0, windowHeight * 0.65]),
-    useTransform(scrollYProgress, [0, 1], [0, windowHeight * 0]),
-    useTransform(scrollYProgress, [0, 1], [0, windowHeight * 0.75]),
-    useTransform(scrollYProgress, [0, 1], [0, windowHeight * 0]),
-  ].slice(0, numColumns);
+  const closeModal = () => {
+    setModalContent(null);
+  };
 
   return (
     <>
-      {modalContent.url && (
+      {modalContent && (
         <Modal modalContent={modalContent} onClose={closeModal} />
       )}
       <div className={styles.spacer} />
-      <motion.section
-        ref={container}
-        className={styles.image_gallery}
-        style={{ minHeight: "100vh" }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        {imagesLoaded &&
-          columns.map((columnEntries, i) => (
-            <Column
-              key={i}
-              entries={columnEntries}
-              y={imagesLoaded ? yValues[i] : 0}
-              openModal={openModal}
-            />
+      <section className={styles.image_gallery}>
+        <Suspense fallback={<div>Loading...</div>}>
+          {entries.map((entry, index) => (
+            <div
+              key={entry.id || index}
+              className={`${styles.imageContainer} ${
+                index % 2 === 0 ? styles.parallax : ""
+              }`}
+              onClick={() => openModal(entry)}
+              role="button"
+              tabIndex={0}
+              aria-label={entry.entryTitle}
+            >
+              <div className={styles.overlay}>
+                <div className={styles.overlay_text}>
+                  {entry.entryTitle && <div>{entry.entryTitle}</div>}
+                </div>
+              </div>
+              {entry.entryMime.startsWith("video/") ? (
+                <video
+                  src={CMS_URL + entry.entryImage}
+                  alt={entry.entryAlternativeText}
+                  loop
+                  muted
+                  background="true"
+                />
+              ) : entry.entryMime.startsWith("image/") ? (
+                <Image
+                  src={CMS_URL + entry.entryImage}
+                  width={entry.entryImageWidth}
+                  height={entry.entryImageHeight}
+                  alt={entry.entryAlternativeText}
+                />
+              ) : null}
+            </div>
           ))}
-      </motion.section>
+        </Suspense>
+      </section>
       <div className={styles.spacer} />
     </>
-  );
-};
-
-const Column = ({ entries, y = 0, openModal, imagesLoaded }) => {
-  return (
-    <motion.div style={{ y }} className={styles.gallery_column}>
-      {entries && entries.map((entry, index) => (
-        <div
-          key={index} // use uuid for unique key
-          className={styles.imageContainer}
-          onClick={() => openModal(entry)}
-          role="button" // Add role="button" for accessibility
-          tabIndex={0} // Add tabIndex={0} for keyboard accessibility
-          aria-label={entry.entryTitle} // Add aria-label for accessibility
-        >
-          <div className={styles.overlay}>
-            <div className={styles.overlay_text}>
-              {entry.entryTitle && <h3>{entry.entryTitle}</h3>}
-            </div>
-          </div>
-          {entry.entryMime.startsWith("video/") ? (
-            <video
-              src={CMS_URL + entry.entryImage}
-              alt={entry.entryAlternativeText}
-              loop
-              muted
-              background="true"
-            />
-          ) : entry.entryMime.startsWith("image/") ? (
-            <Image
-              src={CMS_URL + entry.entryImage}
-              width={entry.entryImageWidth}
-              height={entry.entryImageHeight}
-              alt={entry.entryAlternativeText}
-            />
-          ) : null}
-        </div>
-      ))}
-    </motion.div>
   );
 };
 

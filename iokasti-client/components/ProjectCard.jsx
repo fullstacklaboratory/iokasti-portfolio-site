@@ -5,11 +5,11 @@ import styles from "@/components/projectCard.module.scss";
 import { useLimitString } from "@/hooks/useLimitString";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import useDimensions from "@/hooks/useDimensions";
+
 
 let CMS_URL;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV;
 } else {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
@@ -22,22 +22,23 @@ const ProjectCard = ({
   images,
   slug,
   category,
-  color,
   progress,
   range,
   targetScale,
+  width,
 }) => {
-  
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "start start"],
   });
-  const { width, height } = useDimensions();
-  const useLimitDescription = useLimitString(description, 160)
+
+  const useLimitDescription = useLimitString(description, 160);
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
+
+  // Check if dimensions and content have arrived
 
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -47,7 +48,7 @@ const ProjectCard = ({
           // backgroundColor: "yellow",
           scale,
           top:
-            width && width < 431
+            width < 431
               ? `calc(8vh + ${i * 25}px)`
               : `calc(-5vh + ${i * 25}px)`,
         }}
