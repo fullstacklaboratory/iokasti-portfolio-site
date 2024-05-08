@@ -30,7 +30,11 @@ export async function getProject(slug) {
     );
     const url = `${CMS_URL}/api/projects?${query}`;
 
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      next: {
+        tags: [CMS_PROJECTS],
+      },
+    });
     const { data } = await response.json();
 
     if (data.length === 0) {
@@ -111,7 +115,11 @@ export async function getSlugsForProjects() {
       { encodeValuesOnly: true }
     );
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    next: {
+      tags: [CMS_PROJECTS],
+    },
+  });
   if (!res.ok) {
     throw new Error(`CMS returned ${res.status} for ${url}`);
   }
