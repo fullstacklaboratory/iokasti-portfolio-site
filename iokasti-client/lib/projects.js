@@ -144,7 +144,6 @@ export async function getProjectPage() {
   });
   const { data } = await response.json();
   const { attributes } = data;
-  
 
   return {
     banner: attributes.banner_image_or_video.data,
