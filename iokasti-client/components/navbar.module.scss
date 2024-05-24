@@ -42,6 +42,8 @@
   .siteTitleLink {
     color: inherit;
     transition: all $transition-duration $transition-ease-in-out;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
 
     &:hover {
       color: $color-amber-400;

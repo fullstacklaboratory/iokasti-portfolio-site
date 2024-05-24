@@ -13,8 +13,8 @@ if (process.env.NODE_ENV === "development") {
 
 
 export const metadata = {
-  metadataBase: new URL(PUBLIC_DOMAIN),
-  canonical: PUBLIC_DOMAIN,
+  // metadataBase: new URL(PUBLIC_DOMAIN),
+  // canonical: PUBLIC_DOMAIN,
   title: { default: "Iokasti Mantzog", template: "%s | Iokasti Mantzog" },
   description:
     "Experience the mesmerizing artistry of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",

@@ -2,6 +2,7 @@ import Instagram from "@/components/Instagram";
 import { getNotebookPage } from "@/lib/notebook";
 import styles from "./notebook.module.scss";
 import { notFound } from "next/navigation";
+import { mynerve } from "../fonts";
 
 export const metadata = {
   title: "pelagos",
@@ -41,7 +42,7 @@ const Pelagos = async () => {
 
   return (
     <div className={styles.container}>
-      <h1>{pageTitle}</h1>
+      <h1 className={mynerve.className}>{pageTitle}</h1>
       <Instagram entries={notebookEntries} />
     </div>
   );

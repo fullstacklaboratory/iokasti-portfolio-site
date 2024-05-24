@@ -7,7 +7,7 @@ export const CMS_LANDING_PAGE = "landing-page";
 export const getLandingPage = async () => {
   try {
     const query = qs.stringify({
-      populate: ["video", "sections.home_section_image"],
+      populate: ["videoUrl"],
     });
 
     const url = `${CMS_URL}/api/landing-page?${query}`;

@@ -5,6 +5,7 @@ import { FiInstagram, FiMail } from "react-icons/fi";
 import { TfiVimeo } from "react-icons/tfi";
 import styles from "./navbar.module.scss";
 import { AnimatePresence, motion, Variants } from "framer-motion";
+import { gothic_One } from "@/app/fonts";
 
 const itemVariants = {
   open: {
@@ -16,6 +17,7 @@ const itemVariants = {
 };
 
 const NavBar = ({ navData, newsData }) => {
+  console.log(navData.siteTitle)
   const [isOpen, setIsOpen] = useState(false);
   const firstMenuItemRef = useRef(null);
   const menuButtonRef = useRef(null);
@@ -84,7 +86,7 @@ const NavBar = ({ navData, newsData }) => {
               onClick={() => setIsOpen(false)}
               aria-label="Site Title - Navigate to Home"
               href="/"
-              className={styles.siteTitleLink}
+              className={`${styles.siteTitleLink} ${gothic_One.className}`}
             >
               {navData.siteTitle}
             </Link>

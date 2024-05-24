@@ -15,7 +15,7 @@
     "description": {
       "type": "text",
       "required": true,
-      "maxLength": 160
+      "maxLength": 200
     },
     "starting_date": {
       "type": "date",

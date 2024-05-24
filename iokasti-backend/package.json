@@ -15,6 +15,7 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "@sklinet/strapi-plugin-video-field": "^1.0.6",
     "@strapi/plugin-i18n": "4.24.2",
     "@strapi/plugin-users-permissions": "4.24.2",
     "@strapi/strapi": "4.24.2",
@@ -24,7 +25,6 @@
     "react-router-dom": "^5.3.4",
     "styled-components": "^5.3.11"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0"

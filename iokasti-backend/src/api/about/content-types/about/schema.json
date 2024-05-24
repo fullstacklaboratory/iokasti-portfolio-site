@@ -27,12 +27,16 @@
       ]
     },
     "banner_image_or_video": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": false,
+      ]
+    },
+    "videoUrl": {
+      "type": "string",
       "required": true
     }
   }

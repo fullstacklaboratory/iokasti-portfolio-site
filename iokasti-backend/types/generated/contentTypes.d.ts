@@ -804,6 +804,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
     artistic_statement: Attribute.RichText;
     cv: Attribute.Media;
     banner_image_or_video: Attribute.Media & Attribute.Required;
+    videoUrl: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -844,6 +845,7 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
         maxLength: 120;
       }>;
     sections: Attribute.DynamicZone<['home-section.home-sections']>;
+    videoUrl: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -909,7 +911,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     description: Attribute.Text &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
-        maxLength: 160;
+        maxLength: 200;
       }>;
     starting_date: Attribute.Date & Attribute.Required;
     images: Attribute.Media & Attribute.Required;

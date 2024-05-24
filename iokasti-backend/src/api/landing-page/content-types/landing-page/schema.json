@@ -42,6 +42,9 @@
       "components": [
         "home-section.home-sections"
       ]
+    },
+    "videoUrl": {
+      "type": "string"
     }
   }
 }

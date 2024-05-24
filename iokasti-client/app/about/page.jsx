@@ -29,20 +29,13 @@ if (process.env.NODE_ENV === "development") {
 const About = async () => {
   const content = await getAbout();
   if (!content) notFound();
-  const { mime, url, alternativeText, width, height } =
-    content.images && content.images.attributes
-      ? content.images.attributes
-      : {};
+ 
 
   return (
     <>
       <section className={styles.header}>
         <BannerImageOrVideo
-          mime={mime}
-          src={CMS_URL + url}
-          alt={alternativeText}
-          width={width}
-          height={height}
+         videoUrl={content.videoUrl}
         />
         <h2 className={styles.banner}>{content.title}</h2>
       </section>
