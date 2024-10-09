@@ -20,6 +20,14 @@
         "images",
         "videos"
       ]
+    },
+    "projectVideoUrl": {
+      "type": "string",
+      "required": true
+    },
+    "collaborationVideoUrl": {
+      "type": "string",
+      "required": true
     }
   }
 }

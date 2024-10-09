@@ -35,7 +35,7 @@ export default async function Home() {
                 </div>
               }
             >
-              <BannerImageOrVideo videoUrl={data.data.attributes.videoUrl} />
+              <BannerImageOrVideo background={data.data.attributes.videoUrl} />
             </Suspense>
           </section>
           {/* DONT DELETE THIS!!! */}

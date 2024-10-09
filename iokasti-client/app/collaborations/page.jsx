@@ -28,20 +28,23 @@ export const metadata = {
 const Collabs = async () => {
   const header = await getProjectPage();
   const collabs = await getProjectsByCategory("collaboration");
-  const { mime, url, alternativeText, width, height } =
-    header.banner[1].attributes;
+  // const { mime, url, alternativeText, width, height } =
+  //   header.banner[1].attributes;
 
   return (
     <>
       <section className={styles.header}>
-        <BannerImageOrVideo
+        {/* <BannerImageOrVideo
           mime={mime}
           src={CMS_URL + url}
           alt={alternativeText}
           width={width}
           height={height}
-        />
+        /> */}
+       
+        <BannerImageOrVideo background={header.collab_video} />
         <h2 className={styles.banner}>Collaborations</h2>
+        
       </section>
       <ProjectPageSection projects={collabs} />
     </>

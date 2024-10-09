@@ -28,19 +28,22 @@ export const metadata = {
 const Projects = async () => {
   const header = await getProjectPage();
   const projects = await getProjectsByCategory("project");
-  const { mime, url, alternativeText, width, height } =
-    header.banner[0].attributes;
+  // const { mime, url, alternativeText, width, height } =
+  //   header.banner[0].attributes;
+
+
 
   return (
     <>
       <section className={styles.header}>
-        <BannerImageOrVideo
+        {/* <BannerImageOrVideo
           mime={mime}
           src={CMS_URL + url}
           alt={alternativeText}
           width={width}
           height={height}
-        />
+        /> */}
+        <BannerImageOrVideo background={header.project_video} />
         <h2 className={styles.banner} title="Projects">
           Projects
         </h2>

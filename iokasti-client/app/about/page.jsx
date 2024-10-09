@@ -35,7 +35,7 @@ const About = async () => {
     <>
       <section className={styles.header}>
         <BannerImageOrVideo
-         videoUrl={content.videoUrl}
+         background={content.videoUrl}
         />
         <h2 className={styles.banner}>{content.title}</h2>
       </section>

@@ -845,7 +845,7 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
         maxLength: 120;
       }>;
     sections: Attribute.DynamicZone<['home-section.home-sections']>;
-    videoUrl: Attribute.String;
+    videoUrl: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -957,6 +957,8 @@ export interface ApiProjectPageProjectPage extends Schema.SingleType {
   };
   attributes: {
     banner_image_or_video: Attribute.Media & Attribute.Required;
+    projectVideoUrl: Attribute.String & Attribute.Required;
+    collaborationVideoUrl: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

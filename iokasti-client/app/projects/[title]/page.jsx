@@ -54,21 +54,18 @@ const ProjectPage = async ({ params }) => {
     if (!content) {
       throw new Error("No data received from CMS");
     }
+    console.log("content", content)
     const limitedTitle = useLimitString(content.title, 20);
-    const { mime, url, alternativeText, width, height } =
-      content.images[0]?.attributes;
+    const backgroundVideo = content.video_link;
+    const backgroundImage = content.images[0]?.attributes;
     const date = content.ending_date;
+
+    const backround = backgroundVideo ? backgroundVideo : backgroundImage;
 
     return (
       <>
         <section className={styles.header}>
-          <BannerImageOrVideo
-            mime={mime}
-            src={CMS_URL + url}
-            alt={alternativeText}
-            width={width}
-            height={height}
-          />
+          <BannerImageOrVideo cms={CMS_URL} background={backround} />
           <h2 className={styles.banner} title={content.title}>
             {limitedTitle}
           </h2>

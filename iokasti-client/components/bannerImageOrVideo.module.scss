@@ -10,18 +10,22 @@
 }
 
 .videoBackground {
-
-
-  width           : 100vw;
-  height          : 100vh;
-  background-color: gray;
-  z-index         : 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  z-index: -1;
 
   div {
-      position: relative;
-      overflow: hidden;
-      width   : 100vw;
-      height  : 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
       iframe {
           position : absolute;
           top      : 50%;
