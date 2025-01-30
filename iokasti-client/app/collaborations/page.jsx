@@ -2,6 +2,7 @@ import { getProjectsByCategory, getProjectPage } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/projects/projects.module.scss";
 import ProjectPageSection from "@/components/ProjectPageSection";
+import Loading from "@/components/Loading";
 
 let CMS_URL;
 
@@ -41,10 +42,9 @@ const Collabs = async () => {
           width={width}
           height={height}
         /> */}
-       
+
         <BannerImageOrVideo background={header.collab_video} />
         <h2 className={styles.banner}>Collaborations</h2>
-        
       </section>
       <ProjectPageSection projects={collabs} />
     </>

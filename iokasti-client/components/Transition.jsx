@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Transition = () => {
   return (
-    <div>
+    <div style={{width: "100vw", height:"100vh"}}>
       <svg
         viewBox="0 0 3840 2160"
         preserveAspectRatio="none"
@@ -41,7 +41,7 @@ const Transition = () => {
           transition={{
             repeat: Infinity,
             ease: "linear",
-            duration: 2,
+            duration: 1.5,
             reverse: true,
             // delay: 5,
           }}

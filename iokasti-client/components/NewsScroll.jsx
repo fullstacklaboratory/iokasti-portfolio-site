@@ -11,8 +11,9 @@ const NewsScroll = ({ news }) => {
               return (
                 <Link href={`projects/${item.slug}`} className="hover:text-blue-600
                 ">
-                  {new Date(item.starting_date).toLocaleDateString()}:
-                  {item.title}
+                  {`
+                  ${new Date(item.starting_date).toLocaleDateString()}: 
+                  ${item.title}`}
                 </Link>
               );
             })}

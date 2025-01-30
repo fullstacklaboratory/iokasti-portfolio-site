@@ -1,9 +1,10 @@
-import { Suspense } from "react";
 import { getLandingPage, getNewsData } from "@/lib/landingPage";
-import LoadingAnim from "@/components/LoadingAnim";
 import NewsScroll from "@/components/NewsScroll";
-import styles from "./landingPage.module.scss";
+import styles from "@/app/about/about.module.scss";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
+import { notFound } from "next/navigation";
+import Transition from "@/components/Transition";
+import Loading from "@/components/Loading";
 // Page transition test, pls. don't delete!
 // import { Transition } from "@/components/Transition";
 
@@ -19,6 +20,7 @@ if (process.env.NODE_ENV === "development") {
 
 export default async function Home() {
   const data = await getLandingPage();
+  if (!data) notFound();
   const news = await getNewsData();
   const landingPageData = data.data.attributes;
   if (!data.error) {
@@ -26,20 +28,14 @@ export default async function Home() {
       <>
         {/* Page transition test, don't delete! */}
         {/* <Transition /> */}
-        <div className="text-white">
-          <section className="h-screen">
-            <Suspense
-              fallback={
-                <div className="w-full h-screen flex justify-center items-center z-50">
-                  <LoadingAnim />
-                </div>
-              }
-            >
-              <BannerImageOrVideo background={data.data.attributes.videoUrl} />
-            </Suspense>
-          </section>
-          {/* DONT DELETE THIS!!! */}
-          {/* {landingPageData.sections &&
+
+        <section className={styles.header_home}>
+          <div className={styles.banner_container}>
+            <BannerImageOrVideo background={landingPageData.videoUrl} />
+          </div>
+        </section>
+        {/* DONT DELETE THIS!!! */}
+        {/* {landingPageData.sections &&
             landingPageData.sections.map((section) => {
               const sectionImage = section.home_section_image.data.attributes;
 
@@ -67,7 +63,7 @@ export default async function Home() {
                 </section>
               );
             })} */}
-        </div>
+
         {news.length > 0 && <NewsScroll news={news} />}
       </>
     );

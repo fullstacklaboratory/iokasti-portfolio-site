@@ -2,6 +2,7 @@
 
 import { Suspense, useState, useEffect } from "react";
 import Image from "next/image";
+import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import Modal from "./Modal";
 import styles from "./instagram.module.scss";
 import Lenis from "@studio-freight/lenis";
@@ -79,22 +80,8 @@ const Instagram = ({ entries }) => {
                   {entry.entryTitle && <div>{entry.entryTitle}</div>}
                 </div>
               </div>
-              {entry.entryMime.startsWith("video/") ? (
-                <video
-                  src={CMS_URL + entry.entryImage}
-                  alt={entry.entryAlternativeText}
-                  loop
-                  muted
-                  background="true"
-                />
-              ) : entry.entryMime.startsWith("image/") ? (
-                <Image
-                  src={CMS_URL + entry.entryImage}
-                  width={entry.entryImageWidth}
-                  height={entry.entryImageHeight}
-                  alt={entry.entryAlternativeText}
-                />
-              ) : null}
+              {console.log(entry)}
+              <BannerImageOrVideo cms={CMS_URL} background={entry.backround} />
             </div>
           ))}
         </Suspense>

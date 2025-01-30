@@ -54,7 +54,6 @@ const ProjectPage = async ({ params }) => {
     if (!content) {
       throw new Error("No data received from CMS");
     }
-    console.log("content", content)
     const limitedTitle = useLimitString(content.title, 20);
     const backgroundVideo = content.video_link;
     const backgroundImage = content.images[0]?.attributes;

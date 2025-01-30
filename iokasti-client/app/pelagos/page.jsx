@@ -26,16 +26,21 @@ const Pelagos = async () => {
 
   const pageTitle = data.pageTitle;
   const notebookEntries = data.notebookEntries.map((entry) => {
+    console.log(entry.image.data.attributes)
     {
       return {
         entryTitle: entry.title,
         entryDate: entry.date,
         entryDescription: entry.description,
-        entryImage: entry.image.data.attributes.url,
-        entryImageWidth: entry.image.data.attributes.width,
-        entryImageHeight: entry.image.data.attributes.height,
-        entryAlternativeText: entry.image.data.attributes.alternativeText,
-        entryMime: entry.image.data.attributes.mime,
+        // entryImage: entry.image.data.attributes.url,
+        // entryImageWidth: entry.image.data.attributes.width,
+        // entryImageHeight: entry.image.data.attributes.height,
+        // entryAlternativeText: entry.image.data.attributes.alternativeText,
+        // entryMime: entry.image.data.attributes.mime,
+        // entryVideo: entry.videoUrl,
+        backround: entry.videoUrl
+          ? entry.videoUrl
+          : entry.image.data.attributes,
       };
     }
   });

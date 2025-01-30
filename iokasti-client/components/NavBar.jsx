@@ -52,8 +52,8 @@ const NavBar = ({ navData, newsData }) => {
       animate={isOpen ? "open" : "closed"}
       role="navigation"
       aria-label="Main Navigation"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      // onMouseEnter={() => setIsOpen(true)}
+      // onMouseLeave={() => setIsOpen(false)}
     >
       <motion.div className={styles.navBar}>
         <motion.button

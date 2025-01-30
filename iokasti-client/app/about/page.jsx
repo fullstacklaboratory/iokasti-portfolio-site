@@ -3,6 +3,7 @@ import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
 import { notFound } from "next/navigation";
+import Loading from "@/components/Loading";
 
 export const metadata = {
   title: "About",
@@ -29,14 +30,11 @@ if (process.env.NODE_ENV === "development") {
 const About = async () => {
   const content = await getAbout();
   if (!content) notFound();
- 
 
   return (
     <>
       <section className={styles.header}>
-        <BannerImageOrVideo
-         background={content.videoUrl}
-        />
+        <BannerImageOrVideo background={content.videoUrl} />
         <h2 className={styles.banner}>{content.title}</h2>
       </section>
       <AboutContent content={content} />

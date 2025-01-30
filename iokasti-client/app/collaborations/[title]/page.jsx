@@ -4,6 +4,7 @@ import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
 import { useLimitString } from "@/hooks/useLimitString";
 import { notFound } from "next/navigation";
+import Loading from "@/components/Loading";
 
 let CMS_URL;
 
@@ -64,9 +65,7 @@ const ProjectPage = async ({ params }) => {
     return (
       <>
         <section className={styles.header}>
-          <BannerImageOrVideo
-            cms={CMS_URL} background={backround}
-          />
+          <BannerImageOrVideo cms={CMS_URL} background={backround} />
           <h2 className={styles.banner} title={content.title}>
             {limitedTitle}
           </h2>
