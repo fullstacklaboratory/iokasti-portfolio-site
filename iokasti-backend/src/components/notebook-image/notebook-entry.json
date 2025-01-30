@@ -24,6 +24,9 @@
     },
     "date": {
       "type": "date"
+    },
+    "videoUrl": {
+      "type": "string"
     }
   }
 }

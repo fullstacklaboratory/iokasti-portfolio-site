@@ -844,7 +844,6 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
       Attribute.SetMinMaxLength<{
         maxLength: 120;
       }>;
-    sections: Attribute.DynamicZone<['home-section.home-sections']>;
     videoUrl: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
