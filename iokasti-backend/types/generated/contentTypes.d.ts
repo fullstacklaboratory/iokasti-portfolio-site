@@ -823,6 +823,39 @@ export interface ApiAboutAbout extends Schema.SingleType {
   };
 }
 
+export interface ApiFacilitatingFacilitating extends Schema.CollectionType {
+  collectionName: 'facilitatings';
+  info: {
+    singularName: 'facilitating';
+    pluralName: 'facilitatings';
+    displayName: 'Facilitating';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    backgroundImage: Attribute.Media & Attribute.Required;
+    title: Attribute.String;
+    body: Attribute.RichText;
+    slug: Attribute.UID<'api::facilitating.facilitating', 'title'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::facilitating.facilitating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::facilitating.facilitating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLandingPageLandingPage extends Schema.SingleType {
   collectionName: 'landing_pages';
   info: {
@@ -1036,6 +1069,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
+      'api::facilitating.facilitating': ApiFacilitatingFacilitating;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::notebook.notebook': ApiNotebookNotebook;
       'api::project.project': ApiProjectProject;

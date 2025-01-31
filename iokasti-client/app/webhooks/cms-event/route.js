@@ -12,6 +12,8 @@ export async function POST(request) {
   }
   if (payload.model === "project") {
     revalidateTag(CMS_PROJECTS);
+  }  if (payload.model === "facilitating") {
+    revalidateTag(CMS_FACILITATINGS);
   }
   if (payload.model === "landing-page") {
     revalidateTag(CMS_LANDING_PAGE);
@@ -21,6 +23,9 @@ export async function POST(request) {
   }
   if (payload.model === "project-page") {
     revalidateTag(CMS_PROJECTS_PAGE);
+  } 
+  if (payload.model === "facilitating-page") {
+    revalidateTag(CMS_FACILITATINGS_PAGE);
   }
   return new Response(null, { status: 204 });
 }

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "facilitatings",
+  "info": {
+    "singularName": "facilitating",
+    "pluralName": "facilitatings",
+    "displayName": "Facilitating"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "backgroundImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}

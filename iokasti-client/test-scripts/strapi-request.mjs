@@ -6,26 +6,22 @@ const CMS_URL = "http://localhost:1337";
 // http://localhost:1337/api/teachings?filters\[upcoming_dates\][upcoming_date][$gt]=10/23/2023
 
 const url =
-  `${CMS_URL}/api/projects?` +
-  qs.stringify(
-    {
-      // filters: { category: { $eq: "project" } },
-      fields: [
-        "title",
-        "slug",
-        "description",
-        "category",
-        "starting_date",
-        "ending_date",
-      ],
-      populate: {
-        images: { fields: ["url", "width", "height"] },
-      },
-      pagination: { pageSize: 10 },
-      sort: ["starting_date:desc"],
+  `${CMS_URL}/api/facilitatings/pilates?` +
+ qs.stringify(
+  {
+    filters: { slug: { $eq: slug } },
+    fields: [
+      "title",
+      "body",
+      "slug",
+    ],
+    populate: {
+        backgroundImage: { fields: ["url"] },
     },
-    { encodeValuesOnly: true }
-  );
+    pagination: { pageSize: 2 },
+  },
+  { encodeValuesOnly: true }
+    );
 // const url =
 // `${CMS_URL}/api/project-page?` +
 // qs.stringify({
@@ -121,3 +117,7 @@ writeFileSync(file, formatted, "utf8");
 // const formatted = JSON.stringify(body, null, 2);
 // const file = "test-scripts/strapi-response.json";
 // writeFileSync(file, formatted, "utf8");
+
+
+
+

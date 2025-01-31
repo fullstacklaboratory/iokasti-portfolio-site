@@ -144,6 +144,7 @@ export async function getProjectPage() {
     },
   });
   const { data } = await response.json();
+  console.log("project page data" , data)
   const { attributes } = data;
 
 
