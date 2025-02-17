@@ -226,11 +226,11 @@ const NavBar = ({ navData, newsData }) => {
         >
           <Link href="/collaborations">Collaborations</Link>
         </motion.li>
-        {/* <motion.li
-            variants={itemVariants}
-            className={styles.listItem}
-            onClick={() => setIsOpen(!isOpen)}
-            tabIndex="0" // Makes the element focusable
+        <motion.li
+          variants={itemVariants}
+          className={styles.listItem}
+          onClick={() => setIsOpen(!isOpen)}
+          // tabIndex="0" // Makes the element focusable
           role="button" // Describes the role of the element
           onKeyPress={(event) => {
             // Makes the element interactive with the keyboard
@@ -239,25 +239,10 @@ const NavBar = ({ navData, newsData }) => {
               setIsOpen(!isOpen);
             }
           }}
-          >
-            <Link href="/news">News</Link>
-          </motion.li> */}
-        {/* <motion.li
-            variants={itemVariants}
-            className={styles.listItem}
-            onClick={() => setIsOpen(!isOpen)}
-            tabIndex="0" // Makes the element focusable
-          role="button" // Describes the role of the element
-          onKeyPress={(event) => {
-            // Makes the element interactive with the keyboard
-            const key = event.key;
-            if (key === "Enter" || key === " ") {
-              setIsOpen(!isOpen);
-            }
-          }}
-          >
-            <Link href="/teaching">Teaching</Link>
-          </motion.li> */}
+        >
+          <Link href="/facilitating">Facilitating</Link>
+        </motion.li>
+
         <motion.li
           variants={itemVariants}
           className={styles.listItem}
