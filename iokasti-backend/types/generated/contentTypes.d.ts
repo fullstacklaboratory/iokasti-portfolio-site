@@ -988,11 +988,12 @@ export interface ApiProjectPageProjectPage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    banner_image_or_video: Attribute.Media & Attribute.Required;
-    projectVideoUrl: Attribute.String & Attribute.Required;
-    collaborationVideoUrl: Attribute.String & Attribute.Required;
+    projecstImage: Attribute.Media & Attribute.Required;
+    projectVideoUrl: Attribute.String;
+    collaborationVideoUrl: Attribute.String;
     facilitatingVideoUrl: Attribute.String;
     facilitatingImage: Attribute.Media;
+    collaborationImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

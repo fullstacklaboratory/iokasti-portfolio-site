@@ -22,10 +22,10 @@ const Facilitating = async () => {
 
   return (
     <div>
-         {/* <section className={styles.header}>
+         <section className={styles.header}>
         <BannerImageOrVideo cms={CMS_URL} background={header.facilitating_video || header.facilitating_Image.data.attributes} />
         <h2 className={styles.banner}>Facilitating</h2>
-      </section> */}
+      </section>
       <ul>
         {facilitatings.map((item,i) => {
           return (

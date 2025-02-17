@@ -132,9 +132,15 @@ export async function getProjectPage() {
   const url =
     `${CMS_URL}/api/project-page?` +
     qs.stringify({
-      fields: ["projectVideoUrl", "collaborationVideoUrl", "facilitatingVideoUrl"],
+      fields: [
+        "projectVideoUrl",
+        "collaborationVideoUrl",
+        "facilitatingVideoUrl",
+      ],
       populate: {
         facilitatingImage: { fields: ["width", "height", "mime", "url"] },
+        projecstImage: { fields: ["width", "height", "mime", "url"] },
+        collaborationImage: { fields: ["width", "height", "mime", "url"] },
       },
     });
 
@@ -144,14 +150,15 @@ export async function getProjectPage() {
     },
   });
   const { data } = await response.json();
-  console.log("project page data" , data)
+  console.log("project page data", data);
   const { attributes } = data;
-
 
   return {
     facilitating_Image: attributes.facilitatingImage,
+    project_Image: attributes.projecstImage,
+    collab_Image: attributes.collaborationImage,
     project_video: attributes.projectVideoUrl,
     collab_video: attributes.collaborationVideoUrl,
-    facilitating_video : attributes.facilitatingVideoUrl
+    facilitating_video: attributes.facilitatingVideoUrl,
   };
 }
