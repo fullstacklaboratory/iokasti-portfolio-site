@@ -28,6 +28,16 @@
     "collaborationVideoUrl": {
       "type": "string",
       "required": true
+    },
+    "facilitatingVideoUrl": {
+      "type": "string"
+    },
+    "facilitatingImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

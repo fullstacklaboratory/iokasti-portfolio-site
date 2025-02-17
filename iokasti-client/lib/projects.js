@@ -132,10 +132,10 @@ export async function getProjectPage() {
   const url =
     `${CMS_URL}/api/project-page?` +
     qs.stringify({
-      fields: ["projectVideoUrl", "collaborationVideoUrl"],
-      // populate: {
-      //   banner_image_or_video: { fields: ["width", "height", "mime", "url"] },
-      // },
+      fields: ["projectVideoUrl", "collaborationVideoUrl", "facilitatingVideoUrl"],
+      populate: {
+        facilitatingImage: { fields: ["width", "height", "mime", "url"] },
+      },
     });
 
   const response = await fetch(url, {
@@ -149,8 +149,9 @@ export async function getProjectPage() {
 
 
   return {
-    // banner: attributes.banner_image_or_video.data,
+    facilitating_Image: attributes.facilitatingImage,
     project_video: attributes.projectVideoUrl,
-    collab_video: attributes.collaborationVideoUrl
+    collab_video: attributes.collaborationVideoUrl,
+    facilitating_video : attributes.facilitatingVideoUrl
   };
 }
