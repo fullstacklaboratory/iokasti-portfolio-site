@@ -12,22 +12,40 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "banner_image_or_video": {
+    "projecstImage": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "allowedTypes": [
-        "images",
-        "videos"
+        "images"
       ]
     },
     "projectVideoUrl": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "collaborationVideoUrl": {
       "type": "string",
-      "required": true
+      "required": false
+    },
+    "facilitatingVideoUrl": {
+      "type": "string"
+    },
+    "facilitatingImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "collaborationImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

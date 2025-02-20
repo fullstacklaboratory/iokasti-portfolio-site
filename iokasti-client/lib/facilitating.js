@@ -5,9 +5,6 @@ const CMS_URL = process.env.BACKEND;
 export const CMS_FACILITATINGS = "facilitatings";
 export const CMS_FACILITATINGS_PAGE = "facilitating-page";
 
-
-
-
 export async function getSlugsForFacilitating() {
   const url =
     `${CMS_URL}/api/facilitatings?` +
@@ -32,22 +29,16 @@ export async function getSlugsForFacilitating() {
   return data.map((item) => item.attributes.slug);
 }
 
-
-
 export async function getFacilitating(slug) {
   try {
     const query = qs.stringify(
       {
         filters: { slug: { $eq: slug } },
-        fields: [
-          "title",
-          "body",
-          "slug",
-        ],
+        fields: ["title", "body", "slug"],
         populate: {
-            backgroundImage: { fields: ["width", "height", "mime", "url"] },
+          backgroundImage: { fields: ["width", "height", "mime", "url"] },
         },
-        pagination: { pageSize: 2 },
+        pagination: { pageSize: 100 },
       },
       { encodeValuesOnly: true }
     );
@@ -75,4 +66,34 @@ export async function getFacilitating(slug) {
     console.error(`Error in getProject: ${error.message}`);
     return null;
   }
+}
+
+export async function getFacilitatingTitles() {
+  const url =
+    `${CMS_URL}/api/facilitatings?` +
+    qs.stringify(
+      {
+        fields: ["title", "slug"],
+        populate: {
+          backgroundImage: { fields: ["width", "height", "mime", "url"] },
+        },
+        pagination: { pageSize: 100 },
+      },
+      { encodeValuesOnly: true }
+    );
+
+  const res = await fetch(url, {
+    next: {
+      tags: [CMS_FACILITATINGS],
+    },
+  });
+  if (!res.ok) {
+    throw new Error(`CMS returned ${res.status} for ${url}`);
+  }
+  const { data } = await res.json();
+  return data.map(({ attributes }) => ({
+    title: attributes.title,
+    slug : attributes.slug,
+    backgroundImage: attributes.backgroundImage.data,
+  }));
 }

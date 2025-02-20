@@ -43,7 +43,7 @@ const Collabs = async () => {
           height={height}
         /> */}
 
-        <BannerImageOrVideo background={header.collab_video} />
+        <BannerImageOrVideo cms={CMS_URL} background={header.collab_video || header.collab_Image.data.attributes} />
         <h2 className={styles.banner}>Collaborations</h2>
       </section>
       <ProjectPageSection projects={collabs} />
