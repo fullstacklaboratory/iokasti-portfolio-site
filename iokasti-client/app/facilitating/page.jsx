@@ -3,7 +3,7 @@ import { getFacilitatingTitles } from "@/lib/facilitating";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-
+import { germania } from "@/app/fonts";
 import facstyles from "@/app/facilitating/facilitating.module.scss";
 
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
@@ -25,7 +25,7 @@ const Facilitating = async () => {
     return (
       <div>
         <section className={facstyles.header}>
-        <h2 className={facstyles.banner}>Facilitating</h2>
+        <h2 className={`${facstyles.banner} ${germania.className}`}>Facilitating</h2>
           <BannerImageOrVideo
             cms={CMS_URL}
             background={

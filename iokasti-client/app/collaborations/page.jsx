@@ -2,7 +2,7 @@ import { getProjectsByCategory, getProjectPage } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/projects/projects.module.scss";
 import ProjectPageSection from "@/components/ProjectPageSection";
-import Loading from "@/components/Loading";
+import { bokor, germania } from "@/app/fonts";
 
 let CMS_URL;
 
@@ -44,7 +44,7 @@ const Collabs = async () => {
         /> */}
 
         <BannerImageOrVideo cms={CMS_URL} background={header.collab_video || header.collab_Image.data.attributes} />
-        <h2 className={styles.banner}>Collaborations</h2>
+        <h2 className={`${styles.banner} ${germania.className}`}>Collaborations</h2>
       </section>
       <ProjectPageSection projects={collabs} />
     </>

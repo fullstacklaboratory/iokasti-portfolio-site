@@ -15,7 +15,7 @@ export const metadata = {
   // canonical: PUBLIC_DOMAIN,
   title: { default: "Iokasti Mantzog", template: "%s | Iokasti Mantzog" },
   description:
-    "Experience the mesmerizing artistry of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+  "Iokasti Mantzog , is an artist , movement teacher , facilitator and witch , based between Berlin and Athens.",
   keywords: [
     "Dancer",
     "Berlin Dancing",
@@ -26,7 +26,7 @@ export const metadata = {
   openGraph: {
     title: { default: "Iokasti Mantzog", template: "%s | Iokasti Mantzog" },
     description:
-      "Experience the mesmerizing artistry of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+     "Iokasti Mantzog , is an artist , movement teacher , facilitator and witch , based between Berlin and Athens.",
     images: [`/public/opengraph-image.jpg`],
     type: "website",
     url: PUBLIC_DOMAIN,

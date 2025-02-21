@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "@/components/loading.module.scss";
 import LoadingAnim from "./LoadingAnim";
 
@@ -15,7 +16,12 @@ const Loading = () => {
 
   return (
     <div className={styles.text_container}>
-      <LoadingAnim />
+      <Image
+        src={"/photo_2025-02-21_15-01-57.jpg"}
+        layout="fill"
+        objectFit="cover"
+      />
+      {/* <LoadingAnim /> */}
     </div>
   );
 };

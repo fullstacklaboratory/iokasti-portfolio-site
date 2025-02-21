@@ -5,7 +5,9 @@ import { FiInstagram, FiMail } from "react-icons/fi";
 import { TfiVimeo } from "react-icons/tfi";
 import styles from "./navbar.module.scss";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { gothic_One } from "@/app/fonts";
+import { bokor, germania } from "@/app/fonts";
+
+const navLinkFont = germania;
 
 const itemVariants = {
   open: {
@@ -86,7 +88,7 @@ const NavBar = ({ navData, newsData }) => {
               onClick={() => setIsOpen(false)}
               aria-label="Site Title - Navigate to Home"
               href="/"
-              className={`${styles.siteTitleLink} ${gothic_One.className}`}
+              className={`${styles.siteTitleLink} ${bokor.className}`}
             >
               {navData.siteTitle}
             </Link>
@@ -176,7 +178,7 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link href="/">Home</Link>
+          <Link className={`${navLinkFont.className}`} href="/">Home</Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -192,7 +194,7 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link href="/about">About</Link>
+          <Link className={`${navLinkFont.className}`} href="/about">About</Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -208,7 +210,7 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link href="/projects">Projects</Link>
+          <Link className={`${navLinkFont.className}`} href="/projects">Projects</Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -224,7 +226,7 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link href="/collaborations">Collaborations</Link>
+          <Link className={`${navLinkFont.className}`} href="/collaborations">Collaborations</Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -240,7 +242,7 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link href="/facilitating">Facilitating</Link>
+          <Link className={`${navLinkFont.className}`} href="/facilitating">Facilitating</Link>
         </motion.li>
 
         <motion.li
@@ -256,7 +258,7 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link href="/pelagos">Pelagos</Link>
+          <Link className={`${navLinkFont.className}`} href="/pelagos">Pelagos</Link>
         </motion.li>
 
         <motion.li className={styles.socialIcons} variants={itemVariants}>

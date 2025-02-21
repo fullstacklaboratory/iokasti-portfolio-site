@@ -3,7 +3,7 @@ import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
 import { notFound } from "next/navigation";
-import Loading from "@/components/Loading";
+import { bokor, germania } from "@/app/fonts";
 
 export const metadata = {
   title: "About",
@@ -35,7 +35,9 @@ const About = async () => {
     <>
       <section className={styles.header}>
         <BannerImageOrVideo background={content.videoUrl} />
-        <h2 className={styles.banner}>{content.title}</h2>
+        <h2 className={`${styles.banner} ${germania.className}`}>
+          {content.title}
+        </h2>
       </section>
       <AboutContent content={content} />
     </>

@@ -2,6 +2,7 @@ import { getProjectsByCategory, getProjectPage } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/projects/projects.module.scss";
 import ProjectPageSection from "@/components/ProjectPageSection";
+import { bokor, germania } from "@/app/fonts";
 
 let CMS_URL;
 
@@ -28,16 +29,18 @@ export const metadata = {
 const Projects = async () => {
   const header = await getProjectPage();
   const projects = await getProjectsByCategory("project");
- console.log(header)
-
-
+  console.log(header);
 
   return (
     <>
       <section className={styles.header}>
-      
-        <BannerImageOrVideo  cms={CMS_URL} background={header.project_video || header.project_Image.data.attributes} />
-        <h2 className={styles.banner} title="Projects">
+        <BannerImageOrVideo
+          cms={CMS_URL}
+          background={
+            header.project_video || header.project_Image.data.attributes
+          }
+        />
+        <h2 className={`${styles.banner} ${germania.className}`} title="Projects">
           Projects
         </h2>
       </section>
