@@ -26,7 +26,7 @@ const Pelagos = async () => {
 
   const pageTitle = data.pageTitle;
   const notebookEntries = data.notebookEntries.map((entry) => {
-    console.log(entry.image.data.attributes)
+    console.log(entry.image.data.attributes);
     {
       return {
         entryTitle: entry.title,

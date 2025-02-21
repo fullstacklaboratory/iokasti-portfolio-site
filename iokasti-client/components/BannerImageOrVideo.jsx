@@ -3,6 +3,10 @@ import styles from "@/components/bannerImageOrVideo.module.scss";
 import Loading from "./Loading";
 
 const BannerImageOrVideo = ({ cms, background }) => {
+
+  if (!background) {
+    return null;
+  }
   return (
     <>
       {typeof background === "string" ? (
@@ -19,16 +23,18 @@ const BannerImageOrVideo = ({ cms, background }) => {
           </div>
         </>
       ) : (
-        <Image
-          className={styles.banner}
-          src={cms + background.url}
-          alt={background.alt}
-          width={background.width}
-          height={background.height}
-          // layout="fill"
-          // objectFit="cover"
-          // objectPosition="center"
-        />
+        background.url && (
+          <Image
+            className={styles.banner}
+            src={cms + background.url}
+            alt={background.alt || "image"}
+            width={background.width || 1920}
+            height={background.height || 1080}
+            // layout="fill"
+            // objectFit="cover"
+            // objectPosition="center"
+          />
+        )
       )}
     </>
   );

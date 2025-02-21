@@ -65,6 +65,7 @@ const Instagram = ({ entries }) => {
       <section className={styles.image_gallery}>
         <Suspense fallback={<div>Loading...</div>}>
           {entries.map((entry, index) => (
+            
             <div
               key={entry.id || index}
               className={`${styles.imageContainer} ${
@@ -80,7 +81,7 @@ const Instagram = ({ entries }) => {
                   {entry.entryTitle && <div>{entry.entryTitle}</div>}
                 </div>
               </div>
-              {console.log(entry)}
+              {console.log("test", entry)}
               <BannerImageOrVideo cms={CMS_URL} background={entry.backround} />
             </div>
           ))}
