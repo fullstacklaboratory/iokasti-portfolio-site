@@ -829,6 +829,7 @@ export interface ApiFacilitatingFacilitating extends Schema.CollectionType {
     singularName: 'facilitating';
     pluralName: 'facilitatings';
     displayName: 'Facilitating';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -837,7 +838,8 @@ export interface ApiFacilitatingFacilitating extends Schema.CollectionType {
     backgroundImage: Attribute.Media & Attribute.Required;
     title: Attribute.String;
     body: Attribute.RichText;
-    slug: Attribute.UID<'api::facilitating.facilitating', 'title'>;
+    slug: Attribute.UID<'api::facilitating.facilitating', 'title'> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
