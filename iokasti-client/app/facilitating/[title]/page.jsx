@@ -50,42 +50,34 @@ export const generateStaticParams = async () => {
 };
 
 const FacilitatingPage = async ({ params }) => {
-  try {
-    const { loadingImage } = await getProjectPage();
-    const content = await getFacilitating(params.title);
-    if (!content) {
-      return notFound();
-    }
-    const backround = content.image.attributes;
-    const limitedTitle = useLimitString(content.title, 20);
+  const content = await getFacilitating(params.title);
+  const { loadingImage } = await getProjectPage();
 
-    return (
-      <>
-        <section className={styles.header}>
-          <BannerImageOrVideo
-            cms={CMS_URL}
-            background={backround}
-            loadingImage={loadingImage}
-          />
-          <h2
-            className={`${styles.banner} ${germania.className}`}
-            title={content.title}
-          >
-            {limitedTitle}
-          </h2>
-        </section>
-        <AboutContent content={content} />
-      </>
-    );
-  } catch (error) {
-    console.error(`Error in FacilitatingPage: ${error.message}`);
-    return (
-      <div className={styles.error}>
-        <h1>Error loading content</h1>
-        <p>There was an error loading the content. Please try again later.</p>
-      </div>
-    );
+  if (!content) {
+    return notFound();
   }
+
+  const background = content.image.attributes;
+  const limitedTitle = useLimitString(content.title, 20);
+
+  return (
+    <>
+      <section className={styles.header}>
+        <BannerImageOrVideo
+          cms={CMS_URL}
+          background={background}
+          loadingImage={loadingImage}
+        />
+        <h2
+          className={`${styles.banner} ${germania.className}`}
+          title={content.title}
+        >
+          {limitedTitle}
+        </h2>
+      </section>
+      <AboutContent content={content} />
+    </>
+  );
 };
 
 export default FacilitatingPage;
