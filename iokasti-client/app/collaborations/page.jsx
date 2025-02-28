@@ -1,8 +1,8 @@
-import { getProjectsByCategory, getProjectPage } from "@/lib/projects";
-import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/projects/projects.module.scss";
+import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import ProjectPageSection from "@/components/ProjectPageSection";
-import { bokor, germania } from "@/app/fonts";
+import { germania } from "@/app/fonts";
+import { getProjectsByCategory, getProjectPage } from "@/lib/projects";
 
 let CMS_URL;
 
@@ -28,6 +28,7 @@ export const metadata = {
 
 const Collabs = async () => {
   const header = await getProjectPage();
+  const { loadingImage } = await getProjectPage();
   const collabs = await getProjectsByCategory("collaboration");
   // const { mime, url, alternativeText, width, height } =
   //   header.banner[1].attributes;
@@ -35,16 +36,16 @@ const Collabs = async () => {
   return (
     <>
       <section className={styles.header}>
-        {/* <BannerImageOrVideo
-          mime={mime}
-          src={CMS_URL + url}
-          alt={alternativeText}
-          width={width}
-          height={height}
-        /> */}
-
-        <BannerImageOrVideo cms={CMS_URL} background={header.collab_video || header.collab_Image.data.attributes} />
-        <h2 className={`${styles.banner} ${germania.className}`}>Collaborations</h2>
+        <BannerImageOrVideo
+          cms={CMS_URL}
+          background={
+            header.collab_video || header.collab_Image.data.attributes
+          }
+          loadingImage={loadingImage}
+        />
+        <h2 className={`${styles.banner} ${germania.className}`}>
+          Collaborations
+        </h2>
       </section>
       <ProjectPageSection projects={collabs} />
     </>

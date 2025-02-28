@@ -46,6 +46,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "loadingImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

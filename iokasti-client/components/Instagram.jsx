@@ -1,18 +1,14 @@
 "use client";
 
 import { Suspense, useState, useEffect } from "react";
-import Image from "next/image";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import Modal from "./Modal";
 import styles from "./instagram.module.scss";
 import Lenis from "@studio-freight/lenis";
+import { lora } from "@/app/fonts.js";
 
-const CMS_URL =
-  process.env.NODE_ENV === "development"
-    ? process.env.NEXT_PUBLIC_ENV_VPS_SERVER_DEV
-    : process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
-
-const Instagram = ({ entries }) => {
+const Instagram = ({ cms, entries, loadingImage }) => {
+  console.log("instagram", cms);
   const [modalContent, setModalContent] = useState(null);
 
   // Use Lenis for smooth scroll
@@ -23,6 +19,10 @@ const Instagram = ({ entries }) => {
       requestAnimationFrame(raf);
     };
     requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   useEffect(() => {
@@ -42,13 +42,15 @@ const Instagram = ({ entries }) => {
       entryImageWidth,
       entryImageHeight,
       entryDescription,
+      entryVideoUrl,
     } = entry;
     setModalContent({
-      url: CMS_URL + entryImage,
+      url: entryVideoUrl ? entryVideoUrl : cms + entryImage,
       alt: entryAlternativeText,
       width: entryImageWidth,
       height: entryImageHeight,
       description: entryDescription,
+      isVideo: !!entryVideoUrl,
     });
   };
 
@@ -65,7 +67,6 @@ const Instagram = ({ entries }) => {
       <section className={styles.image_gallery}>
         <Suspense fallback={<div>Loading...</div>}>
           {entries.map((entry, index) => (
-            
             <div
               key={entry.id || index}
               className={`${styles.imageContainer} ${
@@ -77,12 +78,15 @@ const Instagram = ({ entries }) => {
               aria-label={entry.entryTitle}
             >
               <div className={styles.overlay}>
-                <div className={styles.overlay_text}>
+                <div className={`${styles.overlay_text} ${lora.className}`}>
                   {entry.entryTitle && <div>{entry.entryTitle}</div>}
                 </div>
               </div>
-              {console.log("test", entry)}
-              <BannerImageOrVideo cms={CMS_URL} background={entry.backround} />
+              <BannerImageOrVideo
+                cms={cms}
+                background={entry && entry.background}
+                loadingImage={loadingImage}
+              />
             </div>
           ))}
         </Suspense>

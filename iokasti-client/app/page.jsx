@@ -1,4 +1,6 @@
 import { getLandingPage, getNewsData } from "@/lib/landingPage";
+import { getProjectPage } from "@/lib/projects";
+
 import NewsScroll from "@/components/NewsScroll";
 import styles from "@/app/about/about.module.scss";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
@@ -16,10 +18,9 @@ if (process.env.NODE_ENV === "development") {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
 }
 
-// const CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER;
-
 export default async function Home() {
   const data = await getLandingPage();
+  const { loadingImage } = await getProjectPage();
   if (!data) notFound();
   const news = await getNewsData();
   const landingPageData = data.data.attributes;
@@ -31,7 +32,11 @@ export default async function Home() {
 
         <section className={styles.header_home}>
           <div className={styles.banner_container}>
-            <BannerImageOrVideo background={landingPageData.videoUrl} />
+            <BannerImageOrVideo
+              cms={CMS_URL}
+              background={landingPageData.videoUrl}
+              loadingImage={loadingImage}
+            />
           </div>
         </section>
         {/* DONT DELETE THIS!!! */}

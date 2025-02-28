@@ -994,6 +994,7 @@ export interface ApiProjectPageProjectPage extends Schema.SingleType {
     facilitatingVideoUrl: Attribute.String;
     facilitatingImage: Attribute.Media;
     collaborationImage: Attribute.Media;
+    loadingImage: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

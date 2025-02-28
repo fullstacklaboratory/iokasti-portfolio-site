@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "@/components/newsScroll.module.scss";
+import { germania } from "@/app/fonts.js";
 
 const NewsScroll = ({ news }) => {
   return (
@@ -9,8 +10,10 @@ const NewsScroll = ({ news }) => {
           <div className={styles.textContainer}>
             {news.map((item) => {
               return (
-                <Link href={`projects/${item.slug}`} className="hover:text-blue-600
-                ">
+                <Link
+                  href={`projects/${item.slug}`}
+                  className={`hover:text-blue-600 ${germania.className}`}
+                >
                   {`
                   ${new Date(item.starting_date).toLocaleDateString()}: 
                   ${item.title}`}
@@ -18,7 +21,7 @@ const NewsScroll = ({ news }) => {
               );
             })}
             {/* <Link href={`projects}`} className="mr-4"> */}
-              {/* What Ever */}
+            {/* What Ever */}
             {/* </Link> */}
           </div>
         </div>

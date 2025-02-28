@@ -4,8 +4,11 @@ import Image from "next/image";
 import styles from "@/components/loading.module.scss";
 import LoadingAnim from "./LoadingAnim";
 
-const Loading = () => {
+const Loading = ({ cms, loadingImage }) => {
+  console.log("Loading component CMS", cms)
+  console.log("Loading component LOADING IMAGE", loadingImage)
   const [isVisible, setIsVisible] = useState(true);
+
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsVisible(false), 5000); // Display for at least 5 seconds
@@ -17,11 +20,11 @@ const Loading = () => {
   return (
     <div className={styles.text_container}>
       <Image
-        src={"/photo_2025-02-21_15-01-57.jpg"}
+        src={`${cms}${loadingImage.url}`}
         layout="fill"
         objectFit="cover"
       />
-      {/* <LoadingAnim /> */}
+      <LoadingAnim />
     </div>
   );
 };

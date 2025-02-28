@@ -141,6 +141,7 @@ export async function getProjectPage() {
         facilitatingImage: { fields: ["width", "height", "mime", "url"] },
         projecstImage: { fields: ["width", "height", "mime", "url"] },
         collaborationImage: { fields: ["width", "height", "mime", "url"] },
+        loadingImage: { fields: ["width", "height", "mime", "url"] }
       },
     });
 
@@ -150,7 +151,6 @@ export async function getProjectPage() {
     },
   });
   const { data } = await response.json();
-  console.log("project page data", data);
   const { attributes } = data;
 
   return {
@@ -160,5 +160,6 @@ export async function getProjectPage() {
     project_video: attributes.projectVideoUrl,
     collab_video: attributes.collaborationVideoUrl,
     facilitating_video: attributes.facilitatingVideoUrl,
+    loadingImage: attributes.loadingImage.data.attributes
   };
 }

@@ -5,6 +5,7 @@ import styles from "@/components/projectCard.module.scss";
 import { useLimitString } from "@/hooks/useLimitString";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
+import { lora } from "@/app/fonts.js";
 
 
 let CMS_URL;
@@ -41,7 +42,7 @@ const ProjectCard = ({
   // Check if dimensions and content have arrived
 
   return (
-    <div ref={container} className={styles.cardContainer}>
+    <div ref={container} className={`${styles.cardContainer} ${lora.className}`}>
       <motion.div
         // initial={false}
         style={{

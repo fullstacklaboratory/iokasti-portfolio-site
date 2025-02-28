@@ -1,9 +1,9 @@
 import Image from "next/image";
+import { getProjectPage } from "@/lib/projects";
 import styles from "@/components/bannerImageOrVideo.module.scss";
 import Loading from "./Loading";
 
-const BannerImageOrVideo = ({ cms, background }) => {
-
+const BannerImageOrVideo = async ({ cms, background, loadingImage }) => {
   if (!background) {
     return null;
   }
@@ -11,7 +11,7 @@ const BannerImageOrVideo = ({ cms, background }) => {
     <>
       {typeof background === "string" ? (
         <>
-          <Loading />
+          <Loading cms={cms} loadingImage={loadingImage} />
           <div className={styles.videoBackground}>
             <div>
               <iframe
@@ -28,11 +28,11 @@ const BannerImageOrVideo = ({ cms, background }) => {
             className={styles.banner}
             src={cms + background.url}
             alt={background.alt || "image"}
-            width={background.width || 1920}
-            height={background.height || 1080}
-            // layout="fill"
-            // objectFit="cover"
-            // objectPosition="center"
+            // width={background.width}
+            // height={background.height}
+            layout="fill"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            objectPosition="center"
           />
         )
       )}

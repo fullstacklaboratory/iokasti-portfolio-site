@@ -1,4 +1,5 @@
 import { getAbout } from "@/lib/about";
+import { getProjectPage } from "@/lib/projects";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/about/about.module.scss";
 import AboutContent from "@/components/AboutContent";
@@ -29,12 +30,17 @@ if (process.env.NODE_ENV === "development") {
 
 const About = async () => {
   const content = await getAbout();
+  const { loadingImage } = await getProjectPage();
   if (!content) notFound();
 
   return (
     <>
       <section className={styles.header}>
-        <BannerImageOrVideo background={content.videoUrl} />
+        <BannerImageOrVideo
+          cms={CMS_URL}
+          background={content.videoUrl}
+          loadingImage={loadingImage}
+        />
         <h2 className={`${styles.banner} ${germania.className}`}>
           {content.title}
         </h2>

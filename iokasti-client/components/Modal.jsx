@@ -39,18 +39,26 @@ const Modal = ({ modalContent, onClose }) => {
           exit="hidden"
           onClick={onClose}
         >
-          <motion.img
-            src={modalContent.url}
-            alt={modalContent.alt}
-            className={styles.modal}
-            variants={modal}
-            layout
-            onClick={(e) => e.stopPropagation()}
-          />
-          {/* <motion.p
-          variants={modal}>
-            {modalContent.description}
-          </motion.p> */}
+          {modalContent.isVideo ? (
+            <motion.iframe
+              src={modalContent.url + "?background=1"}
+              frameBorder="0"
+              allow="autoplay; fullscreen"
+              className={styles.modal}
+              variants={modal}
+              layout
+              onClick={(e) => e.stopPropagation()}
+            ></motion.iframe>
+          ) : (
+            <motion.img
+              src={modalContent.url}
+              alt={modalContent.alt}
+              className={styles.modal}
+              variants={modal}
+              layout
+              onClick={(e) => e.stopPropagation()}
+            />
+          )}
           <button className={styles.closeButton} onClick={onClose}>
             x
           </button>

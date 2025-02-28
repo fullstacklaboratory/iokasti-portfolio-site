@@ -1,10 +1,14 @@
-import { getProject, getSlugsForProjects } from "@/lib/projects";
-import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import styles from "@/app/about/about.module.scss";
+import { germania } from "@/app/fonts";
+import {
+  getProject,
+  getSlugsForProjects,
+  getProjectPage,
+} from "@/lib/projects";
+import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import AboutContent from "@/components/AboutContent";
 import { useLimitString } from "@/hooks/useLimitString";
 import { notFound } from "next/navigation";
-import Loading from "@/components/Loading";
 
 let CMS_URL;
 
@@ -50,6 +54,7 @@ export async function generateStaticParams() {
 }
 
 const ProjectPage = async ({ params }) => {
+  const { loadingImage } = await getProjectPage();
   try {
     const content = await getProject(params.title);
     if (!content) {
@@ -65,8 +70,15 @@ const ProjectPage = async ({ params }) => {
     return (
       <>
         <section className={styles.header}>
-          <BannerImageOrVideo cms={CMS_URL} background={backround} />
-          <h2 className={styles.banner} title={content.title}>
+          <BannerImageOrVideo
+            cms={CMS_URL}
+            background={backround}
+            loadingImage={loadingImage}
+          />
+          <h2
+            className={`${styles.banner} ${germania.className}`}
+            title={content.title}
+          >
             {limitedTitle}
           </h2>
         </section>

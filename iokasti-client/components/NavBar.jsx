@@ -19,7 +19,6 @@ const itemVariants = {
 };
 
 const NavBar = ({ navData, newsData }) => {
-  console.log(navData.siteTitle)
   const [isOpen, setIsOpen] = useState(false);
   const firstMenuItemRef = useRef(null);
   const menuButtonRef = useRef(null);
@@ -61,7 +60,7 @@ const NavBar = ({ navData, newsData }) => {
         <motion.button
           ref={menuButtonRef}
           role="button"
-          className={styles.menu__button}
+          className={`${styles.menu__button} ${navLinkFont.className}`}
           whileTap={{ scale: 0.97 }}
           onClick={() => setIsOpen(!isOpen)}
           tabIndex="0" // Makes the element focusable
@@ -178,7 +177,9 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link className={`${navLinkFont.className}`} href="/">Home</Link>
+          <Link className={`${navLinkFont.className}`} href="/">
+            Home
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -194,7 +195,9 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link className={`${navLinkFont.className}`} href="/about">About</Link>
+          <Link className={`${navLinkFont.className}`} href="/about">
+            About
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -210,7 +213,9 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link className={`${navLinkFont.className}`} href="/projects">Projects</Link>
+          <Link className={`${navLinkFont.className}`} href="/projects">
+            Projects
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -226,7 +231,9 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link className={`${navLinkFont.className}`} href="/collaborations">Collaborations</Link>
+          <Link className={`${navLinkFont.className}`} href="/collaborations">
+            Collaborations
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -242,7 +249,9 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link className={`${navLinkFont.className}`} href="/facilitating">Facilitating</Link>
+          <Link className={`${navLinkFont.className}`} href="/facilitating">
+            Facilitating
+          </Link>
         </motion.li>
 
         <motion.li
@@ -258,7 +267,9 @@ const NavBar = ({ navData, newsData }) => {
             }
           }}
         >
-          <Link className={`${navLinkFont.className}`} href="/pelagos">Pelagos</Link>
+          <Link className={`${navLinkFont.className}`} href="/pelagos">
+            Pelagos
+          </Link>
         </motion.li>
 
         <motion.li className={styles.socialIcons} variants={itemVariants}>

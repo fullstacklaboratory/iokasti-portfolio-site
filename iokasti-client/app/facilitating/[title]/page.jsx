@@ -1,8 +1,10 @@
 import styles from "@/app/about/about.module.scss";
+import { germania } from "@/app/fonts";
 import AboutContent from "@/components/AboutContent";
 import BannerImageOrVideo from "@/components/BannerImageOrVideo";
 import { useLimitString } from "@/hooks/useLimitString";
 import { getFacilitating, getSlugsForFacilitating } from "@/lib/facilitating";
+import { getProjectPage } from "@/lib/projects";
 import { notFound } from "next/navigation";
 
 let CMS_URL;
@@ -47,21 +49,27 @@ export const generateStaticParams = async () => {
 };
 
 const FacilitatingPage = async ({ params }) => {
+  const { loadingImage } = await getProjectPage();
   try {
     const content = await getFacilitating(params.title);
-    console.log("facilitating content",  content)
-    const backround = content.image.attributes
+    const backround = content.image.attributes;
     if (!content) {
       throw new Error("No data received from CMS");
     }
     const limitedTitle = useLimitString(content.title, 20);
-    
 
     return (
       <>
         <section className={styles.header}>
-          <BannerImageOrVideo cms={CMS_URL} background={backround} />
-          <h2 className={styles.banner} title={content.title}>
+          <BannerImageOrVideo
+            cms={CMS_URL}
+            background={backround}
+            loadingImage={loadingImage}
+          />
+          <h2
+            className={`${styles.banner} ${germania.className}`}
+            title={content.title}
+          >
             {limitedTitle}
           </h2>
         </section>

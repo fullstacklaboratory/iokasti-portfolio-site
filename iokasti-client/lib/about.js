@@ -19,7 +19,6 @@ export const getAbout = async () => {
     },
   });
   const { data } = await response.json();
-  console.log(data);
   const { attributes } = data;
 
   return {

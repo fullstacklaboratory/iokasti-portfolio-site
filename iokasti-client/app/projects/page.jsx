@@ -28,8 +28,8 @@ export const metadata = {
 
 const Projects = async () => {
   const header = await getProjectPage();
+  const { loadingImage } = await getProjectPage();
   const projects = await getProjectsByCategory("project");
-  console.log(header);
 
   return (
     <>
@@ -39,8 +39,12 @@ const Projects = async () => {
           background={
             header.project_video || header.project_Image.data.attributes
           }
+          loadingImage={loadingImage}
         />
-        <h2 className={`${styles.banner} ${germania.className}`} title="Projects">
+        <h2
+          className={`${styles.banner} ${germania.className}`}
+          title="Projects"
+        >
           Projects
         </h2>
       </section>
