@@ -46,7 +46,7 @@ export async function getFacilitating(slug) {
 
     const response = await fetch(url, {
       next: {
-        tags: [CMS_FACILITATINGS],
+        tags: [CMS_FACILITATINGS_PAGE],
       },
     });
     const { data } = await response.json();
@@ -93,7 +93,7 @@ export async function getFacilitatingTitles() {
   const { data } = await res.json();
   return data.map(({ attributes }) => ({
     title: attributes.title,
-    slug : attributes.slug,
+    slug: attributes.slug,
     backgroundImage: attributes.backgroundImage.data,
   }));
 }
