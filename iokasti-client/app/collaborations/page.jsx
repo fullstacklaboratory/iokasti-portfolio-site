@@ -14,42 +14,52 @@ if (process.env.NODE_ENV === "development") {
 
 export const metadata = {
   title: "collaborations",
-  description:
-    "Projects and collaborations",
+  description: "Projects and collaborations",
   alternates: { canonical: `/collaborations` },
   keywords: "collaborations, iokasti, mantzog, performer, dancer, trainer",
   openGraph: {
     title: "collaborations",
-    description:
-      "Projects and collaborations",
+    description: "Projects and collaborations",
     images: [`/public/opengraph-image.jpg`],
   },
 };
 
 const Collabs = async () => {
-  const header = await getProjectPage();
-  const { loadingImage } = await getProjectPage();
-  const collabs = await getProjectsByCategory("collaboration");
-  // const { mime, url, alternativeText, width, height } =
-  //   header.banner[1].attributes;
+  try {
+    const header = await getProjectPage();
+    const { loadingImage } = await getProjectPage();
+    const collabs = await getProjectsByCategory("collaboration");
 
-  return (
-    <>
-      <section className={styles.header}>
-        <BannerImageOrVideo
-          cms={CMS_URL}
-          background={
-            header.collab_video || header.collab_Image.data.attributes
-          }
-          loadingImage={loadingImage}
-        />
-        <h2 className={`${styles.banner} ${germania.className}`}>
-          Collaborations
-        </h2>
-      </section>
-      <ProjectPageSection projects={collabs} />
-    </>
-  );
+    const background =
+      header.collab_video ||
+      (header.collab_Image &&
+        header.collab_Image.data &&
+        header.collab_Image.data.attributes);
+
+    return (
+      <>
+        <section className={styles.header}>
+          <BannerImageOrVideo
+            cms={CMS_URL}
+            background={background}
+            loadingImage={loadingImage}
+          />
+          <h2 className={`${styles.banner} ${germania.className}`}>
+            Collaborations
+          </h2>
+        </section>
+        <ProjectPageSection projects={collabs} />
+      </>
+    );
+  } catch (error) {
+    console.error(`Error in Collabs: ${error.message}`);
+    return (
+      <div className={styles.error}>
+        <h1>Error loading content</h1>
+        <p>There was an error loading the content. Please try again later.</p>
+      </div>
+    );
+  }
 };
 
 export default Collabs;
