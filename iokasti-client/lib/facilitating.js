@@ -84,7 +84,7 @@ export async function getFacilitatingTitles() {
 
   const res = await fetch(url, {
     next: {
-      tags: [CMS_FACILITATINGS],
+      tags: [CMS_FACILITATINGS_PAGE],
     },
   });
   if (!res.ok) {
