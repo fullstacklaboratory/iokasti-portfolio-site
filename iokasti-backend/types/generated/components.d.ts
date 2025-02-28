@@ -56,9 +56,7 @@ export interface NotebookImageNotebookEntry extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    description: Attribute.Text;
     image: Attribute.Media;
-    date: Attribute.Date;
     videoUrl: Attribute.String;
   };
 }

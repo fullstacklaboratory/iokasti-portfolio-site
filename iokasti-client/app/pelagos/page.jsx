@@ -8,13 +8,13 @@ import { germania } from "../fonts";
 export const metadata = {
   title: "pelagos",
   description:
-    "Dive into a visual and poetic journey through 'Pelagos', a collection of evocative images and words crafted by Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+    "Pelagos",
   alternates: { canonical: `/pelagos` },
   keywords: "pelagos, notes, notebook, iokasti, mantzog",
   openGraph: {
     title: "pelagos",
     description:
-      "Dive into a visual and poetic journey through 'Pelagos', a collection of evocative images and words crafted by Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+      "Pelagos",
     images: [`/public/opengraph-image.jpg`],
   },
 };

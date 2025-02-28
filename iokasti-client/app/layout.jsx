@@ -22,6 +22,8 @@ export const metadata = {
     "Performer",
     "Berlin Performer",
     "Dance classes berlin",
+    "Pilates",
+    "Berlin Pilates"
   ],
   openGraph: {
     title: { default: "Iokasti Mantzog", template: "%s | Iokasti Mantzog" },

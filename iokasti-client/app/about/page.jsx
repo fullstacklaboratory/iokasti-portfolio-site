@@ -9,13 +9,13 @@ import { bokor, germania } from "@/app/fonts";
 export const metadata = {
   title: "About",
   description:
-    "Discover the captivating performances of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+    "About",
   alternates: { canonical: `/about` },
-  keywords: "about, iokasti, mantzog, performer, dancer, trainer",
+  keywords: "about, iokasti, mantzog, performer, dancer, trainer, pilates",
   openGraph: {
     title: "About",
     description:
-      "Discover the captivating performances of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+      "About",
     images: [`/public/opengraph-image.jpg`],
   },
 };

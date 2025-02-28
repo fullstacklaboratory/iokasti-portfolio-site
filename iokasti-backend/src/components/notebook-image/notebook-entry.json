@@ -10,9 +10,6 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -21,9 +18,6 @@
         "images",
         "videos"
       ]
-    },
-    "date": {
-      "type": "date"
     },
     "videoUrl": {
       "type": "string"

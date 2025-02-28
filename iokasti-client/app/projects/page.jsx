@@ -15,13 +15,13 @@ if (process.env.NODE_ENV === "development") {
 export const metadata = {
   title: "Projects",
   description:
-    "Explore the dynamic projects of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+    "Projects",
   alternates: { canonical: `/projects` },
   keywords: "projects, iokasti, mantzog, performer, dancer, trainer",
   openGraph: {
     title: "Projects",
     description:
-      "Explore the dynamic projects of Iokasti Mantzog: a Greek queer non-binary dancer, performer, and trainer based in Berlin.",
+      "Projects",
     images: [`/public/opengraph-image.jpg`],
   },
 };

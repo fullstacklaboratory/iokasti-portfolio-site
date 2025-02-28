@@ -52,7 +52,6 @@ writeFileSync(file, formatted, "utf8");
 //   });
 // const response = await fetch(url);
 // const body = await response.json();
-// console.log(body);
 // const formatted = JSON.stringify(body, null, 2);
 // const file = "test-scripts/strapi-response.json";
 // writeFileSync(file, formatted, "utf8");
@@ -64,7 +63,6 @@ writeFileSync(file, formatted, "utf8");
 
 // const today = new Date();
 
-// console.log(today);
 // // http://localhost:1337/api/teachings?filters\[upcoming_dates\][upcoming_date][$gt]=10/23/2023
 // const url =
 //   "http://localhost:1337/api/teachings" +
@@ -84,7 +82,6 @@ writeFileSync(file, formatted, "utf8");
 //   });
 // const response = await fetch(url);
 // const body = await response.json();
-// console.log(body);
 // const formatted = JSON.stringify(body, null, 2);
 // const file = "test-scripts/strapi-response.json";
 // writeFileSync(file, formatted, "utf8");

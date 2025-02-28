@@ -16,6 +16,22 @@ if (process.env.NODE_ENV === "development") {
   CMS_URL = process.env.NEXT_PUBLIC_ENV_VPS_SERVER_PROD;
 }
 
+
+export const metadata = {
+  title: "Facilitating",
+  description:
+    "Facilitating",
+  alternates: { canonical: `/Facilitating` },
+  keywords: "Facilitating, iokasti, mantzog, performer, dancer, trainer , pilates",
+  openGraph: {
+    title: "Facilitating",
+    description:
+      "Facilitating",
+    images: [`/public/opengraph-image.jpg`],
+  },
+};
+
+
 const Facilitating = async () => {
   const header = await getProjectPage();
   const { loadingImage } = await getProjectPage();

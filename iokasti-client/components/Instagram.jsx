@@ -8,7 +8,6 @@ import Lenis from "@studio-freight/lenis";
 import { lora } from "@/app/fonts.js";
 
 const Instagram = ({ cms, entries, loadingImage }) => {
-  console.log("instagram", cms);
   const [modalContent, setModalContent] = useState(null);
 
   // Use Lenis for smooth scroll

@@ -1013,47 +1013,6 @@ export interface ApiProjectPageProjectPage extends Schema.SingleType {
   };
 }
 
-export interface ApiTeachingTeaching extends Schema.CollectionType {
-  collectionName: 'teachings';
-  info: {
-    singularName: 'teaching';
-    pluralName: 'teachings';
-    displayName: 'Teaching';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.RichText & Attribute.Required;
-    image: Attribute.Media;
-    external_url: Attribute.String;
-    place_name: Attribute.String;
-    map_url: Attribute.String;
-    upcoming_dates: Attribute.Component<'date.upcoming-dates', true>;
-    regular_schedule: Attribute.Boolean;
-    weekday: Attribute.String;
-    from: Attribute.Time;
-    to: Attribute.Time;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::teaching.teaching',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::teaching.teaching',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1078,7 +1037,6 @@ declare module '@strapi/types' {
       'api::notebook.notebook': ApiNotebookNotebook;
       'api::project.project': ApiProjectProject;
       'api::project-page.project-page': ApiProjectPageProjectPage;
-      'api::teaching.teaching': ApiTeachingTeaching;
     }
   }
 }

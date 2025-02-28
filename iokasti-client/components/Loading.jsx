@@ -5,8 +5,6 @@ import styles from "@/components/loading.module.scss";
 import LoadingAnim from "./LoadingAnim";
 
 const Loading = ({ cms, loadingImage }) => {
-  console.log("Loading component CMS", cms)
-  console.log("Loading component LOADING IMAGE", loadingImage)
   const [isVisible, setIsVisible] = useState(true);
 
 
