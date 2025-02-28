@@ -18,12 +18,13 @@ if (process.env.NODE_ENV === "development") {
 export const generateMetadata = async ({ params }) => {
   try {
     const content = await getFacilitating(params.title);
-    const { url } = content.image.attributes;
-    if (!content)
+    if (!content) {
       return {
         title: "not found",
         description: "does not exist",
       };
+    }
+    const { url } = content.image.attributes;
     return {
       title: content.title,
       alternates: { canonical: `/facilitating/${content.slug}` },
@@ -49,13 +50,13 @@ export const generateStaticParams = async () => {
 };
 
 const FacilitatingPage = async ({ params }) => {
-  const { loadingImage } = await getProjectPage();
   try {
+    const { loadingImage } = await getProjectPage();
     const content = await getFacilitating(params.title);
-    const backround = content.image.attributes;
     if (!content) {
-      throw new Error("No data received from CMS");
+      return notFound();
     }
+    const backround = content.image.attributes;
     const limitedTitle = useLimitString(content.title, 20);
 
     return (
@@ -77,7 +78,7 @@ const FacilitatingPage = async ({ params }) => {
       </>
     );
   } catch (error) {
-    console.error(`Error in ProjectPage: ${error.message}`);
+    console.error(`Error in FacilitatingPage: ${error.message}`);
     return notFound();
   }
 };
