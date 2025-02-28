@@ -79,7 +79,12 @@ const FacilitatingPage = async ({ params }) => {
     );
   } catch (error) {
     console.error(`Error in FacilitatingPage: ${error.message}`);
-    return notFound();
+    return (
+      <div className={styles.error}>
+        <h1>Error loading content</h1>
+        <p>There was an error loading the content. Please try again later.</p>
+      </div>
+    );
   }
 };
 
