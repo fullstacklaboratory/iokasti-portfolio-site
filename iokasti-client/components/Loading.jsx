@@ -7,7 +7,6 @@ import LoadingAnim from "./LoadingAnim";
 const Loading = ({ cms, loadingImage }) => {
   const [isVisible, setIsVisible] = useState(true);
 
-
   useEffect(() => {
     const timeout = setTimeout(() => setIsVisible(false), 5000); // Display for at least 5 seconds
     return () => clearTimeout(timeout);
@@ -19,6 +18,7 @@ const Loading = ({ cms, loadingImage }) => {
     <div className={styles.text_container}>
       <Image
         src={`${cms}${loadingImage.url}`}
+        alt={loadingImage.alt || "Loading image"}
         layout="fill"
         objectFit="cover"
       />
