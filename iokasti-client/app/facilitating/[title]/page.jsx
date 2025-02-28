@@ -44,7 +44,6 @@ export const generateMetadata = async ({ params }) => {
 };
 
 export const generateStaticParams = async () => {
-  // this will generate all the reviews paths on build. That means we don't have to rerender dynamic path component again
   const slugs = await getSlugsForFacilitating();
   return slugs.map((slug) => ({ slug }));
 };

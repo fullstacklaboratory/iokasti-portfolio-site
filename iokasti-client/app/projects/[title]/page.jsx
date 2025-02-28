@@ -55,37 +55,34 @@ export const generateStaticParams = async () => {
 
 const ProjectPage = async ({ params }) => {
   const { loadingImage } = await getProjectPage();
-  try {
-    const content = await getProject(params.title);
-    if (!content) {
-      throw new Error("No data received from CMS");
-    }
-    const limitedTitle = useLimitString(content.title, 20);
-    const backgroundVideo = content.video_link;
-    const backgroundImage = content.images[0]?.attributes;
-    const date = content.ending_date;
+  const content = await getProject(params.title);
 
-    const backround = backgroundVideo ? backgroundVideo : backgroundImage;
-
-    return (
-      <>
-        <section className={styles.header}>
-          <BannerImageOrVideo
-            cms={CMS_URL}
-            background={backround}
-            loadingImage={loadingImage}
-          />
-          <h2 className={`${styles.banner} ${germania.className}`}>
-            {limitedTitle}
-          </h2>
-        </section>
-        <AboutContent content={content} />
-      </>
-    );
-  } catch (error) {
-    console.error(`Error in ProjectPage: ${error.message}`);
+  if (!content) {
     return notFound();
   }
+
+  const limitedTitle = useLimitString(content.title, 20);
+  const backgroundVideo = content.video_link;
+  const backgroundImage = content.images[0]?.attributes;
+  const date = content.ending_date;
+
+  const background = backgroundVideo ? backgroundVideo : backgroundImage;
+
+  return (
+    <>
+      <section className={styles.header}>
+        <BannerImageOrVideo
+          cms={CMS_URL}
+          background={background}
+          loadingImage={loadingImage}
+        />
+        <h2 className={`${styles.banner} ${germania.className}`}>
+          {limitedTitle}
+        </h2>
+      </section>
+      <AboutContent content={content} />
+    </>
+  );
 };
 
 export default ProjectPage;
