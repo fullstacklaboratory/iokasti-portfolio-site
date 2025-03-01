@@ -52,6 +52,7 @@ export async function getFacilitating(slug) {
     const { data } = await response.json();
 
     if (data.length === 0) {
+      console.warn(`No facilitating data found for slug: ${slug}`);
       return null;
     }
 
@@ -63,7 +64,7 @@ export async function getFacilitating(slug) {
       slug: attributes.slug,
     };
   } catch (error) {
-    console.error(`Error in getProject: ${error.message}`);
+    console.error(`Error in getFacilitating: ${error.message}`);
     return null;
   }
 }
@@ -88,9 +89,13 @@ export async function getFacilitatingTitles() {
     },
   });
   if (!res.ok) {
+    console.error(
+      `Error fetching titles: CMS returned ${res.status} for ${url}`
+    );
     throw new Error(`CMS returned ${res.status} for ${url}`);
   }
   const { data } = await res.json();
+
   return data.map(({ attributes }) => ({
     title: attributes.title,
     slug: attributes.slug,

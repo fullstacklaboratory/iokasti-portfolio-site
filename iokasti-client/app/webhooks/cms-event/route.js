@@ -2,17 +2,24 @@ import { revalidateTag } from "next/cache";
 import { CMS_ABOUT } from "@/lib/about";
 import { CMS_LANDING_PAGE } from "@/lib/landingPage";
 import { CMS_NOTEBOOK } from "@/lib/notebook";
-import { CMS_PROJECTS } from "@/lib/projects";
-import { CMS_PROJECTS_PAGE } from "@/lib/projects";
+import { CMS_PROJECTS, CMS_PROJECTS_PAGE } from "@/lib/projects";
+import { CMS_FACILITATINGS, CMS_FACILITATINGS_PAGE } from "@/lib/facilitating";
 
 export async function POST(request) {
   const payload = await request.json();
+
   if (payload.model === "about") {
     revalidateTag(CMS_ABOUT);
   }
   if (payload.model === "project") {
     revalidateTag(CMS_PROJECTS);
-  }  if (payload.model === "facilitating") {
+  }
+  if (
+    payload.model === "facilitating" &&
+    (payload.event === "entry.create" ||
+      payload.event === "entry.update" ||
+      payload.event === "entry.delete")
+  ) {
     revalidateTag(CMS_FACILITATINGS);
   }
   if (payload.model === "landing-page") {
@@ -23,7 +30,7 @@ export async function POST(request) {
   }
   if (payload.model === "project-page") {
     revalidateTag(CMS_PROJECTS_PAGE);
-  } 
+  }
   if (payload.model === "facilitating-page") {
     revalidateTag(CMS_FACILITATINGS_PAGE);
   }
