@@ -50,7 +50,7 @@ export async function getFacilitating(slug) {
       },
     });
     const { data } = await response.json();
-
+    
     if (data.length === 0) {
       return null;
     }
