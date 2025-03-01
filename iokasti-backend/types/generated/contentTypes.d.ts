@@ -835,8 +835,8 @@ export interface ApiFacilitatingFacilitating extends Schema.CollectionType {
   };
   attributes: {
     backgroundImage: Attribute.Media & Attribute.Required;
-    title: Attribute.String;
-    body: Attribute.RichText;
+    title: Attribute.String & Attribute.Required;
+    body: Attribute.RichText & Attribute.Required;
     slug: Attribute.UID<'api::facilitating.facilitating', 'title'> &
       Attribute.Required;
     createdAt: Attribute.DateTime;

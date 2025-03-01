@@ -21,10 +21,12 @@
       ]
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "body": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "slug": {
       "type": "uid",
