@@ -6,7 +6,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   margin-top: 20vh;
-  max-height: calc(100vh - 9vh);
+  // max-height: calc(100vh - 9vh);
   margin-bottom: 5vh;
   .item {
     // margin-top: 6vh;
@@ -42,8 +42,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    height: 91vh;
-    margin: 9vh auto;
+    // height: 91vh;
+    margin: 19vh auto;
     justify-content: center;
     gap: 3vw;
     .item {
@@ -51,6 +51,10 @@
         max-width: calc(100vh / 2.5);
         
     }
+  }
+
+  @media screen and (orientation: landscape) and (min-width: 432px) {
+    margin: 26vh auto;
   }
 
 //   @media screen and (min-width: 540px) {

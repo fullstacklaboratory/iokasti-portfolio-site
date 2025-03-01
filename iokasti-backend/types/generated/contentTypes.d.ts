@@ -803,7 +803,6 @@ export interface ApiAboutAbout extends Schema.SingleType {
     title: Attribute.String;
     artistic_statement: Attribute.RichText;
     cv: Attribute.Media;
-    banner_image_or_video: Attribute.Media & Attribute.Required;
     videoUrl: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -994,8 +993,8 @@ export interface ApiProjectPageProjectPage extends Schema.SingleType {
     projectVideoUrl: Attribute.String;
     collaborationVideoUrl: Attribute.String;
     facilitatingVideoUrl: Attribute.String;
-    facilitatingImage: Attribute.Media;
-    collaborationImage: Attribute.Media;
+    facilitatingImage: Attribute.Media & Attribute.Required;
+    collaborationImage: Attribute.Media & Attribute.Required;
     loadingImage: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

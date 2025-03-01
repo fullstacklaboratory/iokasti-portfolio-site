@@ -52,7 +52,6 @@ export async function getFacilitating(slug) {
     const { data } = await response.json();
 
     if (data.length === 0) {
-      console.warn(`No facilitating data found for slug: ${slug}`);
       return null;
     }
 
@@ -89,9 +88,6 @@ export async function getFacilitatingTitles() {
     },
   });
   if (!res.ok) {
-    console.error(
-      `Error fetching titles: CMS returned ${res.status} for ${url}`
-    );
     throw new Error(`CMS returned ${res.status} for ${url}`);
   }
   const { data } = await res.json();

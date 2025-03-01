@@ -26,15 +26,6 @@
         "files"
       ]
     },
-    "banner_image_or_video": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
     "videoUrl": {
       "type": "string",
       "required": true
