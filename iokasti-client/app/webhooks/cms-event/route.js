@@ -7,8 +7,6 @@ import { CMS_FACILITATING } from "@/lib/facilitating";
 
 export async function POST(request) {
   const payload = await request.json();
-  console.log("payload", payload);
-  console.log("payload wwebhok model", payload.model);
 
   if (payload.model === "about") {
     revalidateTag(CMS_ABOUT);
@@ -17,8 +15,6 @@ export async function POST(request) {
     revalidateTag(CMS_PROJECTS);
   }
   if (payload.model === "facilitating") {
-    console.log("revlidated", CMS_FACILITATING);
-
     revalidateTag(CMS_FACILITATING);
   }
   if (payload.model === "landing-page") {
