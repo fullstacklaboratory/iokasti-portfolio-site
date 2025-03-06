@@ -3,10 +3,12 @@ import { CMS_ABOUT } from "@/lib/about";
 import { CMS_LANDING_PAGE } from "@/lib/landingPage";
 import { CMS_NOTEBOOK } from "@/lib/notebook";
 import { CMS_PROJECTS, CMS_PROJECTS_PAGE } from "@/lib/projects";
-import { CMS_FACILITATINGS, CMS_FACILITATINGS_PAGE } from "@/lib/facilitating";
+import { CMS_FACILITATING } from "@/lib/facilitating";
 
 export async function POST(request) {
   const payload = await request.json();
+  console.log("payload", payload);
+  console.log("payload wwebhok model", payload.model);
 
   if (payload.model === "about") {
     revalidateTag(CMS_ABOUT);
@@ -14,13 +16,10 @@ export async function POST(request) {
   if (payload.model === "project") {
     revalidateTag(CMS_PROJECTS);
   }
-  if (
-    payload.model === "facilitating" &&
-    (payload.event === "entry.create" ||
-      payload.event === "entry.update" ||
-      payload.event === "entry.delete")
-  ) {
-    revalidateTag(CMS_FACILITATINGS);
+  if (payload.model === "facilitating") {
+    console.log("revlidated", CMS_FACILITATING);
+
+    revalidateTag(CMS_FACILITATING);
   }
   if (payload.model === "landing-page") {
     revalidateTag(CMS_LANDING_PAGE);
@@ -31,8 +30,6 @@ export async function POST(request) {
   if (payload.model === "project-page") {
     revalidateTag(CMS_PROJECTS_PAGE);
   }
-  if (payload.model === "facilitating-page") {
-    revalidateTag(CMS_FACILITATINGS_PAGE);
-  }
+
   return new Response(null, { status: 204 });
 }
