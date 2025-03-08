@@ -40,14 +40,6 @@ export default async function RootLayout({ children }) {
   const navData = await getNavData();
   const news = await getNewsData();
 
-  if (navData.error) {
-    console.error("Failed to fetch navigation data:", navData.error);
-  }
-
-  if (news.error) {
-    console.error("Failed to fetch news data:", news.error);
-  }
-
   return (
     <html lang="en">
       {!navData.error ? (

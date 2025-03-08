@@ -52,7 +52,6 @@ const Collabs = async () => {
       </>
     );
   } catch (error) {
-    console.error(`Error in Collabs: ${error.message}`);
     return (
       <div className={styles.error}>
         <h1>Error loading content</h1>

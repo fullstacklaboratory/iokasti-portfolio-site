@@ -2,8 +2,7 @@ import qs from "qs";
 import { marked } from "marked";
 
 const CMS_URL = process.env.BACKEND;
-export const CMS_FACILITATINGS = "facilitatings";
-export const CMS_FACILITATINGS_PAGE = "facilitating-page";
+export const CMS_FACILITATING = "facilitating";
 
 export async function getSlugsForFacilitating() {
   const url =
@@ -18,7 +17,7 @@ export async function getSlugsForFacilitating() {
 
   const res = await fetch(url, {
     next: {
-      tags: [CMS_FACILITATINGS],
+      tags: [CMS_FACILITATING],
     },
   });
   if (!res.ok) {
@@ -44,13 +43,13 @@ export async function getFacilitating(slug) {
     );
     const url = `${CMS_URL}/api/facilitatings?${query}`;
 
-    const response = await fetch(url, {
+    const response = await fetch(url , {
       next: {
-        tags: [CMS_FACILITATINGS_PAGE],
+        tags: [CMS_FACILITATING],
       },
     });
     const { data } = await response.json();
-
+    
     if (data.length === 0) {
       return null;
     }
@@ -84,7 +83,7 @@ export async function getFacilitatingTitles() {
 
   const res = await fetch(url, {
     next: {
-      tags: [CMS_FACILITATINGS_PAGE],
+      tags: [CMS_FACILITATING],
     },
   });
   if (!res.ok) {
