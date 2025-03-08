@@ -32,7 +32,7 @@ jobs:
             nvm install
             nvm use
             cd /home/mrcll/websites/iokasti/iokasti-backend
-            npm install
+            npm install --force
             npm run production
             cd /home/mrcll/websites/iokasti/iokasti-client
             rm -rf .next
