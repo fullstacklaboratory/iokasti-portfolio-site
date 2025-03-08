@@ -39,7 +39,6 @@ export const generateMetadata = async ({ params }) => {
       },
     };
   } catch (error) {
-    console.error(error);
     return {
       title: "Project not found",
       description: "This project does not exist",
